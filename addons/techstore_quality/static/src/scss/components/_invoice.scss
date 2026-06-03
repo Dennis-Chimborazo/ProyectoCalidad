@@ -1,0 +1,526 @@
+/* ============================= */
+/* FACTURA / VENTAS              */
+/* ============================= */
+
+.ts-invoice-form {
+    width: 100%;
+    padding-bottom: 6px;
+}
+
+.ts-modal .ts-invoice-form {
+    max-height: none;
+}
+
+
+/* ============================= */
+/* SECCIONES DE FORMULARIO       */
+/* ============================= */
+
+.ts-invoice-section {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 18px;
+    padding: 18px;
+    margin-bottom: 16px;
+}
+
+.ts-invoice-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 14px;
+
+    h3 {
+        margin: 0;
+        color: #0f172a;
+        font-size: 18px;
+        font-weight: 900;
+    }
+
+    p {
+        margin: 4px 0 0;
+        color: #64748b;
+        font-size: 13px;
+    }
+}
+
+
+/* ============================= */
+/* BUSCADORES / AUTOCOMPLETE     */
+/* ============================= */
+
+.ts-invoice-search-grid {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 16px;
+    align-items: start;
+}
+
+.ts-search-box-full {
+    position: relative;
+    max-width: 100%;
+}
+
+.ts-autocomplete-panel {
+    position: absolute;
+    z-index: 30;
+    width: 100%;
+    max-height: 260px;
+    overflow-y: auto;
+    background: white;
+    border: 1px solid #dbeafe;
+    border-radius: 14px;
+    box-shadow: 0 16px 35px rgba(15, 23, 42, 0.16);
+    margin-top: 8px;
+}
+
+.ts-autocomplete-item {
+    width: 100%;
+    border: none;
+    background: white;
+    text-align: left;
+    padding: 12px 14px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    border-bottom: 1px solid #f1f5f9;
+
+    &:hover {
+        background: #eff6ff;
+    }
+
+    strong {
+        color: #0f172a;
+        font-size: 13px;
+    }
+
+    span {
+        color: #64748b;
+        font-size: 12px;
+    }
+}
+
+.ts-selected-card,
+.ts-product-preview {
+    background: white;
+    border: 1px solid #dbeafe;
+    border-radius: 16px;
+    padding: 14px;
+    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.06);
+
+    span {
+        display: block;
+        color: #64748b;
+        font-size: 12px;
+        font-weight: 800;
+        margin-bottom: 5px;
+    }
+
+    strong {
+        color: #0f172a;
+        font-size: 15px;
+        font-weight: 900;
+    }
+
+    p {
+        margin: 6px 0 0;
+        color: #475569;
+        font-size: 13px;
+    }
+}
+
+.ts-link-danger {
+    border: none;
+    background: transparent;
+    color: #dc2626;
+    font-weight: 800;
+    margin-top: 8px;
+    cursor: pointer;
+    padding: 0;
+}
+
+
+/* ============================= */
+/* AGREGAR PRODUCTO              */
+/* ============================= */
+
+.ts-product-add-grid {
+    display: grid;
+    grid-template-columns: 1fr 140px 130px;
+    gap: 14px;
+    align-items: end;
+}
+
+.ts-product-add-action {
+    display: flex;
+    align-items: end;
+
+    .ts-btn {
+        width: 100%;
+    }
+}
+
+.ts-product-preview {
+    margin-top: 14px;
+}
+
+
+/* ============================= */
+/* TABLA DETALLE DE FACTURA      */
+/* ============================= */
+
+.ts-invoice-table-wrapper {
+    max-height: 280px;
+    overflow: auto;
+    width: 100%;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    background: white;
+}
+
+.ts-invoice-table {
+    width: 100%;
+    min-width: 780px;
+    border-collapse: collapse;
+    background: white;
+
+    thead th {
+        position: sticky;
+        top: 0;
+        z-index: 2;
+    }
+
+    th {
+        background: #eff6ff;
+        color: #1e3a8a;
+        font-size: 13px;
+        font-weight: 900;
+        text-align: left;
+        padding: 13px 14px;
+        border-bottom: 1px solid #dbeafe;
+    }
+
+    td {
+        padding: 13px 14px;
+        border-bottom: 1px solid #e5e7eb;
+        color: #334155;
+        font-size: 13px;
+        vertical-align: middle;
+    }
+
+    tbody tr:hover {
+        background: #f8fafc;
+    }
+}
+
+.ts-qty-control {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #f1f5f9;
+    border-radius: 12px;
+    padding: 5px;
+
+    button {
+        width: 26px;
+        height: 26px;
+        border: none;
+        border-radius: 8px;
+        background: white;
+        color: #1e3a8a;
+        font-weight: 900;
+        cursor: pointer;
+    }
+
+    span {
+        min-width: 24px;
+        text-align: center;
+        font-weight: 900;
+        color: #0f172a;
+    }
+}
+
+
+/* ============================= */
+/* TOTALES / OBSERVACIÓN         */
+/* ============================= */
+
+.ts-invoice-bottom {
+    margin-top: 16px;
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 18px;
+    align-items: start;
+}
+
+.ts-invoice-totals {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 18px;
+    padding: 16px;
+}
+
+.ts-total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 10px 0;
+    border-bottom: 1px solid #f1f5f9;
+
+    &:last-child {
+        border-bottom: none;
+    }
+
+    span {
+        color: #64748b;
+        font-size: 13px;
+        font-weight: 800;
+    }
+
+    strong {
+        color: #0f172a;
+        font-size: 15px;
+        font-weight: 900;
+    }
+}
+
+.ts-total-input {
+    width: 130px;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    padding: 8px 10px;
+    text-align: right;
+    color: #0f172a;
+    outline: none;
+
+    &:focus {
+        border-color: #2563eb;
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.14);
+    }
+}
+
+.ts-total-final {
+    background: linear-gradient(135deg, #2563eb, #1e40af);
+    margin: 10px -8px -6px;
+    padding: 14px 12px;
+    border-radius: 14px;
+    border-bottom: none;
+
+    span,
+    strong {
+        color: white;
+    }
+}
+
+.ts-invoice-observation-view {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 18px;
+    padding: 16px;
+    min-height: 120px;
+
+    span {
+        display: block;
+        color: #64748b;
+        font-size: 12px;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.3px;
+        margin-bottom: 8px;
+    }
+
+    p {
+        margin: 0;
+        color: #334155;
+        font-size: 14px;
+        line-height: 1.45;
+    }
+}
+
+
+/* ============================= */
+/* VISUALIZACIÓN MEJORADA FACTURA */
+/* ============================= */
+
+.ts-invoice-view {
+    width: 100%;
+}
+
+.ts-invoice-hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 18px;
+    background:
+        radial-gradient(circle at top left, rgba(37, 99, 235, 0.22), transparent 34%),
+        linear-gradient(135deg, #eff6ff 0%, #ffffff 58%, #eef2ff 100%);
+    border: 1px solid #dbeafe;
+    border-radius: 22px;
+    padding: 22px;
+    margin-bottom: 18px;
+    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+}
+
+.ts-invoice-hero-main {
+    flex: 1;
+}
+
+.ts-invoice-kicker {
+    display: inline-flex;
+    align-items: center;
+    background: #dbeafe;
+    color: #1e40af;
+    border-radius: 999px;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 900;
+    margin-bottom: 10px;
+}
+
+.ts-invoice-hero-main h3 {
+    margin: 0;
+    color: #0f172a;
+    font-size: 28px;
+    font-weight: 950;
+    letter-spacing: -0.5px;
+}
+
+.ts-invoice-hero-main p {
+    margin: 8px 0 0;
+    color: #64748b;
+    font-size: 14px;
+}
+
+.ts-invoice-hero-status {
+    min-width: 160px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+    color: #166534;
+    border: 1px solid #86efac;
+    border-radius: 20px;
+    padding: 16px;
+    text-align: center;
+
+    span {
+        font-size: 12px;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.4px;
+    }
+
+    strong {
+        margin-top: 6px;
+        font-size: 18px;
+        font-weight: 950;
+    }
+}
+
+.ts-invoice-meta-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 0.7fr;
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+.ts-invoice-meta-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 18px;
+    padding: 16px;
+    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.05);
+
+    span {
+        display: block;
+        color: #64748b;
+        font-size: 12px;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.3px;
+        margin-bottom: 7px;
+    }
+
+    strong {
+        display: block;
+        color: #0f172a;
+        font-size: 16px;
+        font-weight: 950;
+        line-height: 1.25;
+    }
+
+    p {
+        margin: 7px 0 0;
+        color: #94a3b8;
+        font-size: 12px;
+    }
+}
+
+.ts-invoice-meta-card-primary {
+    border-color: #bfdbfe;
+    background: linear-gradient(135deg, #ffffff, #eff6ff);
+}
+
+.ts-code-pill {
+    display: inline-flex;
+    background: #eef2ff;
+    color: #3730a3;
+    border-radius: 999px;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.ts-qty-pill {
+    display: inline-flex;
+    justify-content: center;
+    min-width: 34px;
+    background: #f1f5f9;
+    color: #0f172a;
+    border-radius: 999px;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: 900;
+}
+
+
+/* ============================= */
+/* RESPONSIVE                    */
+/* ============================= */
+
+@media (max-width: 1000px) {
+    .ts-invoice-search-grid,
+    .ts-product-add-grid,
+    .ts-invoice-bottom {
+        grid-template-columns: 1fr;
+    }
+
+    .ts-invoice-hero {
+        flex-direction: column;
+    }
+
+    .ts-invoice-hero-status {
+        width: 100%;
+    }
+
+    .ts-invoice-meta-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 700px) {
+    .ts-invoice-hero {
+        padding: 18px;
+        border-radius: 18px;
+    }
+
+    .ts-invoice-hero-main h3 {
+        font-size: 22px;
+    }
+
+    .ts-invoice-meta-grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="techstore.ClienteApp" owl="1">
+
+        <div t-att-class="theme.classes.page">
+
+            <TsPageHeader
+                title="'Clientes TechStore'"
+                subtitle="'Administración de clientes: particulares y corporativos.'"
+            >
+                <t t-set-slot="actions">
+                    <TsButton
+                        label="'Actualizar'"
+                        variant="'secondary'"
+                        onClick.bind="loadClientes"
+                    />
+                </t>
+            </TsPageHeader>
+
+            <div class="ts-main-card">
+
+                <div class="ts-client-toolbar">
+
+                    <div class="ts-search-box">
+                        <label>Buscar cliente</label>
+                        <input
+                            class="ts-search-input"
+                            type="text"
+                            placeholder="Buscar por nombre, cédula, RUC, correo o teléfono..."
+                            t-att-value="state.search"
+                            t-on-input="(ev) => this.updateSearch(ev.target.value)"
+                        />
+                    </div>
+
+                    <div class="ts-search-box">
+                        <TsSelect
+                            label="'Tipo de cliente'"
+                            placeholder="'Todos los tipos'"
+                            value="state.filterTipoCliente"
+                            options="tipoClienteOptions"
+                            onChange.bind="updateTipoClienteFilter"
+                        />
+                    </div>
+
+                    <TsButton
+                        label="'+ Agregar Cliente'"
+                        variant="'primary'"
+                        onClick.bind="openCreateModal"
+                    />
+
+                </div>
+
+                <t t-if="state.loading">
+                    <div class="ts-loading-box">
+                        Cargando clientes...
+                    </div>
+                </t>
+
+                <t t-else="">
+                    <ClienteList
+                        clientes="filteredClientes"
+                        onEdit.bind="openEditModal"
+                        onToggle.bind="toggleCliente"
+                    />
+                </t>
+
+            </div>
+
+            <t t-if="state.showModal">
+                <TsModal
+                    title="modalTitle"
+                    subtitle="modalSubtitle"
+                    onClose.bind="closeModal"
+                >
+                    <ClienteForm
+                        cliente="state.editingCliente"
+                        onSave.bind="saveCliente"
+                        onCancel.bind="closeModal"
+                    />
+                </TsModal>
+            </t>
+
+        </div>
+
+    </t>
+
+</templates>

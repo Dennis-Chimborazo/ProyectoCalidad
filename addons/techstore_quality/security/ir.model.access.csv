@@ -1,0 +1,16 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_techstore_cliente,access.techstore.cliente,model_techstore_cliente,base.group_user,1,1,1,1
+access_techstore_producto,access.techstore.producto,model_techstore_producto,base.group_user,1,1,1,1
+access_techstore_venta,access.techstore.venta,model_techstore_venta,base.group_user,1,1,1,1
+access_techstore_detalle_venta,access.techstore.detalle.venta,model_techstore_detalle_venta,base.group_user,1,1,1,1
+
+access_techstore_tecnico,access.techstore.tecnico,model_techstore_tecnico,base.group_user,1,1,1,1
+access_techstore_tipo_equipo,access.techstore.tipo.equipo,model_techstore_tipo_equipo,base.group_user,1,1,1,1
+access_techstore_base_conocimiento,access.techstore.base.conocimiento,model_techstore_base_conocimiento,base.group_user,1,1,1,1
+
+access_techstore_equipo,access.techstore.equipo,model_techstore_equipo,base.group_user,1,1,1,1
+access_techstore_detalle_equipo,access.techstore.detalle.equipo,model_techstore_detalle_equipo,base.group_user,1,1,1,1
+
+access_techstore_mantenimiento,access.techstore.mantenimiento,model_techstore_mantenimiento,base.group_user,1,1,1,1
+access_techstore_mantenimiento_equipo,access.techstore.mantenimiento.equipo,model_techstore_mantenimiento_equipo,base.group_user,1,1,1,1
+access_techstore_mantenimiento_equipo_falla,access.techstore.mantenimiento.equipo.falla,model_techstore_mantenimiento_equipo_falla,base.group_user,1,1,1,1

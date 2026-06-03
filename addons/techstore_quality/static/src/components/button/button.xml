@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="techstore.TsButton" owl="1">
+        <button
+            t-att-class="buttonClass"
+            t-on-click="props.onClick"
+            type="button"
+        >
+            <t t-esc="props.label"/>
+        </button>
+    </t>
+
+</templates>

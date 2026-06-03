@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="techstore.ProductoApp" owl="1">
+
+        <div t-att-class="theme.classes.page">
+
+            <TsPageHeader
+                title="'Productos TechStore'"
+                subtitle="'Administración de productos: crear, editar, activar, desactivar y controlar stock.'"
+            >
+                <t t-set-slot="actions">
+                    <TsButton
+                        label="'Actualizar'"
+                        variant="'secondary'"
+                        onClick.bind="loadProductos"
+                    />
+                </t>
+            </TsPageHeader>
+
+            <div class="ts-main-card">
+
+                <div class="ts-client-toolbar">
+
+                    <div class="ts-search-box">
+                        <label>Buscar producto</label>
+                        <input
+                            class="ts-search-input"
+                            type="text"
+                            placeholder="Buscar por nombre o código..."
+                            t-att-value="state.search"
+                            t-on-input="(ev) => this.updateSearch(ev.target.value)"
+                        />
+                    </div>
+
+                    <TsButton
+                        label="'+ Agregar Producto'"
+                        variant="'primary'"
+                        onClick.bind="openCreateModal"
+                    />
+
+                </div>
+
+                <t t-if="state.loading">
+                    <div class="ts-loading-box">
+                        Cargando productos...
+                    </div>
+                </t>
+
+                <t t-else="">
+                    <ProductoList
+                        productos="filteredProductos"
+                        onEdit.bind="openEditModal"
+                        onToggle.bind="toggleProducto"
+                    />
+                </t>
+
+            </div>
+
+            <t t-if="state.showModal">
+                <TsModal
+                    title="modalTitle"
+                    subtitle="modalSubtitle"
+                    onClose.bind="closeModal"
+                >
+                    <ProductoForm
+                        producto="state.editingProducto"
+                        onSave.bind="saveProducto"
+                        onCancel.bind="closeModal"
+                    />
+                </TsModal>
+            </t>
+
+        </div>
+
+    </t>
+
+</templates>

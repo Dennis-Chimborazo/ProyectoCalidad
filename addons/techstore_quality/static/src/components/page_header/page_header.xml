@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="techstore.TsPageHeader" owl="1">
+        <div t-att-class="headerClass">
+            <div>
+                <h1>
+                    <t t-esc="props.title"/>
+                </h1>
+
+                <t t-if="props.subtitle">
+                    <p>
+                        <t t-esc="props.subtitle"/>
+                    </p>
+                </t>
+            </div>
+
+            <t t-slot="actions"/>
+        </div>
+    </t>
+
+</templates>

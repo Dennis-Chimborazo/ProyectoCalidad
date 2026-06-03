@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="techstore.VentaApp" owl="1">
+
+        <div t-att-class="theme.classes.page">
+
+            <TsPageHeader
+                title="'Ventas TechStore'"
+                subtitle="'Generación de ventas con detalle de productos, control de stock y cálculo automático.'"
+            >
+                <t t-set-slot="actions">
+                    <TsButton
+                        label="'Actualizar'"
+                        variant="'secondary'"
+                        onClick.bind="loadData"
+                    />
+                </t>
+            </TsPageHeader>
+
+            <div class="ts-main-card">
+
+                <div class="ts-client-toolbar">
+
+                    <div class="ts-search-box">
+                        <label>Buscar venta</label>
+                        <input
+                            class="ts-search-input"
+                            type="text"
+                            placeholder="Buscar por referencia, cliente, cédula o productos..."
+                            t-att-value="state.search"
+                            t-on-input="(ev) => this.updateSearch(ev.target.value)"
+                        />
+                    </div>
+
+                    <TsButton
+                        label="'+ Nueva Venta'"
+                        variant="'primary'"
+                        onClick.bind="openCreateModal"
+                    />
+
+                </div>
+
+                <t t-if="state.loading">
+                    <div class="ts-loading-box">
+                        Cargando ventas...
+                    </div>
+                </t>
+
+                <t t-else="">
+                    <VentaList
+                        ventas="filteredVentas"
+                        onView.bind="openInfoModal"
+                        onEdit.bind="openEditModal"
+                        onDelete.bind="deleteVenta"
+                    />
+                </t>
+
+            </div>
+
+            <t t-if="state.showModal">
+                <TsModal
+                    title="modalTitle"
+                    subtitle="modalSubtitle"
+                    onClose.bind="closeModal"
+                >
+                    <VentaForm
+                        venta="state.editingVenta"
+                        clientes="state.clientes"
+                        productos="state.productos"
+                        onSave.bind="saveVenta"
+                        onCancel.bind="closeModal"
+                    />
+                </TsModal>
+            </t>
+
+            <t t-if="state.showInfoModal">
+                <TsModal
+                    title="infoModalTitle"
+                    subtitle="infoModalSubtitle"
+                    onClose.bind="closeInfoModal"
+                >
+                    <VentaInfo
+                        venta="state.selectedVenta"
+                    />
+                </TsModal>
+            </t>
+
+        </div>
+
+    </t>
+
+</templates>

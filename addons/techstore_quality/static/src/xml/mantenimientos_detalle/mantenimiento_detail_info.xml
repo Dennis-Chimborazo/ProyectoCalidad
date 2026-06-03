@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="techstore.MantenimientoDetailInfo" owl="1">
+
+        <div class="ts-maintenance-modal-form">
+
+            <div class="ts-maintenance-subsection">
+                <h4>Información del equipo</h4>
+
+                <div class="ts-selected-card">
+                    <strong>
+                        <t t-esc="props.item.equipo"/>
+                    </strong>
+
+                    <p>
+                        <t t-esc="props.item.tipo_equipo"/>
+                        |
+                        <t t-esc="props.item.marca || 'Sin marca'"/>
+                        |
+                        <t t-esc="props.item.modelo || 'Sin modelo'"/>
+                        |
+                        Serie:
+                        <t t-esc="props.item.numero_serie || 'Sin serie'"/>
+                    </p>
+
+                    <span t-att-class="estadoBadgeClass(props.item.estado_equipo)">
+                        <t t-esc="estadoLabel(props.item.estado_equipo)"/>
+                    </span>
+                </div>
+            </div>
+
+            <div class="ts-maintenance-subsection">
+                <h4>Falla reportada</h4>
+
+                <div class="ts-info-box">
+                    <t t-esc="props.item.falla_reportada || 'Sin falla reportada'"/>
+                </div>
+            </div>
+
+            <div class="ts-maintenance-subsection">
+                <h4>Solución aplicada</h4>
+
+                <div class="ts-info-box">
+                    <t t-esc="props.item.solucion || 'Sin solución registrada'"/>
+                </div>
+            </div>
+
+            <div class="ts-maintenance-subsection">
+                <h4>Características del equipo</h4>
+
+                <div class="ts-invoice-table-wrapper">
+                    <table class="ts-invoice-table">
+                        <thead>
+                            <tr>
+                                <th>Característica</th>
+                                <th>Valor</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <t t-if="detalles.length">
+                                <t t-foreach="detalles" t-as="detalle" t-key="detalle.id">
+                                    <tr>
+                                        <td>
+                                            <t t-esc="detalle.caracteristica"/>
+                                        </td>
+
+                                        <td>
+                                            <t t-esc="detalle.valor"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </t>
+
+                            <t t-else="">
+                                <tr>
+                                    <td colspan="2" class="ts-empty">
+                                        No existen características registradas.
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="ts-maintenance-subsection">
+                <h4>Base de conocimiento relacionada</h4>
+
+                <t t-if="fallas.length">
+                    <div class="ts-falla-selected-list">
+                        <t t-foreach="fallas" t-as="falla" t-key="falla.id">
+
+                            <div class="ts-falla-card">
+                                <div>
+                                    <strong>
+                                        <t t-esc="falla.error_title"/>
+                                    </strong>
+
+                                    <p>
+                                        <strong>Síntomas:</strong>
+                                        <t t-esc="falla.symptoms"/>
+                                    </p>
+
+                                    <p>
+                                        <strong>Causa raíz:</strong>
+                                        <t t-esc="falla.root_cause"/>
+                                    </p>
+
+                                    <p>
+                                        <strong>Solución documentada:</strong>
+                                        <t t-esc="falla.solution"/>
+                                    </p>
+                                </div>
+                            </div>
+
+                        </t>
+                    </div>
+                </t>
+
+                <t t-else="">
+                    <div class="ts-empty">
+                        No se asociaron registros de la base de conocimiento.
+                    </div>
+                </t>
+            </div>
+
+            <div class="ts-modal-actions">
+                <TsButton
+                    label="'Cerrar'"
+                    variant="'secondary'"
+                    onClick.bind="close"
+                />
+            </div>
+
+        </div>
+
+    </t>
+
+</templates>

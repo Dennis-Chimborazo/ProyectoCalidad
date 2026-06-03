@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="techstore.TsTable" owl="1">
+
+        <div class="ts-table-container">
+
+            <div class="ts-table-scroll">
+                <table t-att-class="theme.classes.table">
+                    <thead>
+                        <tr>
+                            <t t-foreach="columns" t-as="col" t-key="col.key">
+                                <th>
+                                    <t t-esc="col.label"/>
+                                </th>
+                            </t>
+
+                            <t t-if="hasActions">
+                                <th>Acciones</th>
+                            </t>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <t t-if="paginatedRows.length">
+                            <t t-foreach="paginatedRows" t-as="row" t-key="row.id">
+                                <tr>
+                                    <t t-foreach="columns" t-as="col" t-key="col.key">
+                                        <td>
+                                            <t t-if="col.type === 'boolean_badge'">
+                                                <span t-att-class="getBooleanBadgeClass(row, col)">
+                                                    <t t-esc="getBooleanBadgeLabel(row, col)"/>
+                                                </span>
+                                            </t>
+
+                                            <t t-else="">
+                                                <t t-esc="getCellValue(row, col)"/>
+                                            </t>
+                                        </td>
+                                    </t>
+
+                                    <t t-if="hasActions">
+                                        <td>
+                                            <div class="ts-row-actions">
+                                                <t t-foreach="actions" t-as="action" t-key="action.key">
+                                                    <t t-if="isActionVisible(action, row)">
+                                                        <button
+                                                            type="button"
+                                                            t-att-class="getDynamicActionClass(action, row)"
+                                                            t-on-click="() => action.onClick(row)"
+                                                        >
+                                                            <t t-esc="getActionLabel(action, row)"/>
+                                                        </button>
+                                                    </t>
+                                                </t>
+                                            </div>
+                                        </td>
+                                    </t>
+                                </tr>
+                            </t>
+                        </t>
+
+                        <t t-else="">
+                            <tr>
+                                <td t-att-colspan="columns.length + (hasActions ? 1 : 0)" class="ts-empty">
+                                    No existen registros.
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="ts-pagination">
+                <div class="ts-pagination-info">
+                    Mostrando
+                    <strong><t t-esc="showingFrom"/></strong>
+                    -
+                    <strong><t t-esc="showingTo"/></strong>
+                    de
+                    <strong><t t-esc="totalRows"/></strong>
+                    registros
+                </div>
+
+                <div class="ts-pagination-actions">
+                    <button
+                        type="button"
+                        class="ts-page-btn"
+                        t-att-disabled="currentPage === 1"
+                        t-on-click="goToFirstPage"
+                    >
+                        «
+                    </button>
+
+                    <button
+                        type="button"
+                        class="ts-page-btn"
+                        t-att-disabled="currentPage === 1"
+                        t-on-click="previousPage"
+                    >
+                        Anterior
+                    </button>
+
+                    <span class="ts-page-current">
+                        Página <t t-esc="currentPage"/> de <t t-esc="totalPages"/>
+                    </span>
+
+                    <button
+                        type="button"
+                        class="ts-page-btn"
+                        t-att-disabled="currentPage === totalPages"
+                        t-on-click="nextPage"
+                    >
+                        Siguiente
+                    </button>
+
+                    <button
+                        type="button"
+                        class="ts-page-btn"
+                        t-att-disabled="currentPage === totalPages"
+                        t-on-click="goToLastPage"
+                    >
+                        »
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+    </t>
+
+</templates>

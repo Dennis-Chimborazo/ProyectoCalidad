@@ -1,0 +1,108 @@
+.ts-custom-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+
+    min-width: 92px;
+    padding: 7px 13px;
+
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 1;
+
+    border: 1px solid transparent;
+    white-space: nowrap;
+
+    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+}
+
+.ts-pill-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+/* =========================
+   ESTADOS DE MANTENIMIENTO
+========================= */
+
+.ts-pill-pendiente {
+    background: #fef3c7;
+    color: #92400e;
+    border-color: #fde68a;
+}
+
+.ts-pill-en-proceso {
+    background: #dbeafe;
+    color: #1d4ed8;
+    border-color: #bfdbfe;
+}
+
+.ts-pill-finalizado {
+    background: #dcfce7;
+    color: #166534;
+    border-color: #bbf7d0;
+}
+
+.ts-pill-cancelado {
+    background: #fee2e2;
+    color: #991b1b;
+    border-color: #fecaca;
+}
+
+/* =========================
+   PRIORIDADES
+========================= */
+
+.ts-pill-baja {
+    background: #ecfdf5;
+    color: #047857;
+    border-color: #a7f3d0;
+}
+
+.ts-pill-media {
+    background: #eff6ff;
+    color: #1d4ed8;
+    border-color: #bfdbfe;
+}
+
+.ts-pill-alta {
+    background: #fff7ed;
+    color: #c2410c;
+    border-color: #fed7aa;
+}
+
+.ts-pill-critica {
+    background: #fef2f2;
+    color: #b91c1c;
+    border-color: #fecaca;
+}
+
+/* =========================
+   ACTIVO / INACTIVO
+========================= */
+
+.ts-pill-activo {
+    background: #dcfce7;
+    color: #15803d;
+    border-color: #bbf7d0;
+}
+
+.ts-pill-inactivo {
+    background: #f1f5f9;
+    color: #475569;
+    border-color: #cbd5e1;
+}
+
+/* =========================
+   DEFAULT
+========================= */
+
+.ts-pill-default {
+    background: #f8fafc;
+    color: #64748b;
+    border-color: #e2e8f0;
+}

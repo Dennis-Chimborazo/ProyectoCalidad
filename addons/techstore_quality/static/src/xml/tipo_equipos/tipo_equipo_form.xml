@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="techstore.TipoEquipoForm" owl="1">
+
+        <div class="ts-modal-form">
+
+            <t t-if="state.error">
+                <div class="ts-alert-error">
+                    <t t-esc="state.error"/>
+                </div>
+            </t>
+
+            <div class="ts-form-grid ts-form-grid-1">
+
+                <TsInput
+                    label="'Tipo de equipo'"
+                    placeholder="'Ej. Laptop, Impresora, CPU...'"
+                    value="state.form.name"
+                    onInput="(value) => this.updateField('name', value)"
+                />
+
+                <div class="ts-field">
+                    <label>Descripción</label>
+                    <textarea
+                        class="ts-input"
+                        rows="4"
+                        placeholder="Ingrese una descripción del tipo de equipo..."
+                        t-att-value="state.form.descripcion"
+                        t-on-input="(ev) => this.updateField('descripcion', ev.target.value)"
+                    />
+                </div>
+
+            </div>
+
+            <div class="ts-checkbox-control">
+                <label>
+                    <input type="checkbox" t-model="state.form.activo"/>
+                    Tipo de equipo activo
+                </label>
+            </div>
+
+            <div class="ts-modal-actions">
+
+                <TsButton
+                    label="'Cancelar'"
+                    variant="'secondary'"
+                    onClick.bind="cancelEdit"
+                />
+
+                <TsButton
+                    label="buttonLabel"
+                    variant="'primary'"
+                    onClick.bind="saveTipoEquipo"
+                />
+
+            </div>
+
+        </div>
+
+    </t>
+
+</templates>

@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="techstore.MantenimientoForm" owl="1">
+
+        <div class="ts-modal-form">
+
+            <t t-if="state.error">
+                <div class="ts-alert-error">
+                    <t t-esc="state.error"/>
+                </div>
+            </t>
+            <div class="ts-person-grid">
+
+                <!-- CLIENTE -->
+                <div class="ts-person-picker">
+
+                    <t t-if="!state.selectedCliente">
+                        <div class="ts-search-box ts-search-box-full">
+                            <label>Buscar cliente</label>
+
+                            <input
+                                class="ts-search-input"
+                                type="text"
+                                placeholder="Buscar por nombre, cédula o correo..."
+                                t-att-value="state.clienteSearch"
+                                t-on-input="(ev) => this.updateClienteSearch(ev.target.value)"
+                            />
+
+                            <t t-if="filteredClientes.length">
+                                <div class="ts-autocomplete-panel">
+                                    <t t-foreach="filteredClientes" t-as="cliente" t-key="cliente.id">
+                                        <button
+                                            type="button"
+                                            class="ts-autocomplete-item"
+                                            t-on-click="() => this.selectCliente(cliente)"
+                                        >
+                                            <strong>
+                                                <t t-esc="cliente.name"/>
+                                            </strong>
+
+                                            <span>
+                                                Cédula/RUC:
+                                                <t t-esc="cliente.cedula || 'Sin cédula'"/>
+                                                ·
+                                                <t t-esc="cliente.email || 'Sin correo'"/>
+                                            </span>
+                                        </button>
+                                    </t>
+                                </div>
+                            </t>
+                        </div>
+                    </t>
+
+                    <t t-if="state.selectedCliente">
+                        <div class="ts-person-card ts-person-card-client">
+
+                            <div class="ts-person-top">
+                                <div class="ts-person-avatar">
+                                    <t t-esc="state.selectedCliente.name ? state.selectedCliente.name.charAt(0).toUpperCase() : 'C'"/>
+                                </div>
+
+                                <div class="ts-person-main">
+                                    <span class="ts-person-role">Cliente seleccionado</span>
+
+                                    <h4>
+                                        <t t-esc="state.selectedCliente.name"/>
+                                    </h4>
+                                </div>
+
+                                <button
+                                    type="button"
+                                    class="ts-person-change-btn"
+                                    t-on-click="clearCliente"
+                                >
+                                    Cambiar
+                                </button>
+                            </div>
+
+                            <div class="ts-person-inline-info">
+                                <span>
+                                    <strong>Cédula/RUC:</strong>
+                                    <t t-esc="state.selectedCliente.cedula || 'Sin cédula'"/>
+                                </span>
+
+                                <span>
+                                    <strong>Correo:</strong>
+                                    <t t-esc="state.selectedCliente.email || 'Sin correo'"/>
+                                </span>
+
+                                <span>
+                                    <strong>Teléfono:</strong>
+                                    <t t-esc="state.selectedCliente.telefono || 'Sin teléfono'"/>
+                                </span>
+                            </div>
+
+                        </div>
+                    </t>
+
+                </div>
+
+                <!-- TÉCNICO -->
+                <div class="ts-person-picker">
+
+                    <t t-if="!state.selectedTecnico">
+                        <div class="ts-search-box ts-search-box-full">
+                            <label>Buscar técnico</label>
+
+                            <input
+                                class="ts-search-input"
+                                type="text"
+                                placeholder="Buscar por nombre, cédula, correo o especialidad..."
+                                t-att-value="state.tecnicoSearch"
+                                t-on-input="(ev) => this.updateTecnicoSearch(ev.target.value)"
+                            />
+
+                            <t t-if="filteredTecnicos.length">
+                                <div class="ts-autocomplete-panel">
+                                    <t t-foreach="filteredTecnicos" t-as="tecnico" t-key="tecnico.id">
+                                        <button
+                                            type="button"
+                                            class="ts-autocomplete-item"
+                                            t-on-click="() => this.selectTecnico(tecnico)"
+                                        >
+                                            <strong>
+                                                <t t-esc="tecnico.name"/>
+                                            </strong>
+
+                                            <span>
+                                                Cédula:
+                                                <t t-esc="tecnico.cedula || 'Sin cédula'"/>
+                                                ·
+                                                <t t-esc="tecnico.email || 'Sin correo'"/>
+                                            </span>
+                                        </button>
+                                    </t>
+                                </div>
+                            </t>
+                        </div>
+                    </t>
+
+                    <t t-if="state.selectedTecnico">
+                        <div class="ts-person-card ts-person-card-tech">
+
+                            <div class="ts-person-top">
+                                <div class="ts-person-avatar">
+                                    <t t-esc="state.selectedTecnico.name ? state.selectedTecnico.name.charAt(0).toUpperCase() : 'T'"/>
+                                </div>
+
+                                <div class="ts-person-main">
+                                    <span class="ts-person-role">Técnico asignado</span>
+
+                                    <h4>
+                                        <t t-esc="state.selectedTecnico.name"/>
+                                    </h4>
+                                </div>
+
+                                <button
+                                    type="button"
+                                    class="ts-person-change-btn"
+                                    t-on-click="clearTecnico"
+                                >
+                                    Cambiar
+                                </button>
+                            </div>
+
+                            <div class="ts-person-inline-info">
+                                <span>
+                                    <strong>Cédula:</strong>
+                                    <t t-esc="state.selectedTecnico.cedula || 'Sin cédula'"/>
+                                </span>
+
+                                <span>
+                                    <strong>Correo:</strong>
+                                    <t t-esc="state.selectedTecnico.email || 'Sin correo'"/>
+                                </span>
+
+                                <span>
+                                    <strong>Especialidad:</strong>
+                                    <t t-esc="especialidadTecnicoLabel"/>
+                                </span>
+
+                                <span>
+                                    <strong>Experiencia:</strong>
+                                    <t t-esc="nivelTecnicoLabel"/>
+                                </span>
+                            </div>
+
+                        </div>
+                    </t>
+
+                </div>
+
+            </div>
+
+            <div class="ts-form-grid ts-form-grid-2 mt-3">
+
+                <div class="ts-field">
+                    <label>Prioridad</label>
+
+                    <select
+                        class="ts-input"
+                        t-att-value="state.form.prioridad"
+                        t-on-change="(ev) => this.updateField('prioridad', ev.target.value)"
+                    >
+                        <option value="baja">Baja</option>
+                        <option value="media">Media</option>
+                        <option value="alta">Alta</option>
+                        <option value="critica">Crítica</option>
+                    </select>
+                </div>
+
+                <div class="ts-field ts-field-full">
+                    <label>Descripción general</label>
+
+                    <textarea
+                        class="ts-input"
+                        rows="4"
+                        placeholder="Describa el motivo general del mantenimiento..."
+                        t-att-value="state.form.descripcion_general"
+                        t-on-input="(ev) => this.updateField('descripcion_general', ev.target.value)"
+                    />
+                </div>
+
+            </div>
+
+            <div class="ts-modal-actions">
+
+                <TsButton
+                    label="'Cancelar'"
+                    variant="'secondary'"
+                    onClick.bind="cancel"
+                />
+
+                <TsButton
+                    label="'Crear y continuar'"
+                    variant="'primary'"
+                    onClick.bind="saveMantenimiento"
+                />
+
+            </div>
+
+        </div>
+
+    </t>
+
+</templates>

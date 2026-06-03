@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="techstore.ProductoForm" owl="1">
+
+        <div class="ts-modal-form">
+
+            <t t-if="state.error">
+                <div class="ts-alert-error">
+                    <t t-esc="state.error"/>
+                </div>
+            </t>
+
+            <div class="ts-form-grid ts-form-grid-2">
+
+                <TsInput
+                    label="'Nombre del producto'"
+                    placeholder="'Ej. Laptop Lenovo'"
+                    value="state.form.name"
+                    onInput="(value) => this.updateField('name', value)"
+                />
+
+                <TsInput
+                    label="'Código'"
+                    placeholder="'Ej. PROD-001'"
+                    value="state.form.codigo"
+                    onInput="(value) => this.updateField('codigo', value)"
+                />
+
+                <TsInput
+                    label="'Precio unitario'"
+                    type="'number'"
+                    placeholder="'Ej. 850.50'"
+                    value="state.form.precio_unitario"
+                    onInput="(value) => this.updateField('precio_unitario', value)"
+                />
+
+                <TsInput
+                    label="'Stock disponible'"
+                    type="'number'"
+                    placeholder="'Ej. 10'"
+                    value="state.form.stock_disponible"
+                    onInput="(value) => this.updateField('stock_disponible', value)"
+                />
+
+            </div>
+
+            <div class="ts-checkbox-control">
+                <label>
+                    <input type="checkbox" t-model="state.form.activo"/>
+                    Producto activo
+                </label>
+            </div>
+
+            <div class="ts-modal-actions">
+
+                <TsButton
+                    label="'Cancelar'"
+                    variant="'secondary'"
+                    onClick.bind="cancelEdit"
+                />
+
+                <TsButton
+                    label="buttonLabel"
+                    variant="'primary'"
+                    onClick.bind="saveProducto"
+                />
+
+            </div>
+
+        </div>
+
+    </t>
+
+</templates>

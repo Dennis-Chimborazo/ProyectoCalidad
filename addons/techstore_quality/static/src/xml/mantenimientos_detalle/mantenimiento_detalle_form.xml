@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="techstore.MantenimientoDetalleForm" owl="1">
+
+        <div class="ts-maintenance-modal-form">
+
+            <t t-if="state.error">
+                <div class="ts-alert-error">
+                    <t t-esc="state.error"/>
+                </div>
+            </t>
+
+            <t t-if="state.warning">
+                <div class="ts-info-box mb-3">
+                    <strong>Advertencia:</strong>
+                    <span>
+                        <t t-esc="state.warning"/>
+                    </span>
+                </div>
+            </t>
+
+            <div class="ts-maintenance-subsection">
+                <h4>Datos del equipo</h4>
+
+                <div class="ts-form-grid ts-form-grid-2">
+
+                    <div class="ts-field">
+                        <label>Tipo de equipo</label>
+                        <select
+                            class="ts-input"
+                            t-att-value="state.formEquipo.tipo_equipo_id"
+                            t-on-change="(ev) => this.updateEquipoField('tipo_equipo_id', ev.target.value)"
+                        >
+                            <option value="">Seleccione...</option>
+
+                            <t t-foreach="tiposEquipoActivos" t-as="tipo" t-key="tipo.id">
+                                <option t-att-value="tipo.id">
+                                    <t t-esc="tipo.name"/>
+                                </option>
+                            </t>
+                        </select>
+                    </div>
+                       <div class="ts-field">
+                        <label>Nombre del equipo</label>
+                        <input
+                            class="ts-input"
+                            type="text"
+                            placeholder="Ej. Laptop Dell Inspiron"
+                            t-att-value="state.formEquipo.name"
+                            t-on-input="(ev) => this.updateEquipoField('name', ev.target.value)"
+                        />
+                    </div>
+
+                    <div class="ts-field">
+                        <label>Marca</label>
+                        <input
+                            class="ts-input"
+                            type="text"
+                            placeholder="Ej. Dell, HP, Epson"
+                            t-att-value="state.formEquipo.marca"
+                            t-on-input="(ev) => this.updateEquipoField('marca', ev.target.value)"
+                        />
+                    </div>
+
+                    <div class="ts-field">
+                        <label>Modelo</label>
+                        <input
+                            class="ts-input"
+                            type="text"
+                            placeholder="Ej. Inspiron 3501"
+                            t-att-value="state.formEquipo.modelo"
+                            t-on-input="(ev) => this.updateEquipoField('modelo', ev.target.value)"
+                        />
+                    </div>
+
+                    <div class="ts-field">
+                        <label>Número de serie</label>
+                        <input
+                            class="ts-input"
+                            type="text"
+                            placeholder="Ej. SN-000123"
+                            t-att-value="state.formEquipo.numero_serie"
+                            t-on-input="(ev) => this.updateEquipoField('numero_serie', ev.target.value)"
+                        />
+                    </div>
+
+                    <div class="ts-field">
+                        <label>Color</label>
+                        <input
+                            class="ts-input"
+                            type="text"
+                            placeholder="Ej. Negro"
+                            t-att-value="state.formEquipo.color"
+                            t-on-input="(ev) => this.updateEquipoField('color', ev.target.value)"
+                        />
+                    </div>
+
+                    <div class="ts-field ts-field-full">
+                        <label>Descripción del equipo</label>
+                        <textarea
+                            class="ts-input"
+                            rows="3"
+                            placeholder="Detalles generales del equipo recibido..."
+                            t-att-value="state.formEquipo.descripcion"
+                            t-on-input="(ev) => this.updateEquipoField('descripcion', ev.target.value)"
+                        />
+                    </div>
+
+                    <div class="ts-field ts-field-full">
+                        <label>Falla reportada</label>
+                        <textarea
+                            class="ts-input"
+                            rows="3"
+                            placeholder="Ej. El equipo no enciende..."
+                            t-att-value="state.formEquipo.falla_reportada"
+                            t-on-input="(ev) => this.updateEquipoField('falla_reportada', ev.target.value)"
+                        />
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="ts-maintenance-subsection">
+                <h4>Características del equipo</h4>
+
+                <div class="ts-form-grid ts-form-grid-2">
+
+                    <div class="ts-field">
+                        <label>Característica</label>
+                        <input
+                            class="ts-input"
+                            type="text"
+                            placeholder="Ej. RAM, Procesador, Disco"
+                            t-att-value="state.formDetalle.name"
+                            t-on-input="(ev) => this.updateDetalleField('name', ev.target.value)"
+                        />
+                    </div>
+
+                    <div class="ts-field">
+                        <label>Valor</label>
+                        <input
+                            class="ts-input"
+                            type="text"
+                            placeholder="Ej. 8GB, Intel i5, 512GB SSD"
+                            t-att-value="state.formDetalle.valor"
+                            t-on-input="(ev) => this.updateDetalleField('valor', ev.target.value)"
+                        />
+                    </div>
+
+                </div>
+
+                <div class="ts-modal-actions">
+                    <TsButton
+                        label="'+ Agregar característica'"
+                        variant="'secondary'"
+                        onClick.bind="agregarDetalle"
+                    />
+                </div>
+
+                <div class="ts-invoice-table-wrapper">
+                    <table class="ts-invoice-table">
+                        <thead>
+                            <tr>
+                                <th>Característica</th>
+                                <th>Valor</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <t t-if="state.detalles.length">
+                                <t t-foreach="state.detalles" t-as="detalle" t-key="detalle.local_id">
+                                    <tr>
+                                        <td>
+                                            <t t-esc="detalle.name"/>
+                                        </td>
+
+                                        <td>
+                                            <t t-esc="detalle.valor"/>
+                                        </td>
+
+                                        <td>
+                                            <button
+                                                type="button"
+                                                class="ts-btn ts-btn-danger ts-btn-sm"
+                                                t-on-click="() => this.quitarDetalle(detalle.local_id)"
+                                            >
+                                                Quitar
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </t>
+
+                            <t t-else="">
+                                <tr>
+                                    <td colspan="3" class="ts-empty">
+                                        No existen características agregadas.
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="ts-modal-actions">
+                <TsButton
+                    label="'Cancelar'"
+                    variant="'secondary'"
+                    onClick.bind="cancelar"
+                />
+
+                <TsButton
+                    label="'Guardar equipo'"
+                    variant="'primary'"
+                    onClick.bind="guardar"
+                />
+            </div>
+
+        </div>
+
+    </t>
+
+</templates>

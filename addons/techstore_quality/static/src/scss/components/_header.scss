@@ -1,0 +1,47 @@
+.ts-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    // Degradado suavizado: Azul vibrante claro a un Azul Real lavado y amigable (sin negros)
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 50%, #1d4ed8 100%);
+    color: white;
+    padding: 24px 32px; // Reducido ligeramente el padding vertical para que sea menos invasivo
+    border-radius: 18px;
+    // Sombra ultra tenue para eliminar el peso visual
+    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.1);
+    margin-bottom: 22px;
+
+    h1 {
+        color: white;
+        margin: 0;
+        font-size: 26px; // Un poco más compacto para ganar elegancia
+        font-weight: 800;
+        letter-spacing: -0.3px;
+    }
+
+    p {
+        margin: 6px 0 0;
+        // Blanco con opacidad para que se adapte de forma natural al fondo
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .ts-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+    }
+}
+
+@media (max-width: 700px) {
+    .ts-header {
+        padding: 20px;
+        border-radius: 14px;
+
+        h1 {
+            font-size: 22px;
+        }
+    }
+}

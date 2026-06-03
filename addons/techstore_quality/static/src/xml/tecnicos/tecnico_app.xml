@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="techstore.TecnicoApp" owl="1">
+
+        <div t-att-class="theme.classes.page">
+
+            <TsPageHeader
+                title="'Técnicos TechStore'"
+                subtitle="'Administración de técnicos: crear, editar, suspender y listar.'"
+            >
+                <t t-set-slot="actions">
+                    <TsButton
+                        label="'Actualizar'"
+                        variant="'secondary'"
+                        onClick.bind="loadTecnicos"
+                    />
+                </t>
+            </TsPageHeader>
+
+            <div class="ts-main-card">
+
+                <div class="ts-client-toolbar">
+
+                    <div class="ts-search-box">
+                        <label>Buscar técnico</label>
+                        <input
+                            class="ts-search-input"
+                            type="text"
+                            placeholder="Buscar por nombre, cédula, correo o especialidad..."
+                            t-att-value="state.search"
+                            t-on-input="(ev) => this.updateSearch(ev.target.value)"
+                        />
+                    </div>
+
+                    <TsButton
+                        label="'+ Agregar Técnico'"
+                        variant="'primary'"
+                        onClick.bind="openCreateModal"
+                    />
+
+                </div>
+
+                <t t-if="state.loading">
+                    <div class="ts-loading-box">
+                        Cargando técnicos...
+                    </div>
+                </t>
+
+                <t t-else="">
+                    <TecnicoList
+                        tecnicos="filteredTecnicos"
+                        onEdit.bind="openEditModal"
+                        onToggle.bind="toggleTecnico"
+                    />
+                </t>
+
+            </div>
+
+            <t t-if="state.showModal">
+                <TsModal
+                    title="modalTitle"
+                    subtitle="modalSubtitle"
+                    onClose.bind="closeModal"
+                >
+                    <TecnicoForm
+                        tecnico="state.editingTecnico"
+                        onSave.bind="saveTecnico"
+                        onCancel.bind="closeModal"
+                    />
+                </TsModal>
+            </t>
+
+        </div>
+
+    </t>
+
+</templates>

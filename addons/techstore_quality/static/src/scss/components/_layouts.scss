@@ -1,0 +1,62 @@
+.ts-layout {
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    gap: 20px;
+}
+
+.ts-main-card {
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid rgba(148, 163, 184, 0.20);
+    border-radius: 22px;
+    padding: 24px;
+    box-shadow: 0 14px 35px rgba(15, 23, 42, 0.10);
+}
+
+.ts-card {
+    background: #ffffff;
+    border: 1px solid rgba(148, 163, 184, 0.16);
+    border-radius: 20px;
+    padding: 22px;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+}
+
+.ts-card-title {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: flex-start;
+    margin-bottom: 18px;
+
+    h2 {
+        margin: 0;
+        font-size: 20px;
+        font-weight: 900;
+        color: #0f172a;
+    }
+
+    p {
+        margin: 5px 0 0;
+        color: #64748b;
+        font-size: 13px;
+    }
+}
+
+.ts-card-toolbar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 14px;
+}
+
+@media (max-width: 1000px) {
+    .ts-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 700px) {
+    .ts-main-card,
+    .ts-card {
+        padding: 18px;
+        border-radius: 18px;
+    }
+}

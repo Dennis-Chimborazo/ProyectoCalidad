@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="techstore.TsCard" owl="1">
+        <div t-att-class="cardClass">
+            <div class="ts-card-title">
+                <div>
+                    <h2>
+                        <t t-esc="props.title"/>
+                    </h2>
+
+                    <t t-if="props.subtitle">
+                        <p>
+                            <t t-esc="props.subtitle"/>
+                        </p>
+                    </t>
+                </div>
+            </div>
+
+            <t t-slot="default"/>
+        </div>
+    </t>
+
+</templates>

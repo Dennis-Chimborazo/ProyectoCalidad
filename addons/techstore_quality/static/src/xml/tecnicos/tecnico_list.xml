@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="techstore.TecnicoList" owl="1">
+
+        <TsTable
+            columns="columns"
+            rows="props.tecnicos"
+            actions="actions"
+            pageSize="10"
+        />
+
+    </t>
+
+</templates>

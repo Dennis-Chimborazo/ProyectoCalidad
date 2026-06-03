@@ -1,0 +1,64 @@
+.ts-btn {
+    border: none;
+    border-radius: 12px;
+    padding: 10px 16px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.22s ease;
+    white-space: nowrap;
+
+    &:hover {
+        transform: translateY(-1px);
+    }
+
+    &:active {
+        transform: translateY(0);
+    }
+}
+
+.ts-btn-primary {
+    background: linear-gradient(135deg, #2563eb, #1e40af);
+    color: white;
+    box-shadow: 0 8px 18px rgba(37, 99, 235, 0.24);
+
+    &:hover {
+        background: linear-gradient(135deg, #1d4ed8, #1e3a8a);
+    }
+}
+
+.ts-btn-secondary {
+    background: #e2e8f0;
+    color: #0f172a;
+
+    &:hover {
+        background: #cbd5e1;
+    }
+}
+
+.ts-btn-danger {
+    background: #ef4444;
+    color: white;
+    box-shadow: 0 8px 18px rgba(239, 68, 68, 0.20);
+
+    &:hover {
+        background: #dc2626;
+    }
+}
+
+.ts-btn-sm {
+    padding: 7px 11px;
+    font-size: 12px;
+}
+
+.ts-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.ts-row-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}

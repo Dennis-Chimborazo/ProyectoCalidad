@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="techstore.VentaInfo" owl="1">
+
+        <div class="ts-invoice-view">
+
+            <!-- CABECERA FACTURA -->
+            <div class="ts-invoice-hero">
+
+                <div class="ts-invoice-hero-main">
+                    <span class="ts-invoice-kicker">Factura / Venta</span>
+
+                    <h3>
+                        <t t-esc="venta.name"/>
+                    </h3>
+
+                    <p>
+                        Registro generado desde TechStore Quality
+                    </p>
+                </div>
+
+
+            </div>
+
+            <!-- INFORMACIÓN GENERAL -->
+            <div class="ts-invoice-meta-grid">
+
+                <div class="ts-invoice-meta-card ts-invoice-meta-card-primary">
+                    <span>Cliente</span>
+                    <strong>
+                        <t t-esc="venta.cliente_name"/>
+                    </strong>
+                    <p>
+                        Cliente asociado a la venta
+                    </p>
+                </div>
+
+                <div class="ts-invoice-meta-card">
+                    <span>Cédula/RUC</span>
+                    <strong>
+                        <t t-esc="venta.cliente_cedula || 'Sin cédula'"/>
+                    </strong>
+                    <p>
+                        Identificación del cliente
+                    </p>
+                </div>
+
+                <div class="ts-invoice-meta-card">
+                    <span>Fecha</span>
+                    <strong>
+                        <t t-esc="fechaVenta"/>
+                    </strong>
+                    <p>
+                        Fecha de emisión
+                    </p>
+                </div>
+
+                <div class="ts-invoice-meta-card">
+                    <span>Ítems</span>
+                    <strong>
+                        <t t-esc="venta.cantidad_productos"/>
+                    </strong>
+                    <p>
+                        Productos diferentes
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- DETALLE -->
+            <div class="ts-invoice-section">
+                <div class="ts-invoice-section-header">
+                    <div>
+                        <h3>Detalle de productos</h3>
+                        <p>Productos registrados en esta venta.</p>
+                    </div>
+                </div>
+
+                <div class="ts-invoice-table-wrapper">
+                    <table class="ts-invoice-table">
+                        <thead>
+                            <tr>
+                                <th>Producto</th>
+                                <th>Código</th>
+                                <th>Cantidad</th>
+                                <th>Precio unitario</th>
+                                <th>Subtotal</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <t t-if="detalles.length">
+                                <t t-foreach="detalles" t-as="detalle" t-key="detalle.id">
+                                    <tr>
+                                        <td>
+                                            <strong>
+                                                <t t-esc="detalle.producto_name"/>
+                                            </strong>
+                                        </td>
+
+                                        <td>
+                                            <span class="ts-code-pill">
+                                                <t t-esc="detalle.producto_codigo"/>
+                                            </span>
+                                        </td>
+
+                                        <td>
+                                            <span class="ts-qty-pill">
+                                                <t t-esc="detalle.cantidad"/>
+                                            </span>
+                                        </td>
+
+                                        <td>
+                                            <t t-esc="formatMoney(detalle.precio_unitario)"/>
+                                        </td>
+
+                                        <td>
+                                            <strong>
+                                                <t t-esc="formatMoney(detalle.subtotal)"/>
+                                            </strong>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </t>
+
+                            <t t-else="">
+                                <tr>
+                                    <td colspan="5" class="ts-empty">
+                                        No existen detalles para esta venta.
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- OBSERVACIÓN Y TOTALES -->
+            <div class="ts-invoice-bottom">
+
+                <div class="ts-invoice-observation-view">
+                    <span>Observación</span>
+                    <p>
+                        <t t-esc="venta.observacion || 'Sin observación registrada.'"/>
+                    </p>
+                </div>
+
+                <div class="ts-invoice-totals">
+
+                    <div class="ts-total-row">
+                        <span>Subtotal</span>
+                        <strong>
+                            <t t-esc="formatMoney(venta.subtotal)"/>
+                        </strong>
+                    </div>
+
+                    <div class="ts-total-row">
+                        <span>Descuento</span>
+                        <strong>
+                            <t t-esc="formatMoney(venta.descuento)"/>
+                        </strong>
+                    </div>
+
+                    <div class="ts-total-row">
+                        <span>IVA</span>
+                        <strong>
+                            <t t-esc="formatMoney(venta.iva)"/>
+                        </strong>
+                    </div>
+
+                    <div class="ts-total-row ts-total-final">
+                        <span>Total</span>
+                        <strong>
+                            <t t-esc="formatMoney(venta.total)"/>
+                        </strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </t>
+
+</templates>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="techstore.BaseConocimientoForm" owl="1">
+
+        <div class="ts-modal-form">
+
+            <t t-if="state.error">
+                <div class="ts-alert-error">
+                    <t t-esc="state.error"/>
+                </div>
+            </t>
+
+            <div class="ts-form-grid ts-form-grid-2">
+
+                <TsInput
+                    label="'Título de la falla'"
+                    placeholder="'Ej. No enciende / Pantalla azul / Sobrecalentamiento'"
+                    value="state.form.error_title"
+                    onInput="(value) => this.updateField('error_title', value)"
+                />
+
+                <div class="ts-field">
+                    <label>Tipo de equipo</label>
+                    <select
+                        class="ts-input"
+                        t-att-value="state.form.equipment_type_id"
+                        t-on-change="(ev) => this.updateField('equipment_type_id', ev.target.value)"
+                    >
+                        <option value="">Seleccione un tipo de equipo</option>
+
+                        <t t-foreach="props.tiposEquipo" t-as="tipo" t-key="tipo.id">
+                            <option t-att-value="tipo.id">
+                                <t t-esc="tipo.name"/>
+                            </option>
+                        </t>
+                    </select>
+                </div>
+
+                <div class="ts-field ts-field-full">
+                    <label>Síntomas</label>
+                    <textarea
+                        class="ts-input"
+                        rows="3"
+                        placeholder="Describa los síntomas reportados..."
+                        t-att-value="state.form.symptoms"
+                        t-on-input="(ev) => this.updateField('symptoms', ev.target.value)"
+                    />
+                </div>
+
+                <div class="ts-field ts-field-full">
+                    <label>Causa raíz</label>
+                    <textarea
+                        class="ts-input"
+                        rows="3"
+                        placeholder="Describa la causa principal del problema..."
+                        t-att-value="state.form.root_cause"
+                        t-on-input="(ev) => this.updateField('root_cause', ev.target.value)"
+                    />
+                </div>
+
+                <div class="ts-field ts-field-full">
+                    <label>Solución documentada</label>
+                    <textarea
+                        class="ts-input"
+                        rows="3"
+                        placeholder="Describa la solución aplicada o recomendada..."
+                        t-att-value="state.form.solution"
+                        t-on-input="(ev) => this.updateField('solution', ev.target.value)"
+                    />
+                </div>
+
+                <TsInput
+                    label="'Palabras clave'"
+                    placeholder="'Ej. encendido, pantalla, disco, memoria'"
+                    value="state.form.keywords"
+                    onInput="(value) => this.updateField('keywords', value)"
+                />
+
+            </div>
+
+            <div class="ts-checkbox-control">
+                <label>
+                    <input type="checkbox" t-model="state.form.activo"/>
+                    Registro activo
+                </label>
+            </div>
+
+            <div class="ts-modal-actions">
+
+                <TsButton
+                    label="'Cancelar'"
+                    variant="'secondary'"
+                    onClick.bind="cancelEdit"
+                />
+
+                <TsButton
+                    label="buttonLabel"
+                    variant="'primary'"
+                    onClick.bind="saveBaseConocimiento"
+                />
+
+            </div>
+
+        </div>
+
+    </t>
+
+</templates>

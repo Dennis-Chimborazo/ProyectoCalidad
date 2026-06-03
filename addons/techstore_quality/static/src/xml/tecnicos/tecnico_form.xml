@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="techstore.TecnicoForm" owl="1">
+
+        <div class="ts-modal-form">
+
+            <t t-if="state.error">
+                <div class="ts-alert-error">
+                    <t t-esc="state.error"/>
+                </div>
+            </t>
+
+            <div class="ts-form-grid ts-form-grid-2">
+
+                <TsInput
+                    label="'Nombre del técnico'"
+                    placeholder="'Ej. Carlos Pérez'"
+                    value="state.form.name"
+                    onInput="(value) => this.updateField('name', value)"
+                />
+
+                <TsInput
+                    label="'Cédula'"
+                    placeholder="'Ej. 1800000000'"
+                    value="state.form.cedula"
+                    onInput="(value) => this.updateField('cedula', value)"
+                />
+
+                <TsInput
+                    label="'Correo'"
+                    type="'email'"
+                    placeholder="'tecnico@email.com'"
+                    value="state.form.email"
+                    onInput="(value) => this.updateField('email', value)"
+                />
+
+                <TsInput
+                    label="'Teléfono'"
+                    placeholder="'Ej. 0999999999'"
+                    value="state.form.telefono"
+                    onInput="(value) => this.updateField('telefono', value)"
+                />
+
+                <div class="ts-field">
+                    <label>Especialidad</label>
+                    <select
+                        class="ts-input"
+                        t-att-value="state.form.especialidad"
+                        t-on-change="(ev) => this.updateField('especialidad', ev.target.value)"
+                    >
+                        <option value="hardware">Hardware</option>
+                        <option value="software">Software</option>
+                        <option value="mantenimiento_general">Mantenimiento general</option>
+                    </select>
+                </div>
+
+                <div class="ts-field">
+                    <label>Nivel de experiencia</label>
+                    <select
+                        class="ts-input"
+                        t-att-value="state.form.nivel_experiencia"
+                        t-on-change="(ev) => this.updateField('nivel_experiencia', ev.target.value)"
+                    >
+                        <option value="junior">Junior</option>
+                        <option value="intermedio">Intermedio</option>
+                        <option value="senior">Senior</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="ts-checkbox-control">
+                <label>
+                    <input type="checkbox" t-model="state.form.activo"/>
+                    Técnico activo
+                </label>
+            </div>
+
+            <div class="ts-modal-actions">
+
+                <TsButton
+                    label="'Cancelar'"
+                    variant="'secondary'"
+                    onClick.bind="cancelEdit"
+                />
+
+                <TsButton
+                    label="buttonLabel"
+                    variant="'primary'"
+                    onClick.bind="saveTecnico"
+                />
+
+            </div>
+
+        </div>
+
+    </t>
+
+</templates>

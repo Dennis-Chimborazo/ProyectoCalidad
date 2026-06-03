@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="techstore.TsSelect" owl="1">
+        <div class="ts-form-control">
+            <label t-att-class="theme.classes.label">
+                <t t-esc="props.label"/>
+            </label>
+
+            <select
+                t-att-class="theme.classes.input"
+                t-att-value="props.value || ''"
+                t-on-change="(ev) => props.onChange(ev.target.value)"
+            >
+                <option value="">
+                    <t t-esc="props.placeholder || 'Seleccione una opción'"/>
+                </option>
+
+                <t t-foreach="options" t-as="option" t-key="option.id">
+                    <option t-att-value="option.id">
+                        <t t-esc="option.label"/>
+                    </option>
+                </t>
+            </select>
+        </div>
+    </t>
+
+</templates>

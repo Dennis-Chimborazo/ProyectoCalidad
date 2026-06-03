@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="techstore.MantenimientoApp" owl="1">
+
+        <div t-att-class="theme.classes.page">
+
+            <TsPageHeader
+                title="'Mantenimientos TechStore'"
+                subtitle="'Creación de órdenes y asignación de equipos al mantenimiento.'"
+            >
+                <t t-set-slot="actions">
+                    <TsButton
+                        label="'Actualizar'"
+                        variant="'secondary'"
+                        onClick.bind="loadMantenimientos"
+                    />
+                </t>
+            </TsPageHeader>
+
+            <div class="ts-main-card">
+
+                <div class="ts-client-toolbar">
+
+                    <div class="ts-search-box">
+                        <label>Buscar mantenimiento</label>
+                        <input
+                            class="ts-search-input"
+                            type="text"
+                            placeholder="Buscar por código, cliente, técnico, estado o prioridad..."
+                            t-att-value="state.search"
+                            t-on-input="(ev) => this.updateSearch(ev.target.value)"
+                        />
+                    </div>
+
+                    <div class="ts-search-box">
+                        <TsSelect
+                            label="'Prioridad'"
+                            placeholder="'Todas las prioridades'"
+                            value="state.filterPrioridad"
+                            options="prioridadOptions"
+                            onChange.bind="updatePrioridadFilter"
+                        />
+                    </div>
+
+                    <div class="ts-search-box">
+                        <TsSelect
+                            label="'Estado'"
+                            placeholder="'Todos los estados'"
+                            value="state.filterEstado"
+                            options="estadoOptions"
+                            onChange.bind="updateEstadoFilter"
+                        />
+                    </div>
+
+                    <TsButton
+                        label="'Limpiar filtros'"
+                        variant="'secondary'"
+                        onClick.bind="clearFilters"
+                    />
+
+                    <TsButton
+                        label="'+ Crear Mantenimiento'"
+                        variant="'primary'"
+                        onClick.bind="openCreateModal"
+                    />
+
+                </div>
+
+                <t t-if="state.loading">
+                    <div class="ts-loading-box">
+                        Cargando mantenimientos...
+                    </div>
+                </t>
+
+                <t t-else="">
+                    <MantenimientoList
+                        mantenimientos="filteredMantenimientos"
+                        onOpenDetail.bind="openDetail"
+                        onOpenInfo.bind="openInfoModal"
+                    />
+                </t>
+
+            </div>
+
+            <t t-if="state.showCreateModal">
+                <TsModal
+                    title="'Crear Mantenimiento'"
+                    subtitle="'Registre la orden principal. Luego podrá agregar equipos al mantenimiento.'"
+                    onClose.bind="closeCreateModal"
+                >
+                    <MantenimientoForm
+                        clientes="state.clientes"
+                        tecnicos="state.tecnicos"
+                        onSave.bind="saveMantenimiento"
+                        onCancel.bind="closeCreateModal"
+                    />
+                </TsModal>
+            </t>
+
+            <t t-if="state.showInfoModal">
+                <TsModal
+                    title="'Información del Mantenimiento'"
+                    subtitle="'Este mantenimiento se encuentra cerrado o cancelado.'"
+                    onClose.bind="closeInfoModal"
+                >
+                    <MantenimientoInfo
+                        mantenimiento="state.infoMantenimiento"
+                        onClose.bind="closeInfoModal"
+                    />
+                </TsModal>
+            </t>
+
+        </div>
+
+    </t>
+
+</templates>

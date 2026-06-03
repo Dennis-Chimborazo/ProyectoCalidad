@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="techstore.MantenimientoInfo" owl="1">
+
+        <div class="ts-maintenance-info">
+
+            <t t-if="state.loading">
+                <div class="ts-loading-box">
+                    Cargando información completa del mantenimiento...
+                </div>
+            </t>
+
+            <t t-else="">
+
+                <t t-if="state.error">
+                    <div class="ts-alert-error">
+                        <t t-esc="state.error"/>
+                    </div>
+                </t>
+
+                <div class="ts-maintenance-info-header">
+                    <div>
+                        <span class="ts-info-kicker">Resumen del mantenimiento</span>
+                        <h3>
+                            <t t-esc="mantenimiento.name"/>
+                        </h3>
+                        <p>
+                            <t t-esc="resumenTexto"/>
+                        </p>
+                    </div>
+
+                    <div class="ts-maintenance-info-status">
+                        <span>Estado</span>
+                        <strong>
+                            <t t-esc="estadoLabel"/>
+                        </strong>
+                    </div>
+                </div>
+
+             <div class="ts-maintenance-summary-card">
+
+    <div class="ts-summary-main">
+        <div>
+            <span>Código</span>
+            <strong>
+                <t t-esc="mantenimiento.name"/>
+            </strong>
+        </div>
+
+        <div>
+            <span>Cliente</span>
+            <strong>
+                <t t-esc="mantenimiento.cliente"/>
+            </strong>
+        </div>
+
+        <div>
+            <span>Técnico</span>
+            <strong>
+                <t t-esc="mantenimiento.tecnico"/>
+            </strong>
+        </div>
+
+        <div>
+            <span>Prioridad</span>
+            <strong>
+                <t t-esc="prioridadLabel"/>
+            </strong>
+        </div>
+    </div>
+
+    <div class="ts-summary-divider"></div>
+
+    <div class="ts-summary-stats">
+        <div>
+            <span>Estado</span>
+            <strong>
+                <t t-esc="estadoLabel"/>
+            </strong>
+        </div>
+
+        <div>
+            <span>Total equipos</span>
+            <strong>
+                <t t-esc="mantenimiento.total_equipos || 0"/>
+            </strong>
+        </div>
+
+        <div>
+            <span>Finalizados</span>
+            <strong>
+                <t t-esc="mantenimiento.total_finalizados || 0"/>
+            </strong>
+        </div>
+
+        <div>
+            <span>Cancelados</span>
+            <strong>
+                <t t-esc="mantenimiento.total_cancelados || 0"/>
+            </strong>
+        </div>
+
+        <div>
+            <span>Con solución</span>
+            <strong>
+                <t t-esc="mantenimiento.total_con_solucion || 0"/>
+            </strong>
+        </div>
+
+        <div>
+            <span>Con base conocimiento</span>
+            <strong>
+                <t t-esc="mantenimiento.total_con_base_conocimiento || 0"/>
+            </strong>
+        </div>
+    </div>
+
+    <div class="ts-summary-divider"></div>
+
+    <div class="ts-summary-dates">
+        <div>
+            <span>Fecha de inicio</span>
+            <strong>
+                <t t-esc="formatDate(mantenimiento.fecha_inicio)"/>
+            </strong>
+        </div>
+
+        <div>
+            <span>Fecha de finalización</span>
+            <strong>
+                <t t-esc="formatDate(mantenimiento.fecha_fin)"/>
+            </strong>
+        </div>
+    </div>
+
+</div>
+
+                <div class="ts-maintenance-subsection ts-maintenance-info-section">
+                    <div class="ts-section-title-row">
+                        <div>
+                            <span class="ts-info-kicker">Detalle técnico</span>
+                            <h4>Equipos procesados</h4>
+                        </div>
+                    </div>
+
+                    <t t-if="equipos.length">
+                        <div class="ts-maintenance-equipment-list ts-maintenance-info-equipment-list">
+
+                            <t t-foreach="equipos" t-as="item" t-key="item.id">
+
+                                <div class="ts-maintenance-equipment-card ts-maintenance-info-equipment-card">
+
+                                    <div class="ts-maintenance-equipment-header">
+                                        <div>
+                                            <span class="ts-invoice-kicker">
+                                                <t t-esc="item.tipo_equipo"/>
+                                            </span>
+
+                                            <h4>
+                                                <t t-esc="item.equipo"/>
+                                            </h4>
+
+                                            <p>
+                                                Marca:
+                                                <t t-esc="item.marca || 'Sin marca'"/>
+                                                |
+                                                Modelo:
+                                                <t t-esc="item.modelo || 'Sin modelo'"/>
+                                                |
+                                                Serie:
+                                                <t t-esc="item.numero_serie || 'Sin serie'"/>
+                                            </p>
+                                        </div>
+
+                                        <span t-att-class="estadoEquipoBadgeClass(item.estado_equipo)">
+                                            <t t-esc="estadoEquipoLabel(item.estado_equipo)"/>
+                                        </span>
+                                    </div>
+
+                                    <div class="ts-equipment-info-grid">
+
+                                        <div class="ts-equipment-info-box">
+                                            <strong>Falla reportada</strong>
+                                            <p>
+                                                <t t-esc="item.falla_reportada || 'Sin falla reportada.'"/>
+                                            </p>
+                                        </div>
+
+                                        <div class="ts-equipment-info-box">
+                                            <strong>Solución aplicada</strong>
+                                            <p>
+                                                <t t-esc="item.solucion || 'Sin solución registrada.'"/>
+                                            </p>
+                                        </div>
+
+                                    </div>
+
+                                    <t t-if="item.detalles &amp;&amp; item.detalles.length">
+                                        <div class="ts-maintenance-subsection ts-equipment-inner-section">
+                                            <h4>Características del equipo</h4>
+
+                                            <div class="ts-invoice-table-wrapper">
+                                                <table class="ts-invoice-table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Característica</th>
+                                                            <th>Valor</th>
+                                                        </tr>
+                                                    </thead>
+
+                                                    <tbody>
+                                                        <t t-foreach="item.detalles" t-as="detalle" t-key="detalle.id">
+                                                            <tr>
+                                                                <td>
+                                                                    <t t-esc="detalle.caracteristica"/>
+                                                                </td>
+
+                                                                <td>
+                                                                    <t t-esc="detalle.valor"/>
+                                                                </td>
+                                                            </tr>
+                                                        </t>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </t>
+
+                                    <t t-if="item.fallas_base &amp;&amp; item.fallas_base.length">
+                                        <div class="ts-maintenance-subsection ts-equipment-inner-section">
+                                            <h4>Base de conocimiento asociada</h4>
+
+                                            <div class="ts-falla-selected-list">
+                                                <t t-foreach="item.fallas_base" t-as="falla" t-key="falla.id">
+
+                                                    <div class="ts-falla-card ts-info-falla-card">
+                                                        <div>
+                                                            <strong>
+                                                                <t t-esc="falla.error_title"/>
+                                                            </strong>
+
+                                                            <p>
+                                                                <strong>Síntomas:</strong>
+                                                                <t t-esc="falla.symptoms"/>
+                                                            </p>
+
+                                                            <p>
+                                                                <strong>Causa raíz:</strong>
+                                                                <t t-esc="falla.root_cause"/>
+                                                            </p>
+
+                                                            <p>
+                                                                <strong>Solución documentada:</strong>
+                                                                <t t-esc="falla.solution"/>
+                                                            </p>
+
+                                                            <p>
+                                                                <strong>Palabras clave:</strong>
+                                                                <t t-esc="falla.keywords || 'Sin palabras clave'"/>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+
+                                                </t>
+                                            </div>
+                                        </div>
+                                    </t>
+
+                                </div>
+
+                            </t>
+
+                        </div>
+                    </t>
+
+                    <t t-else="">
+                        <div class="ts-empty">
+                            No existen equipos procesados en este mantenimiento.
+                        </div>
+                    </t>
+
+                </div>
+
+                <div class="ts-modal-actions">
+                    <TsButton
+                        label="'Cerrar'"
+                        variant="'secondary'"
+                        onClick.bind="close"
+                    />
+                </div>
+
+            </t>
+
+        </div>
+
+    </t>
+
+</templates>

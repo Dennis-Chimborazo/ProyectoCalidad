@@ -1,0 +1,51 @@
+@keyframes tsFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes tsSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes tsScaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.97);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.ts-animate-fade-in {
+    animation: tsFadeIn 0.25s ease both;
+}
+
+.ts-animate-slide-up {
+    animation: tsSlideUp 0.3s ease both;
+}
+
+.ts-animate-scale-in {
+    animation: tsScaleIn 0.25s ease both;
+}
+
+.ts-hover-lift {
+    transition: var(--ts-transition);
+}
+
+.ts-hover-lift:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--ts-shadow-md);
+}

@@ -1,0 +1,24 @@
+.o_action_manager {
+    background: var(--ts-background);
+}
+
+.ts-form-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+}
+
+.ts-form-control {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.ts-counter {
+    background: #e0f2fe;
+    color: #075985;
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+}

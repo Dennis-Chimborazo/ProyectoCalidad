@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="techstore.MantenimientoDetalleApp" owl="1">
+
+        <div class="ts-maintenance-detail-page">
+
+            <t t-if="state.loading">
+                <div class="ts-loading-box">
+                    Cargando detalle del mantenimiento...
+                </div>
+            </t>
+
+            <t t-else="">
+
+                <t t-if="state.error">
+                    <div class="ts-alert-error">
+                        <t t-esc="state.error"/>
+                    </div>
+                </t>
+
+                <t t-if="state.mantenimiento">
+
+                    <div class="ts-maintenance-detail-hero">
+
+                        <div class="ts-maintenance-hero-left">
+
+                            <button
+                                type="button"
+                                class="ts-maintenance-back-btn"
+                                t-on-click="back"
+                            >
+                                ← Volver
+                            </button>
+
+                            <div class="ts-maintenance-title-block">
+                                <span class="ts-invoice-kicker">
+                                    Orden de mantenimiento
+                                </span>
+
+                                <h3>
+                                    <t t-esc="state.mantenimiento.name"/>
+                                </h3>
+
+                                <p>
+                                    Agregue equipos, registre sus características y documente la falla reportada.
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div class="ts-maintenance-hero-info">
+
+                            <div class="ts-maintenance-mini-info">
+                                <span>Cliente</span>
+                                <strong>
+                                    <t t-esc="state.mantenimiento.cliente"/>
+                                </strong>
+                            </div>
+
+                            <div class="ts-maintenance-mini-info">
+                                <span>Prioridad</span>
+                                <strong t-att-class="prioridadBadgeClass(state.mantenimiento.prioridad)">
+                                    <t t-esc="prioridadLabel(state.mantenimiento.prioridad)"/>
+                                </strong>
+                            </div>
+
+                            <div class="ts-maintenance-mini-info">
+                                <span>Estado</span>
+                                <strong t-att-class="estadoBadgeClass(state.mantenimiento.estado)">
+                                    <t t-esc="estadoLabel(state.mantenimiento.estado)"/>
+                                </strong>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="ts-maintenance-toolbar">
+
+                        <div class="ts-search-box ts-maintenance-search">
+                            <label>Buscar equipo</label>
+
+                            <input
+                                class="ts-search-input"
+                                type="text"
+                                placeholder="Buscar por equipo, marca, modelo, serie, falla, solución o estado..."
+                                t-att-value="state.search"
+                                t-on-input="(ev) => this.updateSearch(ev.target.value)"
+                            />
+                        </div>
+
+                        <TsButton
+                            label="'+ Agregar equipo'"
+                            variant="'primary'"
+                            onClick.bind="openEquipoModal"
+                        />
+
+                    </div>
+
+                    <MantenimientoDetalleList
+                        equiposMantenimiento="filteredEquiposMantenimiento"
+                        onOpenSolution.bind="openSolutionModal"
+                        onOpenInfo.bind="openInfoModal"
+                    />
+
+                    <t t-if="state.showEquipoModal">
+                        <TsModal
+                            title="'Agregar equipo al mantenimiento'"
+                            subtitle="'Registre el equipo, sus características y la falla reportada.'"
+                            onClose.bind="closeEquipoModal"
+                        >
+                            <MantenimientoDetalleForm
+                                mantenimientoId="mantenimientoId"
+                                tiposEquipo="state.tiposEquipo"
+                                equiposMantenimiento="state.equiposMantenimiento"
+                                onSaved.bind="onEquipoSaved"
+                                onCancel.bind="closeEquipoModal"
+                            />
+                        </TsModal>
+                    </t>
+
+                    <t t-if="state.showSolutionModal">
+                        <TsModal
+                            title="'Gestionar solución'"
+                            subtitle="'Registre la solución aplicada y relacione fallas documentadas si corresponde.'"
+                            onClose.bind="closeSolutionModal"
+                        >
+                            <MantenimientoSolucion
+                                item="state.selectedEquipoMantenimiento"
+                                baseConocimiento="state.baseConocimiento"
+                                fallasSeleccionadas="state.fallasEquipo"
+                                onSave.bind="saveSolucion"
+                                onCancel.bind="closeSolutionModal"
+                            />
+                        </TsModal>
+                    </t>
+
+                    <t t-if="state.showInfoModal">
+                        <TsModal
+                            title="'Información del equipo'"
+                            subtitle="'Consulta del mantenimiento realizado al equipo.'"
+                            onClose.bind="closeInfoModal"
+                        >
+                            <MantenimientoDetailInfo
+                                item="state.selectedEquipoMantenimiento"
+                                fallas="state.fallasEquipo"
+                                onClose.bind="closeInfoModal"
+                            />
+                        </TsModal>
+                    </t>
+
+                </t>
+
+            </t>
+
+        </div>
+
+    </t>
+
+</templates>

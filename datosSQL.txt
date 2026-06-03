@@ -1,0 +1,997 @@
+docker exec -it odoo16_app odoo -c /etc/odoo/odoo.conf -d Prueba -i web,techstore_quality --stop-after-init --no-http
+
+docker exec -it odoo16_db psql -U odoo -d Prueba
+
+INSERT INTO techstore_cliente
+(id, name, tipo_cliente, cedula, email, telefono, activo, create_uid, create_date, write_uid, write_date)
+VALUES
+-- --- PRIMERA MITAD: PARTICULAR (25 Registros) ---
+(nextval('techstore_cliente_id_seq'), 'Juan Carlos Pérez', 'particular', '1805000001', 'juan.perez@techstore.com', '0991000001', true, 1, NOW(), 1, NOW()),
+(nextval('techstore_cliente_id_seq'), 'María Fernanda López', 'particular', '1805000002', 'maria.lopez@techstore.com', '0991000002', true, 1, NOW(), 1, NOW()),
+(nextval('techstore_cliente_id_seq'), 'Carlos Andrés Gómez', 'particular', '1805000003', 'carlos.gomez@techstore.com', '0991000003', true, 1, NOW(), 1, NOW()),
+(nextval('techstore_cliente_id_seq'), 'Ana Gabriela Torres', 'particular', '1805000004', 'ana.torres@techstore.com', '0991000004', true, 1, NOW(), 1, NOW()),
+(nextval('techstore_cliente_id_seq'), 'Luis Miguel Sánchez', 'particular', '1805000005', 'luis.sanchez@techstore.com', '0991000005', true, 1, NOW(), 1, NOW()),
+(nextval('techstore_cliente_id_seq'), 'Paola Alejandra Ruiz', 'particular', '1805000006', 'paola.ruiz@techstore.com', '0991000006', true, 1, NOW(), 1, NOW()),
+(nextval('techstore_cliente_id_seq'), 'Diego Fernando Castro', 'particular', '1805000007', 'diego.castro@techstore.com', '0991000007', true, 1, NOW(), 1, NOW()),
+(nextval('techstore_cliente_id_seq'), 'Daniela Sofía Herrera', 'particular', '1805000008', 'daniela.herrera@techstore.com', '0991000008', true, 1, NOW(), 1, NOW()),
+(nextval('techstore_cliente_id_seq'), 'Jorge Luis Molina', 'particular', '1805000009', 'jorge.molina@techstore.com', '0991000009', true, 1, NOW(), 1, NOW()),
+(nextval('techstore_cliente_id_seq'), 'Camila Valentina Ortiz', 'particular', '1805000010', 'camila.ortiz@techstore.com', '0991000010', true, 1, NOW(), 1, NOW()),
+(nextval('techstore_cliente_id_seq'), 'Roberto Xavier Medina', 'particular', '1805000011', 'roberto.medina@techstore.com', '0991000011', true, 1, NOW(), 1, NOW()),
+(nextval('techstore_cliente_id_seq'), 'Andrea Carolina Vargas', 'particular', '1805000012', 'andrea.vargas@techstore.com', '0991000012', true, 1, NOW(), 1, NOW()),
+(nextval('techstore_cliente_id_seq'), 'Esteban Alejandro Morales', 'particular', '1805000013', 'esteban.morales@techstore.com', '0991000013', true, 1, NOW(), 1, NOW()),
+(nextval('techstore_cliente_id_seq'), 'Gabriela Monserrate Cevallos', 'particular', '1805000014', 'gabriela.cevallos@techstore.com', '0991000014', true, 1, NOW(), 1, NOW()),
+(nextval('techstore_cliente_id_seq'), 'Cristian David Ramos', 'particular', '1805000015', 'cristian.ramos@techstore.com', '0991000015', true, 1, NOW(), 1, NOW()),
+(nextval('techstore_cliente_id_seq'), 'Valeria Estefanía Núñez', 'particular', '1805000016', 'valeria.nunez@techstore.com', '0991000016', true, 1, NOW(), 1, NOW()),
+(nextval('techstore_cliente_id_seq'), 'Kevin Sebastián León', 'particular', '1805000017', 'kevin.leon@techstore.com', '0991000017', true, 1, NOW(), 1, NOW()),
+(nextval('techstore_cliente_id_seq'), 'Nicole Alejandra Silva', 'particular', '1805000018', 'nicole.silva@techstore.com', '0991000018', true, 1, NOW(), 1, NOW()),
+(nextval('techstore_cliente_id_seq'), 'Fernando José Paredes', 'particular', '1805000019', 'fernando.paredes@techstore.com', '0991000019', true, 1, NOW(), 1, NOW()),
+(nextval('techstore_cliente_id_seq'), 'Diana Patricia Salazar', 'particular', '1805000020', 'diana.salazar@techstore.com', '0991000020', true, 1, NOW(), 1, NOW()),
+(nextval('techstore_cliente_id_seq'), 'Mateo Nicolás Almeida', 'particular', '1805000021', 'mateo.almeida@techstore.com', '0991000021', true, 1, NOW(), 1, NOW()),
+(nextval('techstore_cliente_id_seq'), 'Samantha Isabel Guerrero', 'particular', '1805000022', 'samantha.guerrero@techstore.com', '0991000022', true, 1, NOW(), 1, NOW()),
+(nextval('techstore_cliente_id_seq'), 'Marco Antonio Freire', 'particular', '1805000023', 'marco.freire@techstore.com', '0991000023', true, 1, NOW(), 1, NOW()),
+(nextval('techstore_cliente_id_seq'), 'Karla Michelle Aguilar', 'particular', '1805000024', 'karla.aguilar@techstore.com', '0991000024', true, 1, NOW(), 1, NOW()),
+(nextval('techstore_cliente_id_seq'), 'Ricardo Andrés Vega', 'particular', '1805000025', 'ricardo.vega@techstore.com', '0991000025', true, 1, NOW(), 1, NOW()),
+
+-- --- SEGUNDA MITAD: CORPORATIVO (25 Registros) ---
+(nextval('techstore_cliente_id_seq'), 'Mónica Alexandra Castillo', 'corporativo', '1805000026', 'monica.castillo@techstore.com', '0991000026', true, 1, NOW(), 1, NOW()),
+(nextval('techstore_cliente_id_seq'), 'Oscar Iván Bravo', 'corporativo', '1805000027', 'oscar.bravo@techstore.com', '0991000027', true, 1, NOW(), 1, NOW()),
+(nextval('techstore_cliente_id_seq'), 'Tatiana Elizabeth Flores', 'corporativo', '1805000028', 'tatiana.flores@techstore.com', '0991000028', true, 1, NOW(), 1, NOW()),
+(nextval('techstore_cliente_id_seq'), 'Hugo Patricio Jiménez', 'corporativo', '1805000029', 'hugo.jimenez@techstore.com', '0991000029', true, 1, NOW(), 1, NOW()),
+(nextval('techstore_cliente_id_seq'), 'Renata Lucía Mendoza', 'corporativo', '1805000030', 'renata.mendoza@techstore.com', '0991000030', true, 1, NOW(), 1, NOW()),
+(nextval('techstore_cliente_id_seq'), 'Byron Alexander Arias', 'corporativo', '1805000031', 'byron.arias@techstore.com', '0991000031', true, 1, NOW(), 1, NOW()),
+(nextval('techstore_cliente_id_seq'), 'Vanessa Fernanda Peña', 'corporativo', '1805000032', 'vanessa.pena@techstore.com', '0991000032', true, 1, NOW(), 1, NOW()),
+(nextval('techstore_cliente_id_seq'), 'Santiago Eduardo Ríos', 'corporativo', '1805000033', 'santiago.rios@techstore.com', '0991000033', true, 1, NOW(), 1, NOW()),
+(nextval('techstore_cliente_id_seq'), 'Melany Joselyn Andrade', 'corporativo', '1805000034', 'melany.andrade@techstore.com', '0991000034', true, 1, NOW(), 1, NOW()),
+(nextval('techstore_cliente_id_seq'), 'Ángel Mauricio Cárdenas', 'corporativo', '1805000035', 'angel.cardenas@techstore.com', '0991000035', true, 1, NOW(), 1, NOW()),
+(nextval('techstore_cliente_id_seq'), 'Lorena Beatriz Espinoza', 'corporativo', '1805000036', 'lorena.espinoza@techstore.com', '0991000036', true, 1, NOW(), 1, NOW()),
+(nextval('techstore_cliente_id_seq'), 'Gustavo Adolfo Reyes', 'corporativo', '1805000037', 'gustavo.reyes@techstore.com', '0991000037', true, 1, NOW(), 1, NOW()),
+(nextval('techstore_cliente_id_seq'), 'Juliana Belén Zambrano', 'corporativo', '1805000038', 'juliana.zambrano@techstore.com', '0991000038', true, 1, NOW(), 1, NOW()),
+(nextval('techstore_cliente_id_seq'), 'Nicolás Emilio Hidalgo', 'corporativo', '1805000039', 'nicolas.hidalgo@techstore.com', '0991000039', true, 1, NOW(), 1, NOW()),
+(nextval('techstore_cliente_id_seq'), 'Elena Victoria Acosta', 'corporativo', '1805000040', 'elena.acosta@techstore.com', '0991000040', true, 1, NOW(), 1, NOW()),
+(nextval('techstore_cliente_id_seq'), 'Adrián Felipe Benítez', 'corporativo', '1805000041', 'adrian.benitez@techstore.com', '0991000041', true, 1, NOW(), 1, NOW()),
+(nextval('techstore_cliente_id_seq'), 'Priscila Daniela Vera', 'corporativo', '1805000042', 'priscila.vera@techstore.com', '0991000042', true, 1, NOW(), 1, NOW()),
+(nextval('techstore_cliente_id_seq'), 'Iván Marcelo Luna', 'corporativo', '1805000043', 'ivan.luna@techstore.com', '0991000043', true, 1, NOW(), 1, NOW()),
+(nextval('techstore_cliente_id_seq'), 'Dayana Mishell Suárez', 'corporativo', '1805000044', 'dayana.suarez@techstore.com', '0991000044', true, 1, NOW(), 1, NOW()),
+(nextval('techstore_cliente_id_seq'), 'Sebastián Gabriel Rojas', 'corporativo', '1805000045', 'sebastian.rojas@techstore.com', '0991000045', true, 1, NOW(), 1, NOW()),
+(nextval('techstore_cliente_id_seq'), 'Katherine Anahí Cabrera', 'corporativo', '1805000046', 'katherine.cabrera@techstore.com', '0991000046', true, 1, NOW(), 1, NOW()),
+(nextval('techstore_cliente_id_seq'), 'Wilson Eduardo Ponce', 'corporativo', '1805000047', 'wilson.ponce@techstore.com', '0991000047', true, 1, NOW(), 1, NOW()),
+(nextval('techstore_cliente_id_seq'), 'Mayra Cristina Tapia', 'corporativo', '1805000048', 'mayra.tapia@techstore.com', '0991000048', true, 1, NOW(), 1, NOW()),
+(nextval('techstore_cliente_id_seq'), 'Jonathan Israel Carrillo', 'corporativo', '1805000049', 'jonathan.carrillo@techstore.com', '0991000049', true, 1, NOW(), 1, NOW()),
+(nextval('techstore_cliente_id_seq'), 'Lissette Noemí Villacís', 'corporativo', '1805000050', 'lissette.villacis@techstore.com', '0991000050', true, 1, NOW(), 1, NOW());
+
+
+
+INSERT INTO techstore_producto
+(id, name, codigo, precio_unitario, stock_disponible, activo, create_uid, create_date, write_uid, write_date)
+VALUES
+(nextval('techstore_producto_id_seq'), 'Laptop Lenovo IdeaPad 3', 'LAP-001', 589.99, 15, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Laptop HP Pavilion 15', 'LAP-002', 749.50, 12, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Laptop Dell Inspiron 14', 'LAP-003', 699.00, 10, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Laptop Asus VivoBook 16', 'LAP-004', 820.75, 8, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Laptop Acer Aspire 5', 'LAP-005', 640.25, 18, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'MacBook Air M1', 'LAP-006', 999.99, 6, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'MacBook Air M2', 'LAP-007', 1199.99, 5, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Laptop MSI Modern 14', 'LAP-008', 880.00, 7, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Laptop Samsung Galaxy Book', 'LAP-009', 950.40, 9, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Laptop Huawei MateBook D15', 'LAP-010', 720.60, 11, true, 1, NOW(), 1, NOW()),
+
+(nextval('techstore_producto_id_seq'), 'Monitor Samsung 24 Pulgadas', 'MON-001', 159.99, 25, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Monitor LG UltraGear 27', 'MON-002', 289.50, 14, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Monitor Dell 22 Pulgadas', 'MON-003', 135.00, 20, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Monitor Asus ProArt 24', 'MON-004', 310.75, 8, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Monitor Curvo Samsung 32', 'MON-005', 399.99, 6, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Monitor BenQ EyeCare 24', 'MON-006', 179.25, 16, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Monitor HP Full HD 27', 'MON-007', 210.00, 13, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Monitor Acer Nitro 27', 'MON-008', 279.90, 10, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Monitor Lenovo ThinkVision 24', 'MON-009', 225.40, 9, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Monitor ViewSonic 22', 'MON-010', 145.80, 19, true, 1, NOW(), 1, NOW()),
+
+(nextval('techstore_producto_id_seq'), 'Teclado Mecánico Redragon Kumara', 'TEC-001', 49.99, 30, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Teclado Logitech K380', 'TEC-002', 39.90, 28, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Teclado Genius SlimStar', 'TEC-003', 16.50, 45, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Teclado HyperX Alloy Core', 'TEC-004', 69.99, 17, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Teclado Microsoft Ergonomic', 'TEC-005', 58.75, 15, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Teclado Inalámbrico Dell', 'TEC-006', 32.40, 24, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Teclado Gamer Marvo KG901', 'TEC-007', 28.99, 35, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Teclado Mecánico Corsair K60', 'TEC-008', 89.99, 12, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Teclado Bluetooth Rapoo', 'TEC-009', 27.50, 31, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Teclado Logitech MX Keys', 'TEC-010', 119.99, 8, true, 1, NOW(), 1, NOW()),
+
+(nextval('techstore_producto_id_seq'), 'Mouse Logitech M185', 'MOU-001', 14.99, 50, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Mouse Gamer Logitech G203', 'MOU-002', 29.99, 35, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Mouse Redragon Cobra', 'MOU-003', 24.50, 32, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Mouse Genius DX120', 'MOU-004', 8.99, 60, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Mouse Microsoft Bluetooth', 'MOU-005', 34.75, 22, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Mouse HyperX Pulsefire Core', 'MOU-006', 39.99, 18, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Mouse Razer DeathAdder Essential', 'MOU-007', 44.99, 16, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Mouse Inalámbrico HP', 'MOU-008', 18.50, 40, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Mouse Vertical Ergonomico Trust', 'MOU-009', 31.25, 20, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Mouse Logitech MX Master 3S', 'MOU-010', 109.99, 7, true, 1, NOW(), 1, NOW()),
+
+(nextval('techstore_producto_id_seq'), 'Disco SSD Kingston 240GB', 'SSD-001', 28.99, 40, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Disco SSD Kingston 480GB', 'SSD-002', 42.50, 36, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Disco SSD Samsung 870 EVO 500GB', 'SSD-003', 59.99, 25, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Disco SSD Crucial BX500 1TB', 'SSD-004', 79.90, 18, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Disco SSD WD Green 240GB', 'SSD-005', 27.80, 42, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Disco SSD NVMe Kingston 500GB', 'SSD-006', 48.99, 30, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Disco SSD NVMe Samsung 980 1TB', 'SSD-007', 99.99, 14, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Disco SSD Adata SU650 480GB', 'SSD-008', 39.99, 33, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Disco SSD Lexar 512GB', 'SSD-009', 45.60, 21, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Disco SSD TeamGroup 1TB', 'SSD-010', 72.40, 17, true, 1, NOW(), 1, NOW()),
+
+(nextval('techstore_producto_id_seq'), 'Memoria RAM Kingston 8GB DDR4', 'RAM-001', 24.99, 45, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Memoria RAM Kingston 16GB DDR4', 'RAM-002', 44.99, 30, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Memoria RAM Corsair 16GB DDR4', 'RAM-003', 52.75, 26, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Memoria RAM Crucial 8GB DDR4', 'RAM-004', 23.50, 38, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Memoria RAM Fury Beast 16GB DDR5', 'RAM-005', 79.99, 16, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Memoria RAM Corsair Vengeance 32GB', 'RAM-006', 129.99, 10, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Memoria RAM Adata 8GB DDR4', 'RAM-007', 21.99, 41, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Memoria RAM TeamGroup 16GB DDR4', 'RAM-008', 46.30, 24, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Memoria RAM Patriot 8GB DDR4', 'RAM-009', 22.80, 34, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Memoria RAM GSkill Ripjaws 32GB', 'RAM-010', 135.50, 9, true, 1, NOW(), 1, NOW()),
+
+(nextval('techstore_producto_id_seq'), 'Audífonos Logitech H390', 'AUD-001', 35.99, 27, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Audífonos HyperX Cloud Stinger', 'AUD-002', 49.99, 19, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Audífonos Redragon Zeus', 'AUD-003', 64.50, 15, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Audífonos Sony WH-CH520', 'AUD-004', 59.99, 22, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Audífonos JBL Tune 510BT', 'AUD-005', 54.90, 20, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Audífonos Gamer Razer Kraken', 'AUD-006', 79.99, 11, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Audífonos Lenovo ThinkPad', 'AUD-007', 29.75, 25, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Audífonos Xiaomi Redmi Buds', 'AUD-008', 31.40, 33, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Audífonos Samsung Galaxy Buds FE', 'AUD-009', 89.99, 12, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Audífonos Apple EarPods USB-C', 'AUD-010', 24.99, 29, true, 1, NOW(), 1, NOW()),
+
+(nextval('techstore_producto_id_seq'), 'Impresora Epson EcoTank L3250', 'IMP-001', 229.99, 10, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Impresora HP Ink Tank 415', 'IMP-002', 199.99, 9, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Impresora Canon Pixma G3110', 'IMP-003', 205.50, 8, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Impresora Brother Laser HL-L2320D', 'IMP-004', 189.90, 7, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Impresora Epson L4260 WiFi', 'IMP-005', 289.99, 6, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Impresora HP LaserJet Pro', 'IMP-006', 245.00, 5, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Impresora Canon Maxify GX6010', 'IMP-007', 399.99, 4, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Impresora Brother Multifuncional', 'IMP-008', 315.75, 6, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Impresora Zebra Etiquetas', 'IMP-009', 279.40, 5, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Impresora Epson Matricial LX350', 'IMP-010', 249.99, 3, true, 1, NOW(), 1, NOW()),
+
+(nextval('techstore_producto_id_seq'), 'Router TP-Link Archer C6', 'NET-001', 49.99, 28, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Router Mercusys AC12G', 'NET-002', 34.99, 35, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Router MikroTik hAP Lite', 'NET-003', 39.50, 24, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Router Huawei AX3', 'NET-004', 69.99, 18, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Switch TP-Link 8 Puertos', 'NET-005', 22.99, 40, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Switch D-Link 16 Puertos', 'NET-006', 59.90, 14, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Access Point Ubiquiti UniFi', 'NET-007', 119.99, 9, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Adaptador WiFi USB TP-Link', 'NET-008', 15.99, 50, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Cable UTP Cat6 10 Metros', 'NET-009', 8.50, 80, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Patch Cord Cat6 3 Metros', 'NET-010', 4.99, 100, true, 1, NOW(), 1, NOW()),
+
+(nextval('techstore_producto_id_seq'), 'Cámara Web Logitech C270', 'CAM-001', 29.99, 26, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Cámara Web Logitech C920', 'CAM-002', 79.99, 13, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Cámara Web Genius FaceCam', 'CAM-003', 21.50, 30, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Cámara Seguridad TP-Link Tapo C200', 'CAM-004', 39.99, 22, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Cámara Seguridad Ezviz C6N', 'CAM-005', 44.99, 18, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Cámara IP Hikvision 2MP', 'CAM-006', 55.90, 16, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Cámara Dahua Bullet 2MP', 'CAM-007', 48.75, 17, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Cámara Web Razer Kiyo', 'CAM-008', 99.99, 7, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Cámara Web Microsoft LifeCam', 'CAM-009', 42.60, 12, true, 1, NOW(), 1, NOW()),
+(nextval('techstore_producto_id_seq'), 'Cámara Seguridad Xiaomi 360', 'CAM-010', 36.99, 21, true, 1, NOW(), 1, NOW());
+
+
+DO $$
+DECLARE
+    v_venta_id INTEGER;
+    v_cliente RECORD;
+    v_producto RECORD;
+
+    v_num_ventas INTEGER := 100;
+    v_contador_ventas INTEGER := 1;
+
+    v_num_detalles INTEGER;
+    v_contador_detalles INTEGER;
+
+    v_cantidad INTEGER;
+    v_subtotal_linea NUMERIC(12,2);
+
+    v_subtotal_bruto NUMERIC(12,2);
+    v_descuento NUMERIC(12,2);
+    v_subtotal_final NUMERIC(12,2);
+    v_iva NUMERIC(12,2);
+    v_total NUMERIC(12,2);
+
+    v_referencia TEXT;
+    v_fecha TIMESTAMP;
+    v_tiempo_respuesta NUMERIC(10,2);
+
+    v_productos_usados INTEGER[];
+BEGIN
+    WHILE v_contador_ventas <= v_num_ventas LOOP
+
+        -- Seleccionar cliente activo aleatorio
+        SELECT id, name, cedula
+        INTO v_cliente
+        FROM techstore_cliente
+        WHERE activo = true
+        ORDER BY random()
+        LIMIT 1;
+
+        IF v_cliente.id IS NULL THEN
+            RAISE EXCEPTION 'No existen clientes activos para generar ventas.';
+        END IF;
+
+        -- Crear referencia y valores iniciales
+        v_referencia := 'VTA-DEMO-' || to_char(NOW(), 'YYYYMMDDHH24MISS') || '-' || LPAD(v_contador_ventas::TEXT, 4, '0');
+        v_fecha := NOW() - ((random() * 30)::INTEGER || ' days')::INTERVAL;
+        v_tiempo_respuesta := ROUND((0.10 + random() * 2.40)::NUMERIC, 2);
+
+        v_subtotal_bruto := 0;
+        v_descuento := 0;
+        v_subtotal_final := 0;
+        v_iva := 0;
+        v_total := 0;
+        v_productos_usados := ARRAY[]::INTEGER[];
+
+        -- Crear cabecera de venta temporalmente con totales en 0
+        INSERT INTO techstore_venta
+        (
+            id,
+            name,
+            cliente_id,
+            subtotal,
+            descuento,
+            iva,
+            total,
+            tiempo_respuesta,
+            estado_calidad,
+            observacion,
+            create_uid,
+            create_date,
+            write_uid,
+            write_date
+        )
+        VALUES
+        (
+            nextval('techstore_venta_id_seq'),
+            v_referencia,
+            v_cliente.id,
+            0,
+            0,
+            0,
+            0,
+            v_tiempo_respuesta,
+            'aceptable',
+            'Venta generada automáticamente para pruebas con detalles aleatorios.',
+            1,
+            v_fecha,
+            1,
+            v_fecha
+        )
+        RETURNING id INTO v_venta_id;
+
+        -- Cada venta tendrá entre 1 y 10 productos
+        v_num_detalles := 1 + FLOOR(random() * 10)::INTEGER;
+        v_contador_detalles := 1;
+
+        WHILE v_contador_detalles <= v_num_detalles LOOP
+
+            -- Seleccionar producto activo con stock, evitando repetir producto en la misma venta
+            SELECT id, name, codigo, precio_unitario, stock_disponible
+            INTO v_producto
+            FROM techstore_producto
+            WHERE activo = true
+              AND stock_disponible > 0
+              AND NOT (id = ANY(v_productos_usados))
+            ORDER BY random()
+            LIMIT 1;
+
+            -- Si ya no hay productos disponibles, salir del detalle
+            IF v_producto.id IS NULL THEN
+                EXIT;
+            END IF;
+
+            -- Cantidad aleatoria segura: de 1 a 3, sin superar stock
+            v_cantidad := 1 + FLOOR(random() * 3)::INTEGER;
+
+            IF v_cantidad > v_producto.stock_disponible THEN
+                v_cantidad := v_producto.stock_disponible;
+            END IF;
+
+            IF v_cantidad <= 0 THEN
+                EXIT;
+            END IF;
+
+            v_subtotal_linea := ROUND((v_cantidad * v_producto.precio_unitario)::NUMERIC, 2);
+
+            -- Insertar detalle
+            INSERT INTO techstore_detalle_venta
+            (
+                id,
+                venta_id,
+                producto_id,
+                cantidad,
+                precio_unitario,
+                subtotal,
+                create_uid,
+                create_date,
+                write_uid,
+                write_date
+            )
+            VALUES
+            (
+                nextval('techstore_detalle_venta_id_seq'),
+                v_venta_id,
+                v_producto.id,
+                v_cantidad,
+                v_producto.precio_unitario,
+                v_subtotal_linea,
+                1,
+                v_fecha,
+                1,
+                v_fecha
+            );
+
+            -- Descontar stock
+            UPDATE techstore_producto
+            SET stock_disponible = stock_disponible - v_cantidad,
+                write_uid = 1,
+                write_date = v_fecha
+            WHERE id = v_producto.id;
+
+            -- Acumular subtotal
+            v_subtotal_bruto := v_subtotal_bruto + v_subtotal_linea;
+
+            -- Guardar producto usado para no repetirlo en la misma venta
+            v_productos_usados := array_append(v_productos_usados, v_producto.id);
+
+            v_contador_detalles := v_contador_detalles + 1;
+        END LOOP;
+
+        -- Si por alguna razón no se agregaron detalles, eliminar venta
+        IF v_subtotal_bruto <= 0 THEN
+            DELETE FROM techstore_venta WHERE id = v_venta_id;
+        ELSE
+            -- Descuento aleatorio entre 0% y 10% del subtotal
+            v_descuento := ROUND((v_subtotal_bruto * (random() * 0.10))::NUMERIC, 2);
+
+            v_subtotal_final := v_subtotal_bruto - v_descuento;
+            v_iva := ROUND((v_subtotal_final * 0.12)::NUMERIC, 2);
+            v_total := ROUND((v_subtotal_final + v_iva)::NUMERIC, 2);
+
+            -- Actualizar totales de la venta
+            UPDATE techstore_venta
+            SET subtotal = v_subtotal_final,
+                descuento = v_descuento,
+                iva = v_iva,
+                total = v_total,
+                write_uid = 1,
+                write_date = v_fecha
+            WHERE id = v_venta_id;
+        END IF;
+
+        v_contador_ventas := v_contador_ventas + 1;
+    END LOOP;
+END $$;
+
+BEGIN;
+
+-- =========================================================
+-- 1) INSERTAR 5 TÉCNICOS
+-- =========================================================
+
+INSERT INTO techstore_tecnico
+    (name, cedula, email, telefono, especialidad, nivel_experiencia, activo, create_date, write_date)
+VALUES
+    ('Carlos Andrés Pérez', '1800000001', 'carlos.perez@techstore.com', '0991000001', 'hardware', 'senior', TRUE, NOW(), NOW()),
+    ('María Fernanda López', '1800000002', 'maria.lopez@techstore.com', '0991000002', 'software', 'intermedio', TRUE, NOW(), NOW()),
+    ('Luis Alberto Sánchez', '1800000003', 'luis.sanchez@techstore.com', '0991000003', 'mantenimiento_general', 'junior', TRUE, NOW(), NOW()),
+    ('Andrea Carolina Mena', '1800000004', 'andrea.mena@techstore.com', '0991000004', 'hardware', 'intermedio', TRUE, NOW(), NOW()),
+    ('Diego Sebastián Torres', '1800000005', 'diego.torres@techstore.com', '0991000005', 'software', 'senior', TRUE, NOW(), NOW())
+ON CONFLICT (cedula) DO UPDATE SET
+    name = EXCLUDED.name,
+    email = EXCLUDED.email,
+    telefono = EXCLUDED.telefono,
+    especialidad = EXCLUDED.especialidad,
+    nivel_experiencia = EXCLUDED.nivel_experiencia,
+    activo = EXCLUDED.activo,
+    write_date = NOW();
+
+
+-- =========================================================
+-- 2) INSERTAR 10 TIPOS DE EQUIPOS TECNOLÓGICOS
+-- =========================================================
+
+INSERT INTO techstore_tipo_equipo
+    (name, descripcion, activo, create_date, write_date)
+VALUES
+    ('Laptop', 'Equipo portátil utilizado para trabajo, estudio y actividades administrativas.', TRUE, NOW(), NOW()),
+    ('Computadora de escritorio', 'Equipo de escritorio usado en oficinas, laboratorios y estaciones de trabajo.', TRUE, NOW(), NOW()),
+    ('Impresora', 'Dispositivo de impresión para documentos físicos, reportes y comprobantes.', TRUE, NOW(), NOW()),
+    ('Router', 'Equipo de red utilizado para distribuir conexión a internet y gestionar tráfico local.', TRUE, NOW(), NOW()),
+    ('Monitor', 'Pantalla externa utilizada para visualizar información de computadoras y otros equipos.', TRUE, NOW(), NOW()),
+    ('Tablet', 'Dispositivo móvil táctil usado para navegación, lectura y gestión de aplicaciones.', TRUE, NOW(), NOW()),
+    ('Smartphone', 'Teléfono inteligente usado para comunicación, aplicaciones y acceso a internet.', TRUE, NOW(), NOW()),
+    ('Servidor', 'Equipo centralizado para alojar servicios, bases de datos, archivos y aplicaciones.', TRUE, NOW(), NOW()),
+    ('Proyector', 'Dispositivo de proyección usado para presentaciones, clases y reuniones.', TRUE, NOW(), NOW()),
+    ('Cámara de seguridad', 'Equipo de videovigilancia utilizado para monitoreo de espacios físicos.', TRUE, NOW(), NOW())
+ON CONFLICT (name) DO UPDATE SET
+    descripcion = EXCLUDED.descripcion,
+    activo = EXCLUDED.activo,
+    write_date = NOW();
+
+
+-- =========================================================
+-- 3) INSERTAR 100 ITEMS DE BASE DE CONOCIMIENTO
+--    10 FALLAS POR CADA TIPO DE EQUIPO
+-- =========================================================
+
+INSERT INTO techstore_base_conocimiento
+    (error_title, equipment_type_id, symptoms, root_cause, solution, keywords, activo, create_date, write_date)
+SELECT
+    data.error_title,
+    tipo.id,
+    data.symptoms,
+    data.root_cause,
+    data.solution,
+    data.keywords,
+    TRUE,
+    NOW(),
+    NOW()
+FROM (
+    VALUES
+
+    -- ===================== LAPTOP =====================
+    ('Laptop', 'No enciende', 'El equipo no muestra luces, no activa ventilador y no responde al botón de encendido.', 'Adaptador de corriente defectuoso, batería descargada o daño en circuito de alimentación.', 'Verificar cargador, probar toma eléctrica, retirar batería si aplica y revisar placa de alimentación.', 'laptop, encendido, cargador, bateria'),
+    ('Laptop', 'Pantalla negra al iniciar', 'El equipo enciende pero la pantalla permanece negra y no muestra imagen del sistema.', 'Falla de memoria RAM, pantalla dañada o problema en el circuito de video.', 'Probar salida HDMI, reajustar memoria RAM y revisar flex de pantalla.', 'laptop, pantalla negra, ram, video'),
+    ('Laptop', 'Sobrecalentamiento frecuente', 'El equipo se apaga o baja rendimiento después de varios minutos de uso.', 'Acumulación de polvo, pasta térmica deteriorada o ventilador bloqueado.', 'Realizar limpieza interna, cambiar pasta térmica y comprobar funcionamiento del ventilador.', 'laptop, temperatura, ventilador, limpieza'),
+    ('Laptop', 'Teclado no responde', 'Varias teclas no escriben o responden de manera intermitente durante el uso.', 'Daño físico, suciedad interna o flex del teclado mal conectado.', 'Limpiar teclado, revisar conexión interna y reemplazar teclado si el daño persiste.', 'laptop, teclado, flex, teclas'),
+    ('Laptop', 'Batería no carga', 'El sistema indica conectado pero sin cargar o se apaga al retirar el cargador.', 'Batería agotada, cargador inestable o daño en conector de carga.', 'Probar cargador compatible, revisar pin de carga y reemplazar batería si está degradada.', 'laptop, bateria, carga, cargador'),
+    ('Laptop', 'Sistema operativo lento', 'El arranque tarda demasiado y las aplicaciones demoran en abrir.', 'Disco duro deteriorado, exceso de programas al inicio o poca memoria RAM.', 'Optimizar inicio, revisar salud del disco y migrar a SSD si corresponde.', 'laptop, lentitud, disco, ssd'),
+    ('Laptop', 'No detecta WiFi', 'No aparecen redes inalámbricas o el adaptador se muestra deshabilitado.', 'Controlador dañado, tarjeta inalámbrica desconectada o falla del adaptador.', 'Reinstalar controlador, revisar BIOS y validar tarjeta WiFi interna.', 'laptop, wifi, red, controlador'),
+    ('Laptop', 'Puerto USB no funciona', 'Los dispositivos USB no son reconocidos en uno o varios puertos.', 'Puerto dañado, controlador corrupto o cortocircuito en la placa.', 'Probar otros dispositivos, reinstalar controladores y revisar físicamente el puerto.', 'laptop, usb, puerto, controlador'),
+    ('Laptop', 'Audio sin salida', 'No se escucha sonido por parlantes ni audífonos conectados.', 'Controlador de audio incorrecto, configuración errónea o parlante dañado.', 'Validar dispositivo de salida, reinstalar driver y probar con audífonos externos.', 'laptop, audio, parlante, driver'),
+    ('Laptop', 'Bisagra rota', 'La pantalla queda floja o se separa la carcasa al abrir el equipo.', 'Desgaste mecánico, golpe o tornillos internos desprendidos.', 'Reforzar base, cambiar bisagras y ajustar tornillería interna.', 'laptop, bisagra, carcasa, pantalla'),
+
+    -- ===================== COMPUTADORA DE ESCRITORIO =====================
+    ('Computadora de escritorio', 'No da video', 'El equipo enciende pero el monitor no muestra señal de imagen.', 'Memoria RAM mal colocada, tarjeta gráfica defectuosa o cable de video dañado.', 'Reajustar RAM, probar cable, limpiar contactos y verificar tarjeta gráfica.', 'pc, video, ram, grafica'),
+    ('Computadora de escritorio', 'Reinicio constante', 'El equipo se reinicia solo antes o después de cargar el sistema operativo.', 'Fuente de poder inestable, temperatura alta o error de sistema.', 'Probar fuente, revisar temperatura del procesador y validar registros del sistema.', 'pc, reinicio, fuente, temperatura'),
+    ('Computadora de escritorio', 'Fuente no enciende', 'Al presionar encendido no hay luces, ventiladores ni respuesta del equipo.', 'Fuente de poder dañada, cable eléctrico defectuoso o botón frontal averiado.', 'Probar cable de poder, puentear fuente de forma controlada y reemplazar si falla.', 'pc, fuente, encendido, energia'),
+    ('Computadora de escritorio', 'Disco no detectado', 'La BIOS o el sistema operativo no reconoce el disco de almacenamiento.', 'Cable SATA flojo, disco dañado o puerto de placa base defectuoso.', 'Cambiar cable SATA, probar otro puerto y revisar salud del disco.', 'pc, disco, sata, bios'),
+    ('Computadora de escritorio', 'Ruido excesivo', 'El equipo genera ruido fuerte desde ventiladores o fuente de poder.', 'Ventilador sucio, rodamiento desgastado o cables rozando aspas.', 'Limpiar ventiladores, ordenar cableado y reemplazar ventilador defectuoso.', 'pc, ruido, ventilador, limpieza'),
+    ('Computadora de escritorio', 'Pantalla azul', 'El sistema muestra errores críticos y se reinicia inesperadamente.', 'Controladores incompatibles, memoria defectuosa o daño en archivos del sistema.', 'Actualizar drivers, probar memoria RAM y ejecutar reparación del sistema.', 'pc, pantalla azul, ram, drivers'),
+    ('Computadora de escritorio', 'Puertos frontales fallan', 'Los puertos USB o audio del panel frontal no responden correctamente.', 'Cable interno desconectado, panel frontal dañado o configuración incorrecta.', 'Revisar conexión a placa base, probar panel y validar configuración del BIOS.', 'pc, usb frontal, audio, panel'),
+    ('Computadora de escritorio', 'Fecha y hora se reinician', 'La fecha y hora se pierden cada vez que se apaga el equipo.', 'Batería CMOS agotada o configuración BIOS dañada.', 'Reemplazar batería CMOS y configurar nuevamente fecha, hora y parámetros BIOS.', 'pc, cmos, bios, hora'),
+    ('Computadora de escritorio', 'No reconoce teclado', 'El teclado no responde al iniciar o dentro del sistema operativo.', 'Puerto USB dañado, teclado defectuoso o controlador con conflicto.', 'Probar otro teclado, cambiar puerto y revisar configuración de entrada.', 'pc, teclado, usb, entrada'),
+    ('Computadora de escritorio', 'Bajo rendimiento gráfico', 'Aplicaciones gráficas o videos se ejecutan con lentitud y cortes.', 'Driver de video incorrecto, tarjeta gráfica limitada o sobrecalentamiento.', 'Actualizar driver, limpiar tarjeta gráfica y verificar temperatura de GPU.', 'pc, grafica, rendimiento, gpu'),
+
+    -- ===================== IMPRESORA =====================
+    ('Impresora', 'No imprime', 'El documento queda en cola y la impresora no inicia el proceso de impresión.', 'Servicio de impresión detenido, impresora sin conexión o cola bloqueada.', 'Reiniciar cola de impresión, validar conexión y establecer impresora predeterminada.', 'impresora, cola, impresion, offline'),
+    ('Impresora', 'Impresión con manchas', 'Las hojas salen con manchas, líneas o residuos de tinta o tóner.', 'Cartucho defectuoso, tambor sucio o cabezal obstruido.', 'Limpiar cabezales, revisar cartucho y ejecutar mantenimiento desde software.', 'impresora, manchas, cartucho, cabezal'),
+    ('Impresora', 'Atasco de papel', 'El papel se queda trabado dentro del mecanismo de alimentación.', 'Rodillos desgastados, papel mal colocado o residuos internos.', 'Retirar papel con cuidado, limpiar rodillos y usar papel adecuado.', 'impresora, atasco, papel, rodillos'),
+    ('Impresora', 'No reconoce cartucho', 'La impresora indica cartucho ausente o incompatible aunque está instalado.', 'Chip de cartucho dañado, contacto sucio o consumible no compatible.', 'Limpiar contactos, reinstalar cartucho y probar consumible compatible.', 'impresora, cartucho, chip, tinta'),
+    ('Impresora', 'Imprime en blanco', 'La impresora procesa el trabajo pero la hoja sale sin contenido visible.', 'Cabezal obstruido, cartucho vacío o tóner agotado.', 'Verificar niveles, limpiar cabezal y reemplazar consumible si es necesario.', 'impresora, blanco, tinta, toner'),
+    ('Impresora', 'No conecta por red', 'La impresora no responde desde equipos conectados a la misma red.', 'IP cambiada, configuración de red incorrecta o conflicto de conexión.', 'Asignar IP fija, reinstalar impresora de red y comprobar conectividad.', 'impresora, red, ip, conexion'),
+    ('Impresora', 'Impresión lenta', 'Los documentos tardan demasiado en imprimirse o quedan procesando.', 'Driver incorrecto, archivo pesado o memoria interna limitada.', 'Actualizar controlador, reducir calidad temporalmente y revisar cola de impresión.', 'impresora, lenta, driver, cola'),
+    ('Impresora', 'Error de bandeja', 'El equipo indica bandeja abierta o sin papel aunque está cargada.', 'Sensor sucio, bandeja mal ubicada o papel fuera de especificación.', 'Recolocar bandeja, limpiar sensor y usar tamaño de papel correcto.', 'impresora, bandeja, sensor, papel'),
+    ('Impresora', 'Doble alimentación', 'La impresora toma varias hojas al mismo tiempo al imprimir.', 'Rodillos desgastados, papel húmedo o separación incorrecta.', 'Ventilar papel, limpiar rodillos y reemplazar kit de alimentación.', 'impresora, alimentacion, hojas, rodillos'),
+    ('Impresora', 'Driver no instalado', 'El sistema no permite imprimir porque no reconoce correctamente el dispositivo.', 'Controlador faltante, incompatible o instalación incompleta.', 'Descargar driver oficial, reinstalar software y reiniciar servicio de impresión.', 'impresora, driver, instalacion, controlador'),
+
+    -- ===================== ROUTER =====================
+    ('Router', 'Sin acceso a internet', 'Los dispositivos se conectan al router pero no navegan en internet.', 'Falla del proveedor, configuración WAN incorrecta o DNS no responde.', 'Reiniciar router, validar cable WAN, revisar DNS y contactar proveedor si persiste.', 'router, internet, wan, dns'),
+    ('Router', 'WiFi intermitente', 'La señal inalámbrica se desconecta por momentos o pierde estabilidad.', 'Interferencia, saturación de canal o firmware desactualizado.', 'Cambiar canal WiFi, ubicar router en zona abierta y actualizar firmware.', 'router, wifi, intermitente, canal'),
+    ('Router', 'Contraseña WiFi olvidada', 'Los usuarios no pueden conectarse porque no recuerdan la clave inalámbrica.', 'Clave no documentada o configuración modificada previamente.', 'Ingresar al panel de administración y cambiar la clave WiFi de forma segura.', 'router, wifi, contraseña, clave'),
+    ('Router', 'No enciende', 'El router no muestra luces de energía ni actividad de red.', 'Adaptador de corriente dañado o falla interna en placa.', 'Probar otro adaptador compatible y revisar si el equipo requiere reemplazo.', 'router, encendido, adaptador, energia'),
+    ('Router', 'Puertos LAN no funcionan', 'Los equipos conectados por cable no obtienen conexión de red.', 'Cable dañado, puerto LAN defectuoso o DHCP deshabilitado.', 'Probar cable, cambiar puerto y verificar configuración DHCP.', 'router, lan, dhcp, cable'),
+    ('Router', 'Alta latencia', 'La navegación y juegos presentan demora excesiva en la respuesta.', 'Red saturada, mala ubicación o tráfico excesivo de dispositivos.', 'Revisar dispositivos conectados, priorizar tráfico y mejorar ubicación del router.', 'router, latencia, red, trafico'),
+    ('Router', 'No permite ingresar al panel', 'La dirección de administración no carga o rechaza credenciales.', 'IP de puerta de enlace cambiada o credenciales modificadas.', 'Identificar gateway, probar credenciales correctas y restaurar configuración si es necesario.', 'router, panel, gateway, acceso'),
+    ('Router', 'Configuración perdida', 'El router vuelve a valores predeterminados o pierde cambios guardados.', 'Memoria interna defectuosa o reinicios por energía inestable.', 'Actualizar firmware, usar regulador y reemplazar equipo si no conserva configuración.', 'router, configuracion, firmware, memoria'),
+    ('Router', 'Cobertura baja', 'La señal WiFi no llega adecuadamente a varias zonas del lugar.', 'Ubicación incorrecta, antenas mal orientadas o potencia limitada.', 'Reubicar router, orientar antenas y considerar repetidor o malla WiFi.', 'router, cobertura, señal, wifi'),
+    ('Router', 'Bloqueo frecuente', 'El equipo deja de responder y requiere reinicio manual constantemente.', 'Firmware inestable, sobrecalentamiento o exceso de conexiones.', 'Actualizar firmware, mejorar ventilación y limitar cantidad de conexiones.', 'router, bloqueo, firmware, conexiones'),
+
+    -- ===================== MONITOR =====================
+    ('Monitor', 'Sin señal', 'La pantalla muestra mensaje de sin señal aunque el equipo está encendido.', 'Cable de video dañado, entrada incorrecta o falla en tarjeta de video.', 'Seleccionar entrada correcta, probar cable y validar salida de video del equipo.', 'monitor, señal, hdmi, vga'),
+    ('Monitor', 'Parpadeo de imagen', 'La imagen aparece y desaparece o parpadea durante el uso.', 'Cable flojo, frecuencia no compatible o fuente interna inestable.', 'Ajustar cable, cambiar tasa de refresco y probar monitor en otro equipo.', 'monitor, parpadeo, frecuencia, cable'),
+    ('Monitor', 'Colores distorsionados', 'La imagen se ve con tonos incorrectos, manchas o pérdida de color.', 'Cable defectuoso, configuración alterada o panel dañado.', 'Cambiar cable, restaurar valores de fábrica y probar otro dispositivo.', 'monitor, color, panel, cable'),
+    ('Monitor', 'Líneas verticales', 'Aparecen líneas fijas en la pantalla durante todo el tiempo.', 'Panel LCD dañado, flex interno afectado o golpe físico.', 'Probar otro cable y equipo; si persiste, reemplazar panel o monitor.', 'monitor, lineas, lcd, panel'),
+    ('Monitor', 'No enciende', 'El monitor no prende ni muestra indicador de energía.', 'Cable de poder defectuoso, fuente interna dañada o botón averiado.', 'Probar cable de energía, revisar toma y evaluar reparación de fuente interna.', 'monitor, encendido, energia, fuente'),
+    ('Monitor', 'Brillo muy bajo', 'La imagen se visualiza oscura incluso con el brillo configurado al máximo.', 'Retroiluminación deteriorada o configuración incorrecta.', 'Restaurar configuración, probar otra fuente y revisar retroiluminación.', 'monitor, brillo, retroiluminacion, pantalla'),
+    ('Monitor', 'Imagen cortada', 'La pantalla no muestra todo el escritorio o queda fuera de escala.', 'Resolución incorrecta, escala mal configurada o modo de imagen inadecuado.', 'Ajustar resolución, cambiar escala y configurar modo automático.', 'monitor, resolucion, escala, imagen'),
+    ('Monitor', 'Entrada HDMI no responde', 'El puerto HDMI no detecta señal aunque otros puertos funcionan.', 'Puerto HDMI dañado o cable incompatible.', 'Probar otro cable HDMI, revisar entrada seleccionada y usar puerto alternativo.', 'monitor, hdmi, puerto, señal'),
+    ('Monitor', 'Manchas en pantalla', 'Se observan zonas oscuras o manchas permanentes en la imagen.', 'Presión física, humedad o daño en el panel.', 'Limpiar externamente y evaluar reemplazo si la mancha es interna.', 'monitor, manchas, panel, humedad'),
+    ('Monitor', 'Se apaga solo', 'El monitor se apaga después de algunos minutos de uso.', 'Fuente interna recalentada, cable flojo o ahorro de energía mal configurado.', 'Revisar cableado, desactivar suspensión y evaluar fuente interna.', 'monitor, apagado, energia, suspension'),
+
+    -- ===================== TABLET =====================
+    ('Tablet', 'No carga', 'La tablet no aumenta batería aunque permanece conectada al cargador.', 'Puerto de carga dañado, cargador defectuoso o batería degradada.', 'Probar cargador, limpiar puerto de carga y revisar estado de batería.', 'tablet, carga, bateria, puerto'),
+    ('Tablet', 'Pantalla táctil no responde', 'El equipo enciende pero no detecta toques o responde tarde.', 'Digitalizador dañado, suciedad, humedad o error de software.', 'Limpiar pantalla, reiniciar equipo y revisar digitalizador si persiste.', 'tablet, tactil, pantalla, digitalizador'),
+    ('Tablet', 'Aplicaciones se cierran', 'Las aplicaciones se cierran inesperadamente durante el uso normal.', 'Memoria insuficiente, sistema desactualizado o app corrupta.', 'Actualizar sistema, liberar almacenamiento y reinstalar aplicaciones afectadas.', 'tablet, apps, cierre, memoria'),
+    ('Tablet', 'WiFi no conecta', 'La tablet detecta redes pero no logra conectarse correctamente.', 'Clave incorrecta, configuración de red dañada o módulo WiFi con falla.', 'Olvidar red, reconectar con clave correcta y restablecer ajustes de red.', 'tablet, wifi, red, conexion'),
+    ('Tablet', 'Batería se descarga rápido', 'La batería dura poco tiempo incluso con uso moderado.', 'Batería desgastada, brillo alto o aplicaciones en segundo plano.', 'Revisar consumo de batería, cerrar apps y considerar reemplazo de batería.', 'tablet, bateria, descarga, consumo'),
+    ('Tablet', 'No actualiza sistema', 'El dispositivo muestra error al intentar instalar una actualización.', 'Espacio insuficiente, conexión inestable o versión no compatible.', 'Liberar almacenamiento, conectar a WiFi estable y reiniciar actualización.', 'tablet, actualizacion, sistema, espacio'),
+    ('Tablet', 'Cámara no funciona', 'La aplicación de cámara muestra error o imagen negra.', 'Permisos bloqueados, app dañada o módulo de cámara defectuoso.', 'Revisar permisos, limpiar datos de cámara y probar app alternativa.', 'tablet, camara, permisos, modulo'),
+    ('Tablet', 'Sonido bajo', 'El audio se escucha muy bajo incluso con volumen al máximo.', 'Parlante obstruido, configuración de audio o daño interno.', 'Limpiar salida de audio, verificar configuración y probar audífonos.', 'tablet, sonido, parlante, volumen'),
+    ('Tablet', 'Almacenamiento lleno', 'El sistema muestra poco espacio y no permite instalar aplicaciones.', 'Archivos acumulados, caché excesiva o aplicaciones grandes.', 'Eliminar archivos innecesarios, limpiar caché y mover datos a respaldo.', 'tablet, almacenamiento, espacio, cache'),
+    ('Tablet', 'Reinicio inesperado', 'La tablet se reinicia sin aviso durante el uso.', 'Error de sistema, batería defectuosa o sobrecalentamiento.', 'Actualizar sistema, revisar batería y controlar temperatura del equipo.', 'tablet, reinicio, bateria, sistema'),
+
+    -- ===================== SMARTPHONE =====================
+    ('Smartphone', 'No reconoce SIM', 'El teléfono indica sin SIM o solo llamadas de emergencia.', 'SIM dañada, bandeja mal colocada o lector SIM defectuoso.', 'Probar otra SIM, limpiar bandeja y revisar lector interno.', 'smartphone, sim, lector, señal'),
+    ('Smartphone', 'Pantalla rota', 'El vidrio o pantalla presenta grietas y afecta la visualización o el tacto.', 'Golpe físico o presión excesiva sobre el dispositivo.', 'Reemplazar módulo de pantalla y validar funcionamiento táctil.', 'smartphone, pantalla, rota, tactil'),
+    ('Smartphone', 'Carga lenta', 'El dispositivo demora demasiado en completar la carga de batería.', 'Cargador de baja potencia, cable dañado o puerto sucio.', 'Usar cargador compatible, cambiar cable y limpiar puerto de carga.', 'smartphone, carga, cable, puerto'),
+    ('Smartphone', 'Se calienta demasiado', 'El teléfono aumenta mucho su temperatura durante uso básico.', 'Aplicaciones exigentes, batería deteriorada o mala gestión térmica.', 'Cerrar apps, actualizar sistema y revisar estado de batería.', 'smartphone, temperatura, bateria, apps'),
+    ('Smartphone', 'Micrófono no funciona', 'Las llamadas o grabaciones no capturan correctamente la voz.', 'Micrófono obstruido, permisos bloqueados o módulo dañado.', 'Limpiar entrada, revisar permisos y probar grabación de audio.', 'smartphone, microfono, llamadas, audio'),
+    ('Smartphone', 'Cámara borrosa', 'Las fotografías salen desenfocadas o con manchas visibles.', 'Lente sucio, enfoque dañado o humedad interna.', 'Limpiar lente, probar enfoque y revisar módulo de cámara.', 'smartphone, camara, lente, enfoque'),
+    ('Smartphone', 'No conecta Bluetooth', 'El dispositivo no empareja con audífonos, autos u otros accesorios.', 'Emparejamiento corrupto, caché Bluetooth dañada o incompatibilidad.', 'Olvidar dispositivo, reiniciar Bluetooth y restablecer ajustes de red.', 'smartphone, bluetooth, emparejamiento, red'),
+    ('Smartphone', 'Batería inflada', 'La tapa o pantalla se levanta y el dispositivo se deforma.', 'Batería deteriorada por ciclos de carga o exposición a calor.', 'Suspender uso del equipo y reemplazar batería en servicio técnico.', 'smartphone, bateria, inflada, reemplazo'),
+    ('Smartphone', 'Sistema bloqueado', 'El teléfono no pasa de la pantalla de inicio o queda congelado.', 'Error de actualización, memoria corrupta o sistema dañado.', 'Reiniciar en modo recuperación y reinstalar sistema si es necesario.', 'smartphone, sistema, bloqueo, recovery'),
+    ('Smartphone', 'Altavoz distorsionado', 'El sonido sale con ruido, cortes o baja calidad.', 'Parlante dañado, humedad o suciedad en la rejilla.', 'Limpiar rejilla, probar audio y reemplazar parlante si persiste.', 'smartphone, altavoz, sonido, distorsion'),
+
+    -- ===================== SERVIDOR =====================
+    ('Servidor', 'No arranca sistema', 'El servidor enciende pero no carga el sistema operativo instalado.', 'Disco de arranque dañado, RAID degradado o configuración BIOS alterada.', 'Revisar orden de arranque, estado RAID y salud de discos.', 'servidor, arranque, raid, disco'),
+    ('Servidor', 'Alta temperatura', 'Los sensores reportan temperatura elevada y ventiladores al máximo.', 'Flujo de aire deficiente, polvo o ventiladores defectuosos.', 'Limpiar internamente, validar ventiladores y mejorar ventilación del rack.', 'servidor, temperatura, rack, ventiladores'),
+    ('Servidor', 'Disco en fallo', 'El sistema indica disco degradado, errores SMART o alerta RAID.', 'Unidad de almacenamiento deteriorada o sectores defectuosos.', 'Respaldar información, reemplazar disco y reconstruir arreglo RAID.', 'servidor, disco, smart, raid'),
+    ('Servidor', 'Servicios caídos', 'Aplicaciones o servicios alojados dejan de responder a usuarios.', 'Proceso detenido, falta de recursos o error de configuración.', 'Reiniciar servicio, revisar logs y monitorear CPU, RAM y disco.', 'servidor, servicios, logs, recursos'),
+    ('Servidor', 'Red no disponible', 'El servidor no responde por IP o pierde comunicación de red.', 'Interfaz de red deshabilitada, cable dañado o configuración IP incorrecta.', 'Revisar enlace físico, validar IP y reiniciar interfaz de red.', 'servidor, red, ip, interfaz'),
+    ('Servidor', 'Memoria insuficiente', 'El servidor consume toda la memoria y ralentiza servicios.', 'Procesos excesivos, fuga de memoria o RAM limitada.', 'Identificar procesos, reiniciar servicios afectados y ampliar RAM si aplica.', 'servidor, memoria, ram, procesos'),
+    ('Servidor', 'Backup fallido', 'Las tareas de respaldo terminan con error o quedan incompletas.', 'Espacio insuficiente, permisos incorrectos o destino no disponible.', 'Revisar espacio, permisos y conectividad con destino de respaldo.', 'servidor, backup, respaldo, permisos'),
+    ('Servidor', 'Acceso remoto bloqueado', 'No se puede ingresar por SSH, RDP u otra herramienta remota.', 'Servicio detenido, firewall restrictivo o credenciales incorrectas.', 'Validar servicio remoto, revisar firewall y confirmar credenciales.', 'servidor, ssh, rdp, firewall'),
+    ('Servidor', 'Uso alto de CPU', 'El procesador permanece al máximo y los servicios responden lento.', 'Proceso intensivo, consulta pesada o tarea programada mal configurada.', 'Identificar proceso, optimizar carga y programar tareas fuera de horario crítico.', 'servidor, cpu, rendimiento, procesos'),
+    ('Servidor', 'Certificado vencido', 'Los servicios web muestran advertencias de seguridad por certificado expirado.', 'Certificado SSL no renovado antes de la fecha de vencimiento.', 'Renovar certificado, actualizar configuración y reiniciar servicio web.', 'servidor, ssl, certificado, web'),
+
+    -- ===================== PROYECTOR =====================
+    ('Proyector', 'No proyecta imagen', 'El proyector enciende pero no muestra la imagen del equipo conectado.', 'Entrada incorrecta, cable defectuoso o resolución no compatible.', 'Seleccionar fuente correcta, cambiar cable y ajustar resolución del equipo.', 'proyector, imagen, hdmi, fuente'),
+    ('Proyector', 'Imagen borrosa', 'La proyección se ve desenfocada o con baja nitidez.', 'Lente sucio, enfoque incorrecto o mala distancia de proyección.', 'Limpiar lente, ajustar enfoque y ubicar a distancia adecuada.', 'proyector, borroso, lente, enfoque'),
+    ('Proyector', 'Lámpara agotada', 'La imagen se ve muy tenue o el equipo indica cambio de lámpara.', 'Horas de uso de lámpara superadas o desgaste natural.', 'Reemplazar lámpara compatible y reiniciar contador de horas.', 'proyector, lampara, brillo, horas'),
+    ('Proyector', 'Sobrecalentamiento', 'El equipo se apaga después de unos minutos y muestra alerta térmica.', 'Filtro obstruido, ventilador fallando o poca ventilación.', 'Limpiar filtros, revisar ventilador y mejorar circulación de aire.', 'proyector, temperatura, filtro, ventilador'),
+    ('Proyector', 'Sin audio', 'El proyector muestra imagen pero no reproduce sonido.', 'Entrada de audio incorrecta, volumen bajo o cable sin transmisión de audio.', 'Verificar fuente de audio, subir volumen y probar conexión HDMI.', 'proyector, audio, hdmi, volumen'),
+    ('Proyector', 'Colores alterados', 'La imagen proyectada tiene tonos incorrectos o pérdida de color.', 'Configuración de color incorrecta, cable defectuoso o chip de imagen dañado.', 'Restaurar configuración de imagen, cambiar cable y probar otra fuente.', 'proyector, color, imagen, cable'),
+    ('Proyector', 'Control remoto no funciona', 'El control no responde aunque el proyector está encendido.', 'Baterías agotadas, sensor obstruido o control defectuoso.', 'Cambiar baterías, limpiar sensor y probar control cercano al equipo.', 'proyector, control, sensor, baterias'),
+    ('Proyector', 'Ruido excesivo', 'El equipo genera ruido fuerte durante la proyección.', 'Ventilador sucio, filtro tapado o desgaste interno.', 'Limpiar filtro, revisar ventilador y dar mantenimiento preventivo.', 'proyector, ruido, ventilador, filtro'),
+    ('Proyector', 'Imagen trapezoidal', 'La imagen aparece deformada en forma de trapecio.', 'Ángulo de proyección incorrecto o corrección keystone mal ajustada.', 'Alinear proyector y ajustar corrección keystone desde menú.', 'proyector, keystone, trapezoidal, alineacion'),
+    ('Proyector', 'No detecta USB', 'El proyector no reconoce archivos desde una memoria USB.', 'Formato no compatible, puerto sucio o archivo no soportado.', 'Formatear USB compatible, limpiar puerto y usar formatos admitidos.', 'proyector, usb, formato, archivos'),
+
+    -- ===================== CÁMARA DE SEGURIDAD =====================
+    ('Cámara de seguridad', 'Sin imagen', 'La cámara aparece desconectada o muestra pantalla negra en el sistema.', 'Cable de red dañado, falta de energía o cámara desconfigurada.', 'Revisar alimentación, probar cable de red y validar configuración IP.', 'camara, imagen, red, energia'),
+    ('Cámara de seguridad', 'Imagen borrosa', 'La transmisión se ve poco clara o fuera de foco.', 'Lente sucio, condensación o enfoque incorrecto.', 'Limpiar lente, revisar humedad y ajustar enfoque si el modelo lo permite.', 'camara, borrosa, lente, enfoque'),
+    ('Cámara de seguridad', 'No graba', 'El sistema muestra imagen en vivo pero no almacena grabaciones.', 'Disco lleno, configuración de grabación incorrecta o permisos insuficientes.', 'Revisar almacenamiento, activar programación y validar permisos.', 'camara, grabacion, disco, permisos'),
+    ('Cámara de seguridad', 'Nocturna no funciona', 'Durante la noche la imagen se ve oscura o sin iluminación infrarroja.', 'LED infrarrojo dañado, modo nocturno desactivado o suciedad en lente.', 'Activar modo nocturno, limpiar lente y revisar LEDs IR.', 'camara, nocturna, infrarrojo, led'),
+    ('Cámara de seguridad', 'Pérdida de conexión', 'La cámara se desconecta de forma intermitente del grabador o red.', 'Cableado inestable, fuente deficiente o saturación de red.', 'Cambiar cable, revisar fuente y validar ancho de banda disponible.', 'camara, conexion, red, cable'),
+    ('Cámara de seguridad', 'Movimiento no detectado', 'El sistema no genera alertas aunque existe movimiento frente a la cámara.', 'Sensibilidad baja, zona de detección mal configurada o firmware antiguo.', 'Ajustar sensibilidad, configurar zonas y actualizar firmware.', 'camara, movimiento, alerta, sensibilidad'),
+    ('Cámara de seguridad', 'Fecha incorrecta', 'Las grabaciones aparecen con hora o fecha equivocada.', 'Configuración horaria incorrecta o servidor NTP no disponible.', 'Configurar zona horaria y sincronizar con servidor NTP.', 'camara, fecha, hora, ntp'),
+    ('Cámara de seguridad', 'Audio no registra', 'La cámara con micrófono no almacena o transmite audio.', 'Micrófono desactivado, permisos no habilitados o modelo sin soporte.', 'Activar audio, revisar permisos y confirmar compatibilidad del modelo.', 'camara, audio, microfono, permisos'),
+    ('Cámara de seguridad', 'Imagen pixelada', 'La transmisión presenta bloques, cortes o pérdida de calidad.', 'Ancho de banda bajo, compresión alta o configuración de resolución inadecuada.', 'Reducir compresión, ajustar resolución y mejorar conectividad.', 'camara, pixelada, resolucion, ancho de banda'),
+    ('Cámara de seguridad', 'IP duplicada', 'La cámara pierde conexión porque comparte IP con otro dispositivo.', 'Asignación manual incorrecta o conflicto en DHCP.', 'Asignar IP única, reservar dirección en router y reiniciar cámara.', 'camara, ip, dhcp, conflicto')
+
+) AS data(tipo_equipo, error_title, symptoms, root_cause, solution, keywords)
+JOIN techstore_tipo_equipo tipo
+    ON tipo.name = data.tipo_equipo
+ON CONFLICT (error_title, equipment_type_id) DO UPDATE SET
+    symptoms = EXCLUDED.symptoms,
+    root_cause = EXCLUDED.root_cause,
+    solution = EXCLUDED.solution,
+    keywords = EXCLUDED.keywords,
+    activo = EXCLUDED.activo,
+    write_date = NOW();
+
+COMMIT;
+
+
+
+DO $$
+DECLARE
+    v_mantenimiento_id INTEGER;
+    v_equipo_id INTEGER;
+    v_mantenimiento_equipo_id INTEGER;
+
+    v_cliente RECORD;
+    v_tecnico RECORD;
+    v_tipo RECORD;
+    v_base RECORD;
+
+    v_num_mantenimientos INTEGER := 100;
+    v_contador INTEGER := 1;
+
+    v_num_equipos INTEGER;
+    v_contador_equipo INTEGER;
+
+    v_estado_mantenimiento TEXT;
+    v_estado_equipo TEXT;
+    v_prioridad TEXT;
+
+    v_fecha_inicio TIMESTAMP;
+    v_fecha_fin TIMESTAMP;
+
+    v_name_mantenimiento TEXT;
+    v_descripcion_general TEXT;
+
+    v_equipo_nombre TEXT;
+    v_marca TEXT;
+    v_modelo TEXT;
+    v_numero_serie TEXT;
+    v_color TEXT;
+    v_descripcion_equipo TEXT;
+
+    v_falla_reportada TEXT;
+    v_solucion TEXT;
+
+    v_total_equipos INTEGER;
+
+    v_marcas TEXT[] := ARRAY[
+        'Lenovo', 'HP', 'Dell', 'Asus', 'Acer',
+        'Samsung', 'Epson', 'TP-Link', 'Huawei', 'Xiaomi',
+        'Canon', 'Brother', 'LG', 'Dahua', 'Hikvision'
+    ];
+
+    v_colores TEXT[] := ARRAY[
+        'Negro', 'Gris', 'Blanco', 'Azul', 'Rojo',
+        'Plateado', 'Grafito', 'Verde', 'Dorado', 'Morado'
+    ];
+
+    v_estados_mantenimiento TEXT[] := ARRAY[
+        'pendiente', 'en_proceso', 'finalizado', 'cancelado'
+    ];
+
+    v_prioridades TEXT[] := ARRAY[
+        'baja', 'media', 'alta', 'critica'
+    ];
+
+    v_caracteristicas TEXT[] := ARRAY[
+        'Procesador', 'Memoria RAM', 'Almacenamiento',
+        'Sistema operativo', 'Conectividad', 'Pantalla',
+        'Voltaje', 'Garantía', 'Ubicación', 'Accesorios'
+    ];
+
+    v_valores TEXT[] := ARRAY[
+        'Intel Core i5', '8GB DDR4', 'SSD 512GB',
+        'Windows 11 Pro', 'WiFi y Bluetooth', '15.6 pulgadas',
+        '110V', '12 meses', 'Área administrativa', 'Cargador incluido'
+    ];
+
+BEGIN
+    -- Validar datos base necesarios.
+    IF NOT EXISTS (SELECT 1 FROM techstore_cliente) THEN
+        RAISE EXCEPTION 'No existen clientes registrados en techstore_cliente.';
+    END IF;
+
+    IF NOT EXISTS (SELECT 1 FROM techstore_tecnico WHERE activo = TRUE) THEN
+        RAISE EXCEPTION 'No existen técnicos activos registrados en techstore_tecnico.';
+    END IF;
+
+    IF NOT EXISTS (SELECT 1 FROM techstore_tipo_equipo WHERE activo = TRUE) THEN
+        RAISE EXCEPTION 'No existen tipos de equipo activos registrados en techstore_tipo_equipo.';
+    END IF;
+
+    IF NOT EXISTS (SELECT 1 FROM techstore_base_conocimiento WHERE activo = TRUE) THEN
+        RAISE EXCEPTION 'No existen fallas activas en techstore_base_conocimiento.';
+    END IF;
+
+    WHILE v_contador <= v_num_mantenimientos LOOP
+
+        SELECT id, name
+        INTO v_cliente
+        FROM techstore_cliente
+        ORDER BY random()
+        LIMIT 1;
+
+        SELECT id, name
+        INTO v_tecnico
+        FROM techstore_tecnico
+        WHERE activo = TRUE
+        ORDER BY random()
+        LIMIT 1;
+
+        v_estado_mantenimiento := v_estados_mantenimiento[1 + floor(random() * array_length(v_estados_mantenimiento, 1))::INTEGER];
+        v_prioridad := v_prioridades[1 + floor(random() * array_length(v_prioridades, 1))::INTEGER];
+
+        v_fecha_inicio := NOW() - ((random() * 90)::INTEGER || ' days')::INTERVAL;
+
+        IF v_estado_mantenimiento = 'finalizado' THEN
+            v_fecha_fin := v_fecha_inicio + ((1 + floor(random() * 10)::INTEGER) || ' days')::INTERVAL;
+        ELSE
+            v_fecha_fin := NULL;
+        END IF;
+
+        v_name_mantenimiento := 'MANT-DEMO-' || to_char(NOW(), 'YYYYMMDD') || '-' || LPAD(v_contador::TEXT, 3, '0');
+
+        v_descripcion_general :=
+            'Orden de mantenimiento generada para pruebas del módulo TechStore. Cliente: '
+            || v_cliente.name
+            || '. Atención técnica asignada con información variada para validar dashboard, filtros y detalle.';
+
+        INSERT INTO techstore_mantenimiento
+        (
+            cliente_id,
+            tecnico_id,
+            total_equipos,
+            create_uid,
+            write_uid,
+            name,
+            prioridad,
+            estado,
+            descripcion_general,
+            fecha_inicio,
+            fecha_fin,
+            create_date,
+            write_date
+        )
+        VALUES
+        (
+            v_cliente.id,
+            v_tecnico.id,
+            0,
+            1,
+            1,
+            v_name_mantenimiento,
+            v_prioridad,
+            v_estado_mantenimiento,
+            v_descripcion_general,
+            v_fecha_inicio,
+            v_fecha_fin,
+            v_fecha_inicio,
+            COALESCE(v_fecha_fin, v_fecha_inicio)
+        )
+        RETURNING id INTO v_mantenimiento_id;
+
+        -- Cada mantenimiento tendrá de 1 a 5 equipos.
+        v_num_equipos := 1 + floor(random() * 5)::INTEGER;
+        v_total_equipos := 0;
+        v_contador_equipo := 1;
+
+        WHILE v_contador_equipo <= v_num_equipos LOOP
+
+            SELECT id, name
+            INTO v_tipo
+            FROM techstore_tipo_equipo
+            WHERE activo = TRUE
+            ORDER BY random()
+            LIMIT 1;
+
+            SELECT id, error_title, symptoms, solution
+            INTO v_base
+            FROM techstore_base_conocimiento
+            WHERE activo = TRUE
+              AND equipment_type_id = v_tipo.id
+            ORDER BY random()
+            LIMIT 1;
+
+            IF v_base.id IS NULL THEN
+                -- Si un tipo no tiene base compatible, saltar ese equipo para no romper la restricción.
+                v_contador_equipo := v_contador_equipo + 1;
+                CONTINUE;
+            END IF;
+
+            v_marca := v_marcas[1 + floor(random() * array_length(v_marcas, 1))::INTEGER];
+            v_modelo := 'Modelo ' || chr(65 + floor(random() * 26)::INTEGER) || '-' || (100 + floor(random() * 900)::INTEGER)::TEXT;
+            v_color := v_colores[1 + floor(random() * array_length(v_colores, 1))::INTEGER];
+
+            v_numero_serie :=
+                'TS-'
+                || LPAD(v_contador::TEXT, 3, '0')
+                || '-'
+                || LPAD(v_contador_equipo::TEXT, 2, '0')
+                || '-'
+                || to_char(NOW(), 'YYYYMMDDHH24MISS');
+
+            v_equipo_nombre := v_tipo.name || ' ' || v_marca || ' ' || v_modelo;
+
+            v_descripcion_equipo :=
+                'Equipo registrado automáticamente para pruebas de mantenimiento. '
+                || 'Pertenece al tipo '
+                || v_tipo.name
+                || ' y se usa para validar detalles, fallas y estados.';
+
+            INSERT INTO techstore_equipo
+            (
+                tipo_equipo_id,
+                create_uid,
+                write_uid,
+                name,
+                marca,
+                modelo,
+                numero_serie,
+                color,
+                descripcion,
+                create_date,
+                write_date
+            )
+            VALUES
+            (
+                v_tipo.id,
+                1,
+                1,
+                v_equipo_nombre,
+                v_marca,
+                v_modelo,
+                v_numero_serie,
+                v_color,
+                v_descripcion_equipo,
+                v_fecha_inicio,
+                v_fecha_inicio
+            )
+            RETURNING id INTO v_equipo_id;
+
+            -- Insertar 4 detalles del equipo.
+            INSERT INTO techstore_detalle_equipo
+            (
+                equipo_id,
+                create_uid,
+                write_uid,
+                name,
+                valor,
+                create_date,
+                write_date
+            )
+            VALUES
+            (
+                v_equipo_id,
+                1,
+                1,
+                'Marca',
+                v_marca,
+                v_fecha_inicio,
+                v_fecha_inicio
+            ),
+            (
+                v_equipo_id,
+                1,
+                1,
+                'Modelo',
+                v_modelo,
+                v_fecha_inicio,
+                v_fecha_inicio
+            ),
+            (
+                v_equipo_id,
+                1,
+                1,
+                v_caracteristicas[1 + floor(random() * array_length(v_caracteristicas, 1))::INTEGER],
+                v_valores[1 + floor(random() * array_length(v_valores, 1))::INTEGER],
+                v_fecha_inicio,
+                v_fecha_inicio
+            ),
+            (
+                v_equipo_id,
+                1,
+                1,
+                'Condición',
+                CASE
+                    WHEN random() < 0.25 THEN 'Equipo con desgaste visible'
+                    WHEN random() < 0.50 THEN 'Equipo en estado regular'
+                    WHEN random() < 0.75 THEN 'Equipo operativo con observaciones'
+                    ELSE 'Equipo en buen estado físico'
+                END,
+                v_fecha_inicio,
+                v_fecha_inicio
+            );
+
+            IF v_estado_mantenimiento = 'cancelado' THEN
+                v_estado_equipo := 'cancelado';
+                v_solucion := NULL;
+            ELSIF v_estado_mantenimiento = 'finalizado' THEN
+                v_estado_equipo := 'finalizado';
+                v_solucion := COALESCE(v_base.solution, 'Se aplicó solución técnica y se validó funcionamiento del equipo.');
+            ELSIF v_estado_mantenimiento = 'en_proceso' THEN
+                IF random() < 0.65 THEN
+                    v_estado_equipo := 'en_proceso';
+                    v_solucion := NULL;
+                ELSE
+                    v_estado_equipo := 'finalizado';
+                    v_solucion := COALESCE(v_base.solution, 'Se aplicó solución parcial y se mantiene seguimiento.');
+                END IF;
+            ELSE
+                v_estado_equipo := 'pendiente';
+                v_solucion := NULL;
+            END IF;
+
+            v_falla_reportada :=
+                'Falla reportada: '
+                || v_base.error_title
+                || '. Síntomas observados: '
+                || COALESCE(v_base.symptoms, 'El equipo presenta comportamiento anormal durante su uso.');
+
+            INSERT INTO techstore_mantenimiento_equipo
+            (
+                mantenimiento_id,
+                equipo_id,
+                create_uid,
+                write_uid,
+                estado_equipo,
+                create_date,
+                write_date,
+                falla_reportada,
+                solucion
+            )
+            VALUES
+            (
+                v_mantenimiento_id,
+                v_equipo_id,
+                1,
+                1,
+                v_estado_equipo,
+                v_fecha_inicio,
+                COALESCE(v_fecha_fin, v_fecha_inicio),
+                v_falla_reportada,
+                v_solucion
+            )
+            RETURNING id INTO v_mantenimiento_equipo_id;
+
+            INSERT INTO techstore_mantenimiento_equipo_falla
+            (
+                mantenimiento_equipo_id,
+                base_conocimiento_id,
+                create_uid,
+                write_uid,
+                create_date,
+                write_date
+            )
+            VALUES
+            (
+                v_mantenimiento_equipo_id,
+                v_base.id,
+                1,
+                1,
+                v_fecha_inicio,
+                v_fecha_inicio
+            );
+
+            v_total_equipos := v_total_equipos + 1;
+            v_contador_equipo := v_contador_equipo + 1;
+        END LOOP;
+
+        -- Actualizar total_equipos porque el campo es compute store y por SQL directo no se recalcula solo.
+        UPDATE techstore_mantenimiento
+        SET total_equipos = v_total_equipos,
+            write_uid = 1,
+            write_date = COALESCE(v_fecha_fin, v_fecha_inicio)
+        WHERE id = v_mantenimiento_id;
+
+        -- Si por algún caso no se insertó ningún equipo, eliminar mantenimiento vacío.
+        IF v_total_equipos = 0 THEN
+            DELETE FROM techstore_mantenimiento
+            WHERE id = v_mantenimiento_id;
+        END IF;
+
+        v_contador := v_contador + 1;
+    END LOOP;
+END $$;
+
+-- =========================================================
+-- VERIFICACIÓN FINAL
+-- =========================================================
+
+SELECT COUNT(*) AS total_mantenimientos
+FROM techstore_mantenimiento;
+
+SELECT estado, COUNT(*) AS cantidad
+FROM techstore_mantenimiento
+GROUP BY estado
+ORDER BY estado;
+
+SELECT prioridad, COUNT(*) AS cantidad
+FROM techstore_mantenimiento
+GROUP BY prioridad
+ORDER BY prioridad;
+
+SELECT COUNT(*) AS total_equipos
+FROM techstore_equipo;
+
+SELECT COUNT(*) AS total_detalles_equipo
+FROM techstore_detalle_equipo;
+
+SELECT estado_equipo, COUNT(*) AS cantidad
+FROM techstore_mantenimiento_equipo
+GROUP BY estado_equipo
+ORDER BY estado_equipo;
+
+SELECT COUNT(*) AS total_fallas_asociadas
+FROM techstore_mantenimiento_equipo_falla;
+
+SELECT
+    m.id,
+    m.name,
+    c.name AS cliente,
+    t.name AS tecnico,
+    m.estado,
+    m.prioridad,
+    m.total_equipos,
+    m.fecha_inicio,
+    m.fecha_fin
+FROM techstore_mantenimiento m
+JOIN techstore_cliente c ON c.id = m.cliente_id
+JOIN techstore_tecnico t ON t.id = m.tecnico_id
+ORDER BY m.id DESC
+LIMIT 10;

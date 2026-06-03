@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="techstore.VentaForm" owl="1">
+
+        <div class="ts-invoice-form">
+
+            <t t-if="state.error">
+                <div class="ts-alert-error">
+                    <t t-esc="state.error"/>
+                </div>
+            </t>
+
+            <!-- CLIENTE -->
+            <div class="ts-invoice-section">
+                <div class="ts-invoice-section-header">
+                    <div>
+                        <h3>Datos del cliente</h3>
+                        <p>Busque por nombre o cédula y seleccione el cliente.</p>
+                    </div>
+                </div>
+
+                <div class="ts-invoice-search-grid">
+
+                    <div class="ts-search-box ts-search-box-full">
+                        <label>Buscar cliente</label>
+                        <input
+                            class="ts-search-input"
+                            type="text"
+                            placeholder="Ingrese nombre o cédula..."
+                            t-att-value="state.clienteSearch"
+                            t-on-input="(ev) => this.updateClienteSearch(ev.target.value)"
+                        />
+
+                        <t t-if="clientesFiltrados.length">
+                            <div class="ts-autocomplete-panel">
+                                <t t-foreach="clientesFiltrados" t-as="cliente" t-key="cliente.id">
+                                    <button
+                                        type="button"
+                                        class="ts-autocomplete-item"
+                                        t-on-click="() => this.seleccionarCliente(cliente)"
+                                    >
+                                        <strong>
+                                            <t t-esc="cliente.label"/>
+                                        </strong>
+                                        <span>
+                                            Cédula/RUC:
+                                            <t t-esc="cliente.cedula || 'Sin cédula'"/>
+                                        </span>
+                                    </button>
+                                </t>
+                            </div>
+                        </t>
+                    </div>
+
+                    <t t-if="state.clienteSeleccionado">
+                        <div class="ts-selected-card">
+                            <span>Cliente seleccionado</span>
+                            <strong>
+                                <t t-esc="state.clienteSeleccionado.label"/>
+                            </strong>
+                            <p>
+                                Cédula/RUC:
+                                <t t-esc="state.clienteSeleccionado.cedula || 'Sin cédula'"/>
+                            </p>
+
+                            <button
+                                type="button"
+                                class="ts-link-danger"
+                                t-on-click="limpiarCliente"
+                            >
+                                Cambiar cliente
+                            </button>
+                        </div>
+                    </t>
+
+                </div>
+            </div>
+
+            <!-- PRODUCTOS -->
+            <div class="ts-invoice-section">
+                <div class="ts-invoice-section-header">
+                    <div>
+                        <h3>Agregar productos</h3>
+                        <p>Busque productos por nombre o código y agréguelos al detalle.</p>
+                    </div>
+                </div>
+
+                <div class="ts-product-add-grid">
+
+                    <div class="ts-search-box ts-search-box-full">
+                        <label>Buscar producto</label>
+                        <input
+                            class="ts-search-input"
+                            type="text"
+                            placeholder="Ingrese nombre o código del producto..."
+                            t-att-value="state.productoSearch"
+                            t-on-input="(ev) => this.updateProductoSearch(ev.target.value)"
+                        />
+
+                        <t t-if="productosFiltrados.length">
+                            <div class="ts-autocomplete-panel">
+                                <t t-foreach="productosFiltrados" t-as="producto" t-key="producto.id">
+                                    <button
+                                        type="button"
+                                        class="ts-autocomplete-item"
+                                        t-on-click="() => this.seleccionarProducto(producto)"
+                                    >
+                                        <strong>
+                                            <t t-esc="producto.label"/>
+                                        </strong>
+                                        <span>
+                                            Código:
+                                            <t t-esc="producto.codigo"/>
+                                            |
+                                            Stock:
+                                            <t t-esc="producto.stock_disponible"/>
+                                            |
+                                            Precio:
+                                            <t t-esc="formatMoney(producto.precio_unitario)"/>
+                                        </span>
+                                    </button>
+                                </t>
+                            </div>
+                        </t>
+                    </div>
+
+                    <div class="ts-form-control">
+                        <label class="ts-label">Cantidad</label>
+                        <input
+                            class="ts-input"
+                            type="number"
+                            min="1"
+                            t-att-value="state.cantidadProducto"
+                            t-on-input="(ev) => this.updateCantidad(ev.target.value)"
+                        />
+                    </div>
+
+                    <div class="ts-product-add-action">
+                        <button
+                            type="button"
+                            class="ts-btn ts-btn-primary"
+                            t-on-click="agregarDetalle"
+                        >
+                            + Agregar
+                        </button>
+                    </div>
+
+                </div>
+
+                <t t-if="state.productoSeleccionado">
+                    <div class="ts-product-preview">
+                        <span>Producto seleccionado:</span>
+                        <strong>
+                            <t t-esc="state.productoSeleccionado.label"/>
+                        </strong>
+                        <p>
+                            Código:
+                            <t t-esc="state.productoSeleccionado.codigo"/>
+                            |
+                            Stock:
+                            <t t-esc="state.productoSeleccionado.stock_disponible"/>
+                            |
+                            Precio:
+                            <t t-esc="formatMoney(state.productoSeleccionado.precio_unitario)"/>
+                        </p>
+                    </div>
+                </t>
+            </div>
+
+            <!-- DETALLE FACTURA -->
+            <div class="ts-invoice-section">
+                <div class="ts-invoice-section-header">
+                    <div>
+                        <h3>Detalle de venta</h3>
+                        <p>Productos que serán registrados en la venta.</p>
+                    </div>
+                </div>
+
+                <div class="ts-invoice-table-wrapper">
+                    <table class="ts-invoice-table">
+                        <thead>
+                            <tr>
+                                <th>Producto</th>
+                                <th>Código</th>
+                                <th>Cantidad</th>
+                                <th>Precio</th>
+                                <th>Subtotal</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <t t-if="state.detalles.length">
+                                <t t-foreach="state.detalles" t-as="detalle" t-key="detalle.producto_id">
+                                    <tr>
+                                        <td>
+                                            <strong>
+                                                <t t-esc="detalle.producto_name"/>
+                                            </strong>
+                                        </td>
+
+                                        <td>
+                                            <t t-esc="detalle.producto_codigo"/>
+                                        </td>
+
+                                        <td>
+                                            <div class="ts-qty-control">
+                                                <button
+                                                    type="button"
+                                                    t-on-click="() => this.disminuirCantidad(detalle.producto_id)"
+                                                >
+                                                    -
+                                                </button>
+
+                                                <span>
+                                                    <t t-esc="detalle.cantidad"/>
+                                                </span>
+
+                                                <button
+                                                    type="button"
+                                                    t-on-click="() => this.aumentarCantidad(detalle.producto_id)"
+                                                >
+                                                    +
+                                                </button>
+                                            </div>
+                                        </td>
+
+                                        <td>
+                                            <t t-esc="formatMoney(detalle.precio_unitario)"/>
+                                        </td>
+
+                                        <td>
+                                            <strong>
+                                                <t t-esc="formatMoney(detalle.subtotal)"/>
+                                            </strong>
+                                        </td>
+
+                                        <td>
+                                            <button
+                                                type="button"
+                                                class="ts-btn ts-btn-danger ts-btn-sm"
+                                                t-on-click="() => this.quitarDetalle(detalle.producto_id)"
+                                            >
+                                                Quitar
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </t>
+
+                            <t t-else="">
+                                <tr>
+                                    <td colspan="6" class="ts-empty">
+                                        No existen productos agregados al detalle.
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- TOTALES -->
+            <div class="ts-invoice-bottom">
+
+                <div class="ts-form-control ts-observation-box">
+                    <label class="ts-label">Observación</label>
+                    <textarea
+                        class="ts-input ts-textarea"
+                        placeholder="Observación opcional de la venta..."
+                        t-att-value="state.observacion"
+                        t-on-input="(ev) => this.updateObservacion(ev.target.value)"
+                    />
+                </div>
+
+                <div class="ts-invoice-totals">
+
+                    <div class="ts-total-row">
+                        <span>Subtotal bruto</span>
+                        <strong>
+                            <t t-esc="formatMoney(subtotalBruto)"/>
+                        </strong>
+                    </div>
+
+                    <div class="ts-total-row">
+                        <span>Descuento</span>
+                        <input
+                            class="ts-total-input"
+                            type="number"
+                            min="0"
+                            placeholder="0.00"
+                            t-att-value="state.descuento"
+                            t-on-input="(ev) => this.updateDescuento(ev.target.value)"
+                        />
+                    </div>
+
+                    <div class="ts-total-row">
+                        <span>Subtotal final</span>
+                        <strong>
+                            <t t-esc="formatMoney(subtotalFinal)"/>
+                        </strong>
+                    </div>
+
+                    <div class="ts-total-row">
+                        <span>IVA 15%</span>
+                        <strong>
+                            <t t-esc="formatMoney(iva)"/>
+                        </strong>
+                    </div>
+
+                    <div class="ts-total-row ts-total-final">
+                        <span>Total</span>
+                        <strong>
+                            <t t-esc="formatMoney(total)"/>
+                        </strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="ts-modal-actions">
+
+                <TsButton
+                    label="'Cancelar'"
+                    variant="'secondary'"
+                    onClick.bind="cancelar"
+                />
+
+                <TsButton
+                    label="buttonLabel"
+                    variant="'primary'"
+                    onClick.bind="guardarVenta"
+                />
+
+            </div>
+
+        </div>
+
+    </t>
+
+</templates>

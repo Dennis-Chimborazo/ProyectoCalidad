@@ -1,0 +1,525 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="techstore.DashboardMantenimientosApp" owl="1">
+
+        <div t-att-class="theme.classes.page">
+
+            <t t-call="techstore.DashboardMantenimientosHeader"/>
+
+            <div class="ts-dashboard-page">
+
+                <div class="ts-dashboard-filter-card">
+
+                    <TsSelect
+                        label="'Cliente'"
+                        placeholder="'Todos los clientes'"
+                        value="state.filters.cliente_id"
+                        options="state.clientes"
+                        onChange="(value) => this.updateFilter('cliente_id', value)"
+                    />
+
+                    <TsSelect
+                        label="'Tipo de cliente'"
+                        placeholder="'Todos los tipos'"
+                        value="state.filters.tipo_cliente"
+                        options="tipoClienteOptions"
+                        onChange="(value) => this.updateFilter('tipo_cliente', value)"
+                    />
+
+                    <TsSelect
+                        label="'Tipo de equipo'"
+                        placeholder="'Todos los equipos'"
+                        value="state.filters.tipo_equipo_id"
+                        options="state.tiposEquipo"
+                        onChange="(value) => this.updateFilter('tipo_equipo_id', value)"
+                    />
+
+                    <TsSelect
+                        label="'Estado mantenimiento'"
+                        placeholder="'Todos los estados'"
+                        value="state.filters.estado_mantenimiento"
+                        options="estadoMantenimientoOptions"
+                        onChange="(value) => this.updateFilter('estado_mantenimiento', value)"
+                    />
+
+                    <TsSelect
+                        label="'Estado equipo'"
+                        placeholder="'Todos los estados'"
+                        value="state.filters.estado_equipo"
+                        options="estadoEquipoOptions"
+                        onChange="(value) => this.updateFilter('estado_equipo', value)"
+                    />
+
+                    <TsSelect
+                        label="'Prioridad'"
+                        placeholder="'Todas las prioridades'"
+                        value="state.filters.prioridad"
+                        options="prioridadOptions"
+                        onChange="(value) => this.updateFilter('prioridad', value)"
+                    />
+
+                    <div class="ts-dashboard-filter-actions">
+                        <TsButton
+                            label="'Limpiar filtros'"
+                            variant="'secondary'"
+                            onClick.bind="clearFilters"
+                        />
+                    </div>
+
+                </div>
+
+                <t t-if="state.loading">
+                    <div class="ts-loading-box">
+                        Cargando dashboard...
+                    </div>
+                </t>
+
+                <t t-else="">
+
+                    <t t-if="state.error">
+                        <div class="ts-alert-error">
+                            <t t-esc="state.error"/>
+                        </div>
+                    </t>
+
+                    <div class="ts-dashboard-kpi-grid">
+
+                        <div class="ts-dashboard-kpi-card ts-kpi-primary">
+                            <span>Mantenimientos</span>
+                            <strong>
+                                <t t-esc="totalMantenimientos"/>
+                            </strong>
+                            <p>Órdenes registradas según filtros</p>
+                        </div>
+
+                        <div class="ts-dashboard-kpi-card ts-kpi-info">
+                            <span>Equipos procesados</span>
+                            <strong>
+                                <t t-esc="totalEquipos"/>
+                            </strong>
+                            <p>Total de equipos asociados</p>
+                        </div>
+
+                        <div class="ts-dashboard-kpi-card ts-kpi-success">
+                            <span>Finalizados</span>
+                            <strong>
+                                <t t-esc="totalFinalizados"/>
+                            </strong>
+                            <p>
+                                <t t-esc="percent(totalFinalizados)"/>
+                                % del total de equipos
+                            </p>
+                        </div>
+
+                        <div class="ts-dashboard-kpi-card ts-kpi-danger">
+                            <span>Cancelados</span>
+                            <strong>
+                                <t t-esc="totalCancelados"/>
+                            </strong>
+                            <p>
+                                <t t-esc="percent(totalCancelados)"/>
+                                % del total de equipos
+                            </p>
+                        </div>
+
+                        <div class="ts-dashboard-kpi-card ts-kpi-warning">
+                            <span>Pendientes</span>
+                            <strong>
+                                <t t-esc="totalPendientes"/>
+                            </strong>
+                            <p>
+                                <t t-esc="percent(totalPendientes)"/>
+                                % del total de equipos
+                            </p>
+                        </div>
+
+                        <div class="ts-dashboard-kpi-card ts-kpi-success">
+                            <span>Con solución</span>
+                            <strong>
+                                <t t-esc="totalConSolucion"/>
+                            </strong>
+                            <p>
+                                <t t-esc="percent(totalConSolucion)"/>
+                                % con solución registrada
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="ts-dashboard-mosaic">
+
+                        <div class="ts-dashboard-card ts-db-card-large ts-db-card-dark">
+                            <div class="ts-dashboard-card-header ts-db-header-light">
+                                <div>
+                                    <span>Seguimiento operativo</span>
+                                    <h3>Cierre de equipos</h3>
+                                </div>
+                            </div>
+
+                            <div class="ts-radial-main-layout">
+
+                                <div
+                                    class="ts-radial-main"
+                                    t-att-style="'--value:' + percent(totalFinalizados + totalCancelados) + '%;'"
+                                >
+                                    <div class="ts-radial-main-center">
+                                        <strong>
+                                            <t t-esc="percent(totalFinalizados + totalCancelados)"/>
+                                            %
+                                        </strong>
+                                        <span>Cerrados</span>
+                                    </div>
+                                </div>
+
+                                <div class="ts-status-grid-mini">
+
+                                    <div class="ts-status-mini ts-status-success">
+                                        <span>Finalizados</span>
+                                        <strong>
+                                            <t t-esc="totalFinalizados"/>
+                                        </strong>
+                                        <p>
+                                            <t t-esc="percent(totalFinalizados)"/>
+                                            %
+                                        </p>
+                                    </div>
+
+                                    <div class="ts-status-mini ts-status-danger">
+                                        <span>Cancelados</span>
+                                        <strong>
+                                            <t t-esc="totalCancelados"/>
+                                        </strong>
+                                        <p>
+                                            <t t-esc="percent(totalCancelados)"/>
+                                            %
+                                        </p>
+                                    </div>
+
+                                    <div class="ts-status-mini ts-status-info">
+                                        <span>En proceso</span>
+                                        <strong>
+                                            <t t-esc="totalEnProceso"/>
+                                        </strong>
+                                        <p>
+                                            <t t-esc="percent(totalEnProceso)"/>
+                                            %
+                                        </p>
+                                    </div>
+
+                                    <div class="ts-status-mini ts-status-warning">
+                                        <span>Pendientes</span>
+                                        <strong>
+                                            <t t-esc="totalPendientes"/>
+                                        </strong>
+                                        <p>
+                                            <t t-esc="percent(totalPendientes)"/>
+                                            %
+                                        </p>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="ts-dashboard-card ts-db-card-medium">
+                            <div class="ts-dashboard-card-header">
+                                <div>
+                                    <span>Prioridad</span>
+                                    <h3>Atención por criticidad</h3>
+                                </div>
+                            </div>
+
+                            <div class="ts-column-chart">
+                                <t t-foreach="prioridadChart" t-as="item" t-key="item.key">
+                                    <div class="ts-column-item">
+                                        <div class="ts-column-track">
+                                            <div
+                                                t-att-class="'ts-column-fill ' + item.className"
+                                                t-att-style="'height:' + percent(item.value, totalMantenimientos) + '%;'"
+                                            />
+                                        </div>
+
+                                        <strong>
+                                            <t t-esc="item.value"/>
+                                        </strong>
+
+                                        <span>
+                                            <t t-esc="item.label"/>
+                                        </span>
+                                    </div>
+                                </t>
+                            </div>
+                        </div>
+
+                        <div class="ts-dashboard-card ts-db-card-medium">
+                            <div class="ts-dashboard-card-header">
+                                <div>
+                                    <span>Clientes</span>
+                                    <h3>Particulares vs corporativos</h3>
+                                </div>
+                            </div>
+
+                            <div class="ts-client-split">
+
+                                <div class="ts-client-split-card ts-client-split-primary">
+                                    <span>Particulares</span>
+                                    <strong>
+                                        <t t-esc="totalParticulares"/>
+                                    </strong>
+                                    <p>
+                                        <t t-esc="percent(totalParticulares, totalMantenimientos)"/>
+                                        % de órdenes
+                                    </p>
+                                </div>
+
+                                <div class="ts-client-split-card ts-client-split-secondary">
+                                    <span>Corporativos</span>
+                                    <strong>
+                                        <t t-esc="totalCorporativos"/>
+                                    </strong>
+                                    <p>
+                                        <t t-esc="percent(totalCorporativos, totalMantenimientos)"/>
+                                        % de órdenes
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="ts-dashboard-card ts-db-card-medium">
+                            <div class="ts-dashboard-card-header">
+                                <div>
+                                    <span>Equipos</span>
+                                    <h3>Tipos más atendidos</h3>
+                                </div>
+                            </div>
+
+                            <div class="ts-ranking-visual">
+                                <t t-if="tipoEquipoChart.length">
+                                    <t t-foreach="tipoEquipoChart" t-as="item" t-key="item.key">
+                                        <div class="ts-ranking-visual-row">
+                                            <div class="ts-ranking-visual-label">
+                                                <strong>
+                                                    <t t-esc="item.label"/>
+                                                </strong>
+
+                                                <span>
+                                                    <t t-esc="item.value"/>
+                                                </span>
+                                            </div>
+
+                                            <div class="ts-ranking-visual-track">
+                                                <div
+                                                    class="ts-ranking-visual-fill"
+                                                    t-att-style="'width:' + percent(item.value) + '%;'"
+                                                />
+                                            </div>
+                                        </div>
+                                    </t>
+                                </t>
+
+                                <t t-else="">
+                                    <div class="ts-empty">
+                                        No existen equipos registrados.
+                                    </div>
+                                </t>
+                            </div>
+                        </div>
+
+                        <div class="ts-dashboard-card ts-db-card-medium">
+                            <div class="ts-dashboard-card-header">
+                                <div>
+                                    <span>Soluciones</span>
+                                    <h3>Registro técnico</h3>
+                                </div>
+                            </div>
+
+                            <div class="ts-gauge-card-layout">
+
+                                <div
+                                    class="ts-gauge-chart"
+                                    t-att-style="'--value:' + percent(totalConSolucion) + '%;'"
+                                >
+                                    <div class="ts-gauge-center">
+                                        <strong>
+                                            <t t-esc="percent(totalConSolucion)"/>
+                                            %
+                                        </strong>
+                                        <span>Solución</span>
+                                    </div>
+                                </div>
+
+                                <div class="ts-gauge-stats">
+                                    <div>
+                                        <span>Con solución</span>
+                                        <strong>
+                                            <t t-esc="totalConSolucion"/>
+                                        </strong>
+                                    </div>
+
+                                    <div>
+                                        <span>Sin solución</span>
+                                        <strong>
+                                            <t t-esc="totalEquipos - totalConSolucion"/>
+                                        </strong>
+                                    </div>
+
+                                    <div>
+                                        <span>Base conocimiento</span>
+                                        <strong>
+                                            <t t-esc="totalConBase"/>
+                                        </strong>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="ts-dashboard-card ts-db-card-wide">
+                            <div class="ts-dashboard-card-header">
+                                <div>
+                                    <span>Mantenimientos</span>
+                                    <h3>Estados de órdenes</h3>
+                                </div>
+                            </div>
+
+                            <div class="ts-stacked-status-bar">
+
+                                <div
+                                    class="ts-stack-segment ts-stack-success"
+                                    t-att-style="'width:' + percent(mantenimientoEstadoChart[0].value, totalMantenimientos) + '%;'"
+                                />
+
+                                <div
+                                    class="ts-stack-segment ts-stack-danger"
+                                    t-att-style="'width:' + percent(mantenimientoEstadoChart[1].value, totalMantenimientos) + '%;'"
+                                />
+
+                                <div
+                                    class="ts-stack-segment ts-stack-info"
+                                    t-att-style="'width:' + percent(mantenimientoEstadoChart[2].value, totalMantenimientos) + '%;'"
+                                />
+
+                                <div
+                                    class="ts-stack-segment ts-stack-warning"
+                                    t-att-style="'width:' + percent(mantenimientoEstadoChart[3].value, totalMantenimientos) + '%;'"
+                                />
+
+                            </div>
+
+                            <div class="ts-stack-legend">
+                                <t t-foreach="mantenimientoEstadoChart" t-as="item" t-key="item.key">
+                                    <div class="ts-stack-legend-item">
+                                        <span t-att-class="'ts-stack-dot ' + item.className"/>
+                                        <strong>
+                                            <t t-esc="item.label"/>
+                                        </strong>
+                                        <p>
+                                            <t t-esc="item.value"/>
+                                        </p>
+                                    </div>
+                                </t>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="ts-dashboard-card ts-dashboard-table-card">
+                        <div class="ts-dashboard-card-header">
+                            <div>
+                                <span>Detalle reciente</span>
+                                <h3>Últimos equipos procesados</h3>
+                            </div>
+                        </div>
+
+                        <div class="ts-dashboard-table-wrapper">
+                            <table class="ts-dashboard-table">
+                                <thead>
+                                    <tr>
+                                        <th>Mantenimiento</th>
+                                        <th>Cliente</th>
+                                        <th>Tipo cliente</th>
+                                        <th>Equipo</th>
+                                        <th>Tipo equipo</th>
+                                        <th>Prioridad</th>
+                                        <th>Estado</th>
+                                        <th>Solución</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <t t-if="recentEquipos.length">
+                                        <t t-foreach="recentEquipos" t-as="item" t-key="item.id">
+                                            <tr>
+                                                <td>
+                                                    <strong>
+                                                        <t t-esc="item.mantenimiento"/>
+                                                    </strong>
+                                                </td>
+
+                                                <td>
+                                                    <t t-esc="item.cliente"/>
+                                                </td>
+
+                                                <td>
+                                                    <t t-esc="item.tipo_cliente_label"/>
+                                                </td>
+
+                                                <td>
+                                                    <t t-esc="item.equipo"/>
+                                                </td>
+
+                                                <td>
+                                                    <t t-esc="item.tipo_equipo"/>
+                                                </td>
+
+                                                <td>
+                                                    <t t-esc="prioridadLabel(item.prioridad)"/>
+                                                </td>
+
+                                                <td>
+                                                    <span t-att-class="badgeClassEstado(item.estado_equipo)">
+                                                        <t t-esc="estadoLabel(item.estado_equipo)"/>
+                                                    </span>
+                                                </td>
+
+                                                <td>
+                                                    <t t-if="item.tiene_solucion">
+                                                        <span class="ts-db-badge ts-db-badge-success">
+                                                            Sí
+                                                        </span>
+                                                    </t>
+
+                                                    <t t-else="">
+                                                        <span class="ts-db-badge ts-db-badge-warning">
+                                                            No
+                                                        </span>
+                                                    </t>
+                                                </td>
+                                            </tr>
+                                        </t>
+                                    </t>
+
+                                    <t t-else="">
+                                        <tr>
+                                            <td colspan="8" class="ts-empty">
+                                                No existen registros para los filtros seleccionados.
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </t>
+
+            </div>
+
+        </div>
+
+    </t>
+
+</templates>

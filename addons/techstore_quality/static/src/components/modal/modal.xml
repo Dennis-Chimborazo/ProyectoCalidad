@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="techstore.TsModal" owl="1">
+        <div class="ts-modal-backdrop">
+            <div class="ts-modal">
+
+                <div class="ts-modal-header">
+                    <div>
+                        <h2>
+                            <t t-esc="props.title"/>
+                        </h2>
+
+                        <t t-if="props.subtitle">
+                            <p>
+                                <t t-esc="props.subtitle"/>
+                            </p>
+                        </t>
+                    </div>
+
+                    <button
+                        type="button"
+                        class="ts-modal-close"
+                        t-on-click="props.onClose"
+                    >
+                        X
+                    </button>
+                </div>
+
+                <div class="ts-modal-body">
+                    <t t-slot="default"/>
+                </div>
+
+            </div>
+        </div>
+    </t>
+
+</templates>

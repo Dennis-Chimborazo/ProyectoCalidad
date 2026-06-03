@@ -1,0 +1,28 @@
+:root {
+    --ts-primary: #245acc;
+    --ts-primary-dark: #142fae;
+    --ts-primary-soft: #87b7fa;
+
+    --ts-background: #f3f6fb;
+    --ts-surface: #ffffff;
+    --ts-surface-soft: #f8fafc;
+
+    --ts-border: #dbe3ef;
+    --ts-text: #1f2937;
+    --ts-muted: #64748b;
+
+    --ts-success: #16a34a;
+    --ts-warning: #f59e0b;
+    --ts-danger: #dc2626;
+    --ts-info: #0284c7;
+
+    --ts-radius-sm: 8px;
+    --ts-radius-md: 12px;
+    --ts-radius-lg: 18px;
+
+    --ts-shadow-sm: 0 4px 12px rgba(15, 23, 42, 0.06);
+    --ts-shadow-md: 0 8px 20px rgba(15, 23, 42, 0.08);
+    --ts-shadow-lg: 0 10px 25px rgba(20, 47, 174, 0.25);
+
+    --ts-transition: all 0.25s ease;
+}

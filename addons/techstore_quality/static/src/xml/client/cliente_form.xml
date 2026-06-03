@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="techstore.ClienteForm" owl="1">
+
+        <div class="ts-modal-form">
+
+            <t t-if="state.error">
+                <div class="ts-alert-error">
+                    <t t-esc="state.error"/>
+                </div>
+            </t>
+
+            <div class="ts-form-grid ts-form-grid-2">
+
+                <div class="ts-field">
+                    <label>Tipo de cliente</label>
+
+                    <select
+                        class="ts-input"
+                        t-att-value="state.form.tipo_cliente"
+                        t-on-change="(ev) => this.updateField('tipo_cliente', ev.target.value)"
+                    >
+                        <option value="particular">Particular</option>
+                        <option value="corporativo">Corporativo</option>
+                    </select>
+                </div>
+
+                <TsInput
+                    label="'Nombre del cliente'"
+                    placeholder="'Ej. Juan Pérez / Empresa ABC S.A.'"
+                    value="state.form.name"
+                    onInput="(value) => this.updateField('name', value)"
+                />
+
+                <TsInput
+                    label="cedulaLabel"
+                    placeholder="cedulaPlaceholder"
+                    value="state.form.cedula"
+                    onInput="(value) => this.updateField('cedula', value)"
+                />
+
+                <TsInput
+                    label="'Correo'"
+                    type="'email'"
+                    placeholder="'cliente@email.com'"
+                    value="state.form.email"
+                    onInput="(value) => this.updateField('email', value)"
+                />
+
+                <TsInput
+                    label="'Teléfono'"
+                    placeholder="'Ej. 0999999999'"
+                    value="state.form.telefono"
+                    onInput="(value) => this.updateField('telefono', value)"
+                />
+
+            </div>
+
+            <div class="ts-checkbox-control">
+                <label>
+                    <input type="checkbox" t-model="state.form.activo"/>
+                    Cliente activo
+                </label>
+            </div>
+
+            <div class="ts-modal-actions">
+
+                <TsButton
+                    label="'Cancelar'"
+                    variant="'secondary'"
+                    onClick.bind="cancelEdit"
+                />
+
+                <TsButton
+                    label="buttonLabel"
+                    variant="'primary'"
+                    onClick.bind="saveCliente"
+                />
+
+            </div>
+
+        </div>
+
+    </t>
+
+</templates>

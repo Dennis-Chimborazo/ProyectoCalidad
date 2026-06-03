@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="techstore.TsCustomPill" owl="1">
+        <span t-att-class="pillClass">
+            <span class="ts-pill-dot"></span>
+            <t t-esc="pillText"/>
+        </span>
+    </t>
+
+</templates>

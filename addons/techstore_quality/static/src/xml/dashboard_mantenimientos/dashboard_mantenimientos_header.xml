@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="techstore.DashboardMantenimientosHeader" owl="1">
+
+        <div class="ts-header">
+
+            <div>
+                <h1>Dashboard de Mantenimientos</h1>
+                <p>
+                    Seguimiento de estados, prioridades, clientes, tipos de equipo y soluciones aplicadas.
+                </p>
+            </div>
+
+        </div>
+
+    </t>
+
+</templates>

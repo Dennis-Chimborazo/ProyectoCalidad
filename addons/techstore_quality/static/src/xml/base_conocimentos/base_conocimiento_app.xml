@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="techstore.BaseConocimientoApp" owl="1">
+
+        <div t-att-class="theme.classes.page">
+
+            <TsPageHeader
+                title="'Base de Conocimiento TechStore'"
+                subtitle="'Registro de fallas documentadas, síntomas, causas y soluciones por tipo de equipo.'"
+            >
+                <t t-set-slot="actions">
+                    <TsButton
+                        label="'Actualizar'"
+                        variant="'secondary'"
+                        onClick.bind="loadBaseConocimiento"
+                    />
+                </t>
+            </TsPageHeader>
+
+            <div class="ts-main-card">
+
+                <div class="ts-client-toolbar">
+
+                    <div class="ts-search-box">
+                        <label>Buscar falla documentada</label>
+                        <input
+                            class="ts-search-input"
+                            type="text"
+                            placeholder="Buscar por falla, síntomas, causa, solución o palabras clave..."
+                            t-att-value="state.search"
+                            t-on-input="(ev) => this.updateSearch(ev.target.value)"
+                        />
+                    </div>
+
+                    <div class="ts-search-box">
+                        <label>Filtrar por tipo de equipo</label>
+                        <select
+                            class="ts-search-input"
+                            t-att-value="state.equipmentTypeFilter"
+                            t-on-change="(ev) => this.updateEquipmentTypeFilter(ev.target.value)"
+                        >
+                            <option value="">Todos</option>
+                            <t t-foreach="activeTiposEquipo" t-as="tipo" t-key="tipo.id">
+                                <option t-att-value="tipo.id">
+                                    <t t-esc="tipo.name"/>
+                                </option>
+                            </t>
+                        </select>
+                    </div>
+
+                    <TsButton
+                        label="'+ Agregar Falla'"
+                        variant="'primary'"
+                        onClick.bind="openCreateModal"
+                    />
+
+                </div>
+
+                <t t-if="state.loading">
+                    <div class="ts-loading-box">
+                        Cargando base de conocimiento...
+                    </div>
+                </t>
+
+                <t t-else="">
+                    <BaseConocimientoList
+                        registros="filteredRegistros"
+                        onEdit.bind="openEditModal"
+                        onToggle.bind="toggleBaseConocimiento"
+                    />
+                </t>
+
+            </div>
+
+            <t t-if="state.showModal">
+                <TsModal
+                    title="modalTitle"
+                    subtitle="modalSubtitle"
+                    onClose.bind="closeModal"
+                >
+                    <BaseConocimientoForm
+                        registro="state.editingRegistro"
+                        tiposEquipo="activeTiposEquipo"
+                        onSave.bind="saveBaseConocimiento"
+                        onCancel.bind="closeModal"
+                    />
+                </TsModal>
+            </t>
+
+        </div>
+
+    </t>
+
+</templates>

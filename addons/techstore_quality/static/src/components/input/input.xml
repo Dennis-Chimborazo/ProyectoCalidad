@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="techstore.TsInput" owl="1">
+        <div class="ts-form-control">
+            <label t-att-class="theme.classes.label">
+                <t t-esc="props.label"/>
+            </label>
+
+            <input
+                t-att-class="theme.classes.input"
+                t-att-type="props.type || 'text'"
+                t-att-placeholder="props.placeholder || ''"
+                t-att-value="props.value"
+                t-on-input="(ev) => props.onInput(ev.target.value)"
+            />
+        </div>
+    </t>
+
+</templates>
