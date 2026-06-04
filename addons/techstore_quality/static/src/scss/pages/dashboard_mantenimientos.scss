@@ -44,6 +44,10 @@ body,
         linear-gradient(180deg, #f7fbfc 0%, #eef6f7 100%);
     overflow-x: hidden;
     overflow-y: visible;
+    padding-top: 20px !important;
+    padding-left: 28px !important;
+    padding-right: 28px !important;
+    box-sizing: border-box !important;
 }
 
 .ts-dashboard-page {
@@ -60,8 +64,63 @@ body,
 
 /* Mantener header existente sin modificar su diseño */
 .ts-dashboard-hero {
-    margin-bottom: 0;
+    width: 100% !important;
+    min-height: 124px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+
+    padding: 34px 44px !important;
+    margin: 0 0 32px 0 !important;
+
+    box-sizing: border-box !important;
+    border-radius: 0 !important;
+
+    background:
+        radial-gradient(circle at top right, rgba(22, 214, 193, 0.28), transparent 34%),
+        linear-gradient(135deg, #0f766e 0%, #0ea5a3 48%, #16d6c1 100%) !important;
+
+    color: #ffffff !important;
+
+    box-shadow: none !important;
+    border: none !important;
 }
+
+/* Contenido interno del header */
+.ts-dashboard-hero-content {
+    display: flex !important;
+    align-items: center !important;
+    gap: 18px !important;
+}
+
+/* Si no quieres logo en el dashboard, lo ocultas */
+.ts-dashboard-logo {
+    display: none !important;
+}
+
+/* Texto */
+.ts-dashboard-hero h1 {
+    margin: 0 !important;
+    color: #ffffff !important;
+
+    font-size: 31px !important;
+    font-weight: 950 !important;
+    line-height: 1.1 !important;
+    letter-spacing: -0.035em !important;
+}
+
+.ts-dashboard-hero p {
+    margin: 10px 0 0 !important;
+    color: rgba(255, 255, 255, 0.88) !important;
+
+    font-size: 14px !important;
+    font-weight: 750 !important;
+    line-height: 1.35 !important;
+    letter-spacing: 0.01em !important;
+}
+
+/* El contenido ya no necesita tanto padding arriba porque el header ya tiene margen */
 
 /* =========================================================
    FILTROS SUPERIORES

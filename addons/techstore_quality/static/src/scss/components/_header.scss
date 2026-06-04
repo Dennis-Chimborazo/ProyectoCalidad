@@ -1,47 +1,107 @@
+/* =========================================================
+   HEADER GENERAL - ESTILO COMPATIBLE CON DASHBOARD
+========================================================= */
+
 .ts-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    // Degradado suavizado: Azul vibrante claro a un Azul Real lavado y amigable (sin negros)
-    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 50%, #1d4ed8 100%);
-    color: white;
-    padding: 24px 32px; // Reducido ligeramente el padding vertical para que sea menos invasivo
+    gap: 22px;
+
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 22px 34px;
+    margin: 0 0 24px 0;
+
+    /* Esquinas redondeadas */
     border-radius: 18px;
-    // Sombra ultra tenue para eliminar el peso visual
-    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.1);
-    margin-bottom: 22px;
 
-    h1 {
-        color: white;
-        margin: 0;
-        font-size: 26px; // Un poco más compacto para ganar elegancia
-        font-weight: 800;
-        letter-spacing: -0.3px;
-    }
+    background:
+        radial-gradient(circle at top right, rgba(22, 214, 193, 0.22), transparent 34%),
+        linear-gradient(135deg, #0f766e 0%, #0ea5a3 45%, #16d6c1 100%);
 
-    p {
-        margin: 6px 0 0;
-        // Blanco con opacidad para que se adapte de forma natural al fondo
-        color: rgba(255, 255, 255, 0.85);
-        font-size: 13px;
-    }
+    color: #ffffff;
+
+    border: 1px solid rgba(255, 255, 255, 0.22);
+
+    box-shadow:
+        0 10px 28px rgba(16, 24, 40, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.18);
+
+    overflow: hidden;
 }
 
+/* Contenido del header */
+.ts-header h1 {
+    margin: 0;
+    color: #ffffff;
+    font-size: 27px;
+    font-weight: 950;
+    letter-spacing: -0.04em;
+    line-height: 1.1;
+}
+
+.ts-header p {
+    margin: 7px 0 0;
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+}
+
+/* Botones o acciones dentro del header */
+.ts-header .ts-btn,
+.ts-header button {
+    border-radius: 12px;
+    border: none;
+    background: rgba(255, 255, 255, 0.18);
+    color: #ffffff;
+    font-weight: 900;
+    box-shadow: none;
+    backdrop-filter: blur(10px);
+}
+
+.ts-header .ts-btn:hover,
+.ts-header button:hover {
+    background: rgba(255, 255, 255, 0.26);
+    transform: translateY(-1px);
+}
+
+.ts-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Responsive */
 @media (max-width: 1000px) {
     .ts-header {
         flex-direction: column;
         align-items: flex-start;
         gap: 14px;
+        padding: 22px 24px;
+        border-radius: 16px;
+    }
+
+    .ts-header-actions {
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
     }
 }
 
 @media (max-width: 700px) {
     .ts-header {
-        padding: 20px;
+        padding: 20px 18px;
         border-radius: 14px;
+    }
 
-        h1 {
-            font-size: 22px;
-        }
+    .ts-header h1 {
+        font-size: 23px;
+    }
+
+    .ts-header p {
+        font-size: 12px;
     }
 }

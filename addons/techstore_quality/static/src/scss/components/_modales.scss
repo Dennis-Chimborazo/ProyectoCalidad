@@ -36,44 +36,74 @@
     }
 }
 
+/* HEADER DEL MODAL - COLOR COMPATIBLE CON DASHBOARD */
 .ts-modal-header {
     flex: 0 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    background: linear-gradient(135deg, #1d4ed8, #1e3a8a);
+    gap: 18px;
+
+    background:
+        radial-gradient(circle at top right, rgba(22, 214, 193, 0.30), transparent 34%),
+        linear-gradient(135deg, #0f766e 0%, #0ea5a3 48%, #16d6c1 100%);
+
     color: white;
     padding: 24px 28px;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+
+    box-shadow:
+        0 10px 28px rgba(16, 24, 40, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.16);
 
     h2 {
         margin: 0;
         font-size: 24px;
-        font-weight: 900;
+        font-weight: 950;
         color: white;
+        line-height: 1.1;
+        letter-spacing: -0.035em;
     }
 
     p {
-        margin: 6px 0 0;
-        color: #dbeafe;
+        margin: 7px 0 0;
+        color: rgba(255, 255, 255, 0.84);
+        font-size: 13px;
+        font-weight: 750;
+        line-height: 1.35;
     }
 }
 
 .ts-modal-close {
     border: none;
-    background: rgba(255, 255, 255, 0.16);
+    background: rgba(255, 255, 255, 0.18);
     color: white;
-    width: 34px;
-    height: 34px;
-    border-radius: 50%;
-    font-size: 20px;
-    font-weight: 900;
+
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+
+    border-radius: 12px;
+
+    font-size: 22px;
+    font-weight: 950;
     line-height: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     cursor: pointer;
+
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(10px);
+
     transition: all 0.20s ease;
 
     &:hover {
         background: rgba(255, 255, 255, 0.28);
-        transform: rotate(90deg);
+        transform: rotate(90deg) scale(1.03);
     }
 }
 
