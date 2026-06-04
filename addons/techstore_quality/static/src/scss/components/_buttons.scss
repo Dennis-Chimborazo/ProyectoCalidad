@@ -1,14 +1,21 @@
 .ts-btn {
     border: none;
-    border-radius: 12px;
-    padding: 10px 16px;
-    font-weight: 800;
+    border-radius: 13px;
+    padding: 10px 18px;
+    font-weight: 900;
     cursor: pointer;
     transition: all 0.22s ease;
     white-space: nowrap;
+    letter-spacing: 0.01em;
+    min-height: 42px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
 
     &:hover {
-        transform: translateY(-1px);
+        transform: translateY(-2px);
     }
 
     &:active {
@@ -17,44 +24,50 @@
 }
 
 .ts-btn-primary {
-    background: linear-gradient(135deg, #2563eb, #1e40af);
-    color: white;
-    box-shadow: 0 8px 18px rgba(37, 99, 235, 0.24);
+    background: linear-gradient(135deg, var(--ts-primary), var(--ts-primary-dark));
+    color: #ffffff;
+    box-shadow: 0 10px 22px rgba(36, 90, 204, 0.26);
 
     &:hover {
         background: linear-gradient(135deg, #1d4ed8, #1e3a8a);
+        box-shadow: 0 14px 28px rgba(36, 90, 204, 0.32);
     }
 }
 
 .ts-btn-secondary {
-    background: #e2e8f0;
+    background: #e8eef6;
     color: #0f172a;
+    border: 1px solid #dbe3ef;
 
     &:hover {
-        background: #cbd5e1;
+        background: #dbeafe;
+        color: var(--ts-primary-dark);
+        border-color: #bfdbfe;
     }
 }
 
 .ts-btn-danger {
-    background: #ef4444;
-    color: white;
-    box-shadow: 0 8px 18px rgba(239, 68, 68, 0.20);
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    color: #ffffff;
+    box-shadow: 0 10px 22px rgba(239, 68, 68, 0.22);
 
     &:hover {
-        background: #dc2626;
+        background: linear-gradient(135deg, #dc2626, #b91c1c);
     }
 }
 
 .ts-btn-sm {
-    padding: 7px 11px;
+    min-height: 34px;
+    padding: 7px 12px;
     font-size: 12px;
+    border-radius: 10px;
 }
 
 .ts-actions {
-    margin-top: 20px;
+    margin-top: 22px;
     display: flex;
     justify-content: flex-end;
-    gap: 10px;
+    gap: 12px;
 }
 
 .ts-row-actions {

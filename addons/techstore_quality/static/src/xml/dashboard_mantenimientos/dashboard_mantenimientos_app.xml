@@ -3,7 +3,7 @@
 
     <t t-name="techstore.DashboardMantenimientosApp" owl="1">
 
-        <div t-att-class="theme.classes.page">
+        <div class="ts-dashboard-shell">
 
             <t t-call="techstore.DashboardMantenimientosHeader"/>
 
@@ -149,7 +149,7 @@
 
                     <div class="ts-dashboard-mosaic">
 
-                        <div class="ts-dashboard-card ts-db-card-large ts-db-card-dark">
+                        <div class="ts-dashboard-card ts-db-card-large ts-db-card-dark ts-card-cierre">
                             <div class="ts-dashboard-card-header ts-db-header-light">
                                 <div>
                                     <span>Seguimiento operativo</span>
@@ -175,47 +175,59 @@
                                 <div class="ts-status-grid-mini">
 
                                     <div class="ts-status-mini ts-status-success">
-                                        <span>Finalizados</span>
-                                        <strong>
-                                            <t t-esc="totalFinalizados"/>
-                                        </strong>
-                                        <p>
-                                            <t t-esc="percent(totalFinalizados)"/>
-                                            %
-                                        </p>
+                                        <div class="ts-status-icon">✓</div>
+                                        <div class="ts-status-content">
+                                            <span>Finalizados</span>
+                                            <strong>
+                                                <t t-esc="totalFinalizados"/>
+                                            </strong>
+                                            <p>
+                                                <t t-esc="percent(totalFinalizados)"/>
+                                                %
+                                            </p>
+                                        </div>
                                     </div>
 
                                     <div class="ts-status-mini ts-status-danger">
-                                        <span>Cancelados</span>
-                                        <strong>
-                                            <t t-esc="totalCancelados"/>
-                                        </strong>
-                                        <p>
-                                            <t t-esc="percent(totalCancelados)"/>
-                                            %
-                                        </p>
+                                        <div class="ts-status-icon">×</div>
+                                        <div class="ts-status-content">
+                                            <span>Cancelados</span>
+                                            <strong>
+                                                <t t-esc="totalCancelados"/>
+                                            </strong>
+                                            <p>
+                                                <t t-esc="percent(totalCancelados)"/>
+                                                %
+                                            </p>
+                                        </div>
                                     </div>
 
                                     <div class="ts-status-mini ts-status-info">
-                                        <span>En proceso</span>
-                                        <strong>
-                                            <t t-esc="totalEnProceso"/>
-                                        </strong>
-                                        <p>
-                                            <t t-esc="percent(totalEnProceso)"/>
-                                            %
-                                        </p>
+                                        <div class="ts-status-icon">↻</div>
+                                        <div class="ts-status-content">
+                                            <span>En proceso</span>
+                                            <strong>
+                                                <t t-esc="totalEnProceso"/>
+                                            </strong>
+                                            <p>
+                                                <t t-esc="percent(totalEnProceso)"/>
+                                                %
+                                            </p>
+                                        </div>
                                     </div>
 
                                     <div class="ts-status-mini ts-status-warning">
-                                        <span>Pendientes</span>
-                                        <strong>
-                                            <t t-esc="totalPendientes"/>
-                                        </strong>
-                                        <p>
-                                            <t t-esc="percent(totalPendientes)"/>
-                                            %
-                                        </p>
+                                        <div class="ts-status-icon">!</div>
+                                        <div class="ts-status-content">
+                                            <span>Pendientes</span>
+                                            <strong>
+                                                <t t-esc="totalPendientes"/>
+                                            </strong>
+                                            <p>
+                                                <t t-esc="percent(totalPendientes)"/>
+                                                %
+                                            </p>
+                                        </div>
                                     </div>
 
                                 </div>
@@ -223,7 +235,7 @@
                             </div>
                         </div>
 
-                        <div class="ts-dashboard-card ts-db-card-medium">
+                        <div class="ts-dashboard-card ts-db-card-medium ts-card-prioridad">
                             <div class="ts-dashboard-card-header">
                                 <div>
                                     <span>Prioridad</span>
@@ -253,7 +265,7 @@
                             </div>
                         </div>
 
-                        <div class="ts-dashboard-card ts-db-card-medium">
+                        <div class="ts-dashboard-card ts-db-card-medium ts-card-clientes">
                             <div class="ts-dashboard-card-header">
                                 <div>
                                     <span>Clientes</span>
@@ -288,7 +300,7 @@
                             </div>
                         </div>
 
-                        <div class="ts-dashboard-card ts-db-card-medium">
+                        <div class="ts-dashboard-card ts-db-card-medium ts-card-equipos">
                             <div class="ts-dashboard-card-header">
                                 <div>
                                     <span>Equipos</span>
@@ -328,7 +340,7 @@
                             </div>
                         </div>
 
-                        <div class="ts-dashboard-card ts-db-card-medium">
+                        <div class="ts-dashboard-card ts-db-card-medium ts-card-soluciones">
                             <div class="ts-dashboard-card-header">
                                 <div>
                                     <span>Soluciones</span>
@@ -377,7 +389,7 @@
                             </div>
                         </div>
 
-                        <div class="ts-dashboard-card ts-db-card-wide">
+                        <div class="ts-dashboard-card ts-db-card-wide ts-card-estados">
                             <div class="ts-dashboard-card-header">
                                 <div>
                                     <span>Mantenimientos</span>
@@ -410,23 +422,57 @@
                             </div>
 
                             <div class="ts-stack-legend">
-                                <t t-foreach="mantenimientoEstadoChart" t-as="item" t-key="item.key">
-                                    <div class="ts-stack-legend-item">
-                                        <span t-att-class="'ts-stack-dot ' + item.className"/>
-                                        <strong>
-                                            <t t-esc="item.label"/>
-                                        </strong>
+
+                                <div class="ts-stack-legend-item ts-stack-item-success">
+                                    <div class="ts-stack-icon">✓</div>
+
+                                    <div class="ts-stack-content">
+                                        <strong>Finalizados</strong>
                                         <p>
-                                            <t t-esc="item.value"/>
+                                            <t t-esc="mantenimientoEstadoChart[0].value"/>
                                         </p>
                                     </div>
-                                </t>
+                                </div>
+
+                                <div class="ts-stack-legend-item ts-stack-item-danger">
+                                    <div class="ts-stack-icon">×</div>
+
+                                    <div class="ts-stack-content">
+                                        <strong>Cancelados</strong>
+                                        <p>
+                                            <t t-esc="mantenimientoEstadoChart[1].value"/>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="ts-stack-legend-item ts-stack-item-info">
+                                    <div class="ts-stack-icon">↻</div>
+
+                                    <div class="ts-stack-content">
+                                        <strong>En proceso</strong>
+                                        <p>
+                                            <t t-esc="mantenimientoEstadoChart[2].value"/>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="ts-stack-legend-item ts-stack-item-warning">
+                                    <div class="ts-stack-icon">!</div>
+
+                                    <div class="ts-stack-content">
+                                        <strong>Pendientes</strong>
+                                        <p>
+                                            <t t-esc="mantenimientoEstadoChart[3].value"/>
+                                        </p>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
 
                     </div>
 
-                    <div class="ts-dashboard-card ts-dashboard-table-card">
+                    <div class="ts-dashboard-card ts-dashboard-table-card ts-card-tabla">
                         <div class="ts-dashboard-card-header">
                             <div>
                                 <span>Detalle reciente</span>
